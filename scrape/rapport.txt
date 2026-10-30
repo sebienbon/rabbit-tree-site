@@ -1,0 +1,640 @@
+========================================================================
+PAGE: /home
+TITRE: Hostel Gili Meno | Gili Meno | The Rabbit Tree Hostel
+META: A unique cheap hostel in Gili Meno. Stay at the Rabbit Tree Hostel. A place to dream, a place to relax. In lombok, it will be a beautiful experience.
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h1] The Rabbit Tree Hostel
+  [h2] Gallery
+  [h2] HOW TO GET THERE
+  [h2] ACTIVITIES IN GILI MENO
+  [h2] ROOMS
+  [h2] Reservations (10% Discount)
+  [h2] Cheap Boats
+  [h2] OUR STORY
+  [h2] Adventures
+  [h2] Experience a truly unique and creative stay at The Rabbit Tree Hostel. Our accommodations stand out as the most entertaining in Lombok and among all hotels in Gili Meno. With a friendly staff, vibrant atmosphere, and an array of amenities including a ball pit room and escape room, your stay with us will be unforgettable. Enjoy a wide range of activities, from yoga classes to bonfires to movie nights. Immerse yourself in the vibrant and friendly atmosphere of The Rabbit Tree Hostel and create memories that will last a lifetime!
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree The Rabbit Tree Hostel Gallery HOW TO GET THERE ACTIVITIES IN GILI MENO ROOMS ROOMS Reservations (10% Discount) Cheap Boats OUR STORY Adventures Experience a truly unique and creative stay at The Rabbit Tree Hostel. Our accommodations stand out as the most entertaining in Lombok and among all hotels in Gili Meno. With a friendly staff, vibrant atmosphere, and an array of amenities including a ball pit room and escape room, your stay with us will be unforgettable. Enjoy a wide range of activities, from yoga classes to bonfires to movie nights. Immerse yourself in the vibrant and friendly atmosphere of The Rabbit Tree Hostel and create memories that will last a lifetime! Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (15) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/7528824071724d12a3e6c31eee0b40d4.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7528824071724d12a3e6c31eee0b40d4.png | alt=White LinkedIn Icon
+  https://static.wixstatic.com/media/01ab6619093f45388d66736ec22e5885.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/01ab6619093f45388d66736ec22e5885.png | alt=White Twitter Icon
+  https://static.wixstatic.com/media/eb9767422f0e4c41a507d3e67c4ebac8.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/eb9767422f0e4c41a507d3e67c4ebac8.png | alt=White Google+ Icon
+  https://static.wixstatic.com/media/06d726_131ca663fa254f2d9ea947c031e1828a~mv2.png/v1/crop/x_260,y_0,w_2898,h_2898/fill/w_123,h_123,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/boat%20little.png | alt=Fast Boat and Transport to the gilis
+  https://static.wixstatic.com/media/06d726_b0881c643c4046a5af029c2af618c35c~mv2.png/v1/crop/x_98,y_0,w_204,h_255/fill/w_195,h_243,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/dragon_edited.png | alt=dragon_edited.png
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (31) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  '' -> https://www.linkedin.com/company/wix-com
+  '' -> http://www.twitter.com/wix
+  '' -> http://plus.google.com/+Wix/posts
+  'Gallery' -> https://therabbittreegilim.wixsite.com/home/gallery
+  '' -> https://www.linkedin.com/company/wix-com
+  '' -> http://www.twitter.com/wix
+  '' -> http://plus.google.com/+Wix/posts
+  '' -> https://therabbittreegilim.wixsite.com/home/how-to-get-here
+  '' -> https://therabbittreegilim.wixsite.com/home/welcome-activities
+  'ROOMS' -> https://therabbittreegilim.wixsite.com/home/rooms
+  'ROOMS' -> https://therabbittreegilim.wixsite.com/home/rooms
+  'Reservations (10% Discount)' -> https://therabbittreegilim.wixsite.com/home/reservations
+  'Cheap Boats' -> https://therabbittreegilim.wixsite.com/home/welcome-transports2
+  '' -> https://therabbittreegilim.wixsite.com/home/welcome-transports2
+  '' -> https://therabbittreegilim.wixsite.com/home/our-story
+  'OUR STORY' -> https://therabbittreegilim.wixsite.com/home/our-story
+  '' -> https://therabbittreegilim.wixsite.com/home/our-story
+  'Adventures' -> https://therabbittreegilim.wixsite.com/home/tours
+  '' -> https://therabbittreegilim.wixsite.com/home/tours
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/gallery
+TITRE: Gallery | home
+META: Start to immerge yourself in an absolute new concept of hostel, within the paradise of Gili Meno
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h2] Gallery
+  [h2] Back to Home
+  [h2] Now, See our story...
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree Gallery Back to Home In the heart of Gili Meno's paradise you'll find The Rabbit Tree, a unique hostel oozing creativity and pockets of dreams made into a reality. Every square inch of the property has been intricately designed to provide guests with a playful and thought provoking experience here. ​ Since opening in January 2017 the hostel has continued to grow and new details are added all the time. The Rabbit Tree provides comfortable and weather-proof rooms, fresh water showers, wifi, a long list of entertainment facilities, drinking water, tea, coffee and breakfast. You can also explore the secret passageways and hangout spots hidden around the facility. Now, See our story... Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () In the heart of Gili Meno's paradise you'll find The Rabbit Tree, a unique hostel oozing creativity and pockets of dreams made into a reality. Every square inch of the property has been intricately designed to provide guests with a playful and thought provoking experience here.
+  () Since opening in January 2017 the hostel has continued to grow and new details are added all the time. The Rabbit Tree provides comfortable and weather-proof rooms, fresh water showers, wifi, a long list of entertainment facilities, drinking water, tea, coffee and breakfast. You can also explore the secret passageways and hangout spots hidden around the facility.
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (11) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_f9a472ee9dcc457e8e8861b0c43aa472~mv2.png/v1/fill/w_134,h_134,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_f9a472ee9dcc457e8e8861b0c43aa472~mv2.png | alt=Rabbit Tree story logo
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (14) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  'Back to Home' -> https://therabbittreegilim.wixsite.com/home
+  'Now, See our story...' -> https://therabbittreegilim.wixsite.com/home/our-story
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/how-to-get-here
+TITRE: How To Get Here | home
+META: How to get to Gili Meno? Find the tracks to get to our magical place. Public boats, map, fast boats, taxi, crazy low prices and tips.
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h2] Back to Home
+  [h2] How To Come to Gili Meno ?
+  [h3] The Rabbit Tree team is working hard to avoid you the scams by getting you the best prices. Check now our offers and contact us, we'll make the bookings for you.
+  [h3] From Bali (All South Bali, Amed, Sanur, Nusa Penida/Lembongan etc.. ) :
+  [h3] From Gili Trawangan:
+  [h3] From Lombok:
+  [h2] How To Find The Rabbit Tree ?
+  [h3] Once on Gili Meno:
+  [h3] Check also the different activities you'll be doing at The Rabbit Tree and in the Island !!
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree Back to Home How To Come to Gili Meno ? The Rabbit Tree team is working hard to avoid you the scams by getting you the best prices. Check now our offers and contact us, we'll make the bookings for you. ​ From Bali (All South Bali, Amed, Sanur, Nusa Penida/Lembongan etc.. ) : - Everyday : Daily minibus pick up you in the biggest city of Bali to join Padang Bai. - After : Daily ferry to join Gili Trawangan (or Gili Air). After, you have to take a local boat to join Gili Meno. ​ ​ We have the cheapest prices possible. Have a look now! ​ ​ From Gili Trawangan: - Daily public boat at 09:30 & 16:00 (40,000 idr) - Every hour by fast boat (85,000 idr) ​ From Lombok: - Public boat at 10:00, 14:00 and 17:00 (25,000 idr) - Every hour by fast boat (85,000 idr) How To Find The Rabbit Tree ? Once on Gili Meno: ​ Once arrived at the Gili Meno harbour, turn right and follow the coast road until you reach 'Karma Reef' restaurant. Go left and then right leading towards the back of the restaurant, briefly follow this until you reach a tree with many signs on it. You should see a sign pointing left for The Rabbit Tree. Follow the road on the left for about 5 minutes and you will find our hostel on the left side of the road just past Amigos Bungalows. ​ If you need any help, give us a call or ask any local! Gili Meno Terminal Ferry Rabbit Tree Hostel Karma Check also the different activities you'll be doing at The Rabbit Tree and in the Island !! Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () - Everyday : Daily minibus pick up you in the biggest city of Bali to join Padang Bai.
+  () - After : Daily ferry to join Gili Trawangan (or Gili Air). After, you have to take a local boat to join Gili Meno.
+  () We have the cheapest prices possible. Have a look now!
+  () - Daily public boat at 09:30 & 16:00 (40,000 idr)
+  () - Every hour by fast boat (85,000 idr)
+  () - Public boat at 10:00, 14:00 and 17:00 (25,000 idr)
+  () Once arrived at the Gili Meno harbour, turn right and follow the coast road until you reach 'Karma Reef' restaurant. Go left and then right leading towards the back of the restaurant, briefly follow this until you reach a tree with many signs on it. You should see a sign pointing left for The Rabbit Tree. Follow the road on the left for about 5 minutes and you will find our hostel on the left side of the road just past Amigos Bungalows.
+  () If you need any help, give us a call or ask any local!
+  () Gili Meno
+  () Terminal Ferry
+  () Rabbit Tree Hostel
+  () Karma
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (16) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_b583ed20e5414287a1c5dc90649e4697~mv2.png/v1/fill/w_124,h_85,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_b583ed20e5414287a1c5dc90649e4697~mv2.png | alt=old fashion boat
+  https://static.wixstatic.com/media/06d726_3f0f70a752014360b72c05807cdd40d8~mv2.png/v1/fill/w_315,h_315,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/map-to-come-in-rabbit-tree.png | alt=map-to-come-to-rabbit-tree.png
+  https://static.wixstatic.com/media/035244_87dc298b5c4b4584838e3c9353330c6f~mv2.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/035244_87dc298b5c4b4584838e3c9353330c6f~mv2.png | alt=
+  https://static.wixstatic.com/media/035244_6b732f5d22a74e3084ebd2c4f3447581~mv2.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/035244_6b732f5d22a74e3084ebd2c4f3447581~mv2.png | alt=
+  https://static.wixstatic.com/media/035244_87dc298b5c4b4584838e3c9353330c6f~mv2.png/v1/fill/w_33,h_33,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/035244_87dc298b5c4b4584838e3c9353330c6f~mv2.png | alt=
+  https://static.wixstatic.com/media/035244_6b732f5d22a74e3084ebd2c4f3447581~mv2.png/v1/fill/w_33,h_33,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/035244_6b732f5d22a74e3084ebd2c4f3447581~mv2.png | alt=
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (17) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  'Back to Home' -> https://therabbittreegilim.wixsite.com/home
+  'From Bali (All South Bali, Amed, Sanur, Nusa Penida/Lembongan etc.. ) :' -> https://therabbittreegilim.wixsite.com/home/welcome-transports2
+  'We have the cheapest prices possible. Have a look now!' -> https://therabbittreegilim.wixsite.com/home/welcome-transports2
+  '' -> https://therabbittreegilim.wixsite.com/home/welcome-transports2
+  "Check also the different activities you'll be doing at The Rabbit Tree and in the Island !!" -> https://therabbittreegilim.wixsite.com/home/welcome-activities
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/our-story
+TITRE: Our Story | home
+META: Experience the extraordinary at The Rabbit Tree Hostel on Gili Meno. Our creative and ever-changing building attracts artists, happiness chasers, and curious minds seeking lifelong memories. Prepare to be surprised as you delve into a world where the future meets the present.
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h2] Back to Home
+  [h2] Our Story...
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree Back to Home Our Story... Are you having the best time of your life traveling freely from one place to another, creating unforgettable experiences while meeting new people and exploring new cultures? Come and stay at The Rabbit Tree Hostel and add an extraordinary experience to your trip. 'Cause life is awesome, isn't it? ​ It is our greatest pleasure to welcome you into your new home on Gili Meno. The Rabbit Tree is the most creative building in the Gilis and still changes organically everyday. We attract artists, happiness chasers and creative minds looking for an experience that will last for the rest of their lives. ​ The atmosphere here is at the very least surprising, nothing is what it seems. Be prepared to get lost between the future and now. The rooms are all part of The Rabbit Tree story, which we will tell you as soon as you arrive... ​ Your stay at our hostel is one to remember. Have you ever slept in a ball pit bedroom, a room that feels like flying boat, or in one filled with hundreds of pillows? And what would you do if the main sitting area suddenly becomes a pool in front of your eyes? You might lose yourself in the maize and find a secret passage to gaze the stars... ​ Through those experiences you will find something you’ve always been looking for: your dreams. Because, believe it or not, at the edge of imagination and reality, dreams can come true. Explore Rooms Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () Are you having the best time of your life traveling freely from one place to another, creating unforgettable experiences while meeting new people and exploring new cultures? Come and stay at The Rabbit Tree Hostel and add an extraordinary experience to your trip. 'Cause life is awesome, isn't it?
+  () It is our greatest pleasure to welcome you into your new home on Gili Meno. The Rabbit Tree is the most creative building in the Gilis and still changes organically everyday. We attract artists, happiness chasers and creative minds looking for an experience that will last for the rest of their lives.
+  () The atmosphere here is at the very least surprising, nothing is what it seems. Be prepared to get lost between the future and now. The rooms are all part of The Rabbit Tree story, which we will tell you as soon as you arrive...
+  () Your stay at our hostel is one to remember. Have you ever slept in a ball pit bedroom, a room that feels like flying boat, or in one filled with hundreds of pillows? And what would you do if the main sitting area suddenly becomes a pool in front of your eyes? You might lose yourself in the maize and find a secret passage to gaze the stars...
+  () Through those experiences you will find something you’ve always been looking for: your dreams. Because, believe it or not, at the edge of imagination and reality, dreams can come true.
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (11) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_f9a472ee9dcc457e8e8861b0c43aa472~mv2.png/v1/fill/w_130,h_130,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_f9a472ee9dcc457e8e8861b0c43aa472~mv2.png | alt=
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (14) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  'Back to Home' -> https://therabbittreegilim.wixsite.com/home
+  'Explore Rooms' -> https://therabbittreegilim.wixsite.com/home/rooms
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/reservations
+TITRE: Reservations | home
+META: Make your reservation directly with us and get a 10% discount. Easy and quick.
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h2] go to rooms
+  [h2] Reservations
+  [h2] 10% Cheaper than the Booking website s
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree go to rooms Reservations Our Booking system allows you to book for the corresponding category of rooms. If you want to be allocated in a specific room, write its name in the "C omment" section of the B ooking form . 10% Cheaper than the Booking website s Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () Our Booking system allows you to book for the corresponding category of rooms. If you want to be allocated in a specific room, write its name in the "C omment" section of the B ooking form .
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (10) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (13) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  'go to rooms' -> https://therabbittreegilim.wixsite.com/home/rooms
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/rooms
+TITRE: Rooms | home
+META: Step into the world of the Rabbit Tree Hostel. Discover our eclectic and whimsical rooms, each a unique dimension of surprises and quirks. Experience a stay like no other, where comfort meets enchantment. Book your extraordinary room now .
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (37) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_2a6aa262451945bd97d6c5f97fea97cf~mv2.png/v1/crop/x_229,y_0,w_3484,h_2781/fill/w_973,h_777,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_2a6aa262451945bd97d6c5f97fea97cf~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_004479a0f1e54d85bc4390b57989cfe6~mv2.png/v1/fill/w_164,h_164,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_004479a0f1e54d85bc4390b57989cfe6~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_1cca50a9923a421ca51e32badce2fb23~mv2.png/v1/fill/w_182,h_182,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_1cca50a9923a421ca51e32badce2fb23~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_1a706d4ad4314e0ab5c98edb30a91abd~mv2.png/v1/fill/w_194,h_194,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_1a706d4ad4314e0ab5c98edb30a91abd~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_38af2442b6a147309b14d7de906fbb4c~mv2.png/v1/fill/w_140,h_140,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_38af2442b6a147309b14d7de906fbb4c~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_c36f5cd7068e454cbecdf416228812cd~mv2.png/v1/fill/w_164,h_164,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_c36f5cd7068e454cbecdf416228812cd~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_51c3caa09b0e49ca96a88e84fde22637~mv2.png/v1/fill/w_172,h_172,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_51c3caa09b0e49ca96a88e84fde22637~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_6174c05fb4634edb822d7a9570caf366~mv2.png/v1/fill/w_155,h_155,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_6174c05fb4634edb822d7a9570caf366~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_310a994fa36c420b8bf8ccb569b68bbd~mv2.png/v1/fill/w_172,h_172,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_310a994fa36c420b8bf8ccb569b68bbd~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_a0440ba6bc2a42de8afa244306688fa0~mv2.png/v1/fill/w_182,h_182,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a0440ba6bc2a42de8afa244306688fa0~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_e49619eb98434a8c9324082e164ed1a6~mv2.png/v1/fill/w_194,h_194,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_e49619eb98434a8c9324082e164ed1a6~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_d7629426bb914f18beb259c24039490b~mv2.png/v1/fill/w_140,h_140,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Tree-house-rabbit-tree%20contour.png | alt=Tree-house-rabbit-tree contour.png
+  https://static.wixstatic.com/media/06d726_83d8929bba8c40b29935c590b8d9652a~mv2.png/v1/fill/w_164,h_164,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_83d8929bba8c40b29935c590b8d9652a~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_82a324d395a84245835ab13b2a9ee36b~mv2.png/v1/fill/w_155,h_155,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_82a324d395a84245835ab13b2a9ee36b~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_98c5979873a54a59b2d662437612ccc7~mv2.png/v1/fill/w_172,h_172,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_98c5979873a54a59b2d662437612ccc7~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_a16ae4f16e9a47898356372fe7702694~mv2.png/v1/fill/w_172,h_172,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a16ae4f16e9a47898356372fe7702694~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_bdb4332b7f0a4a93af1b45943c49f143~mv2.png/v1/fill/w_164,h_164,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_bdb4332b7f0a4a93af1b45943c49f143~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_4aafe239d17c467db0d69537421d8908~mv2.png/v1/crop/x_201,y_706,w_837,h_926/fill/w_175,h_194,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4aafe239d17c467db0d69537421d8908~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_99a330387cda4ec48325a71d5def56a1~mv2.png/v1/crop/x_226,y_718,w_804,h_923/fill/w_169,h_194,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_99a330387cda4ec48325a71d5def56a1~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_6c5ace03e18a47358cf045fe7bdd5288~mv2.png/v1/fill/w_148,h_209,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_6c5ace03e18a47358cf045fe7bdd5288~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_c7f3476735484338bac4fa9ee6dbd005~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_c7f3476735484338bac4fa9ee6dbd005~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_19f2bc613c234b3082886241f5da6045~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_19f2bc613c234b3082886241f5da6045~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_a77a7d91b85f4f05b27f17b28b4ce224~mv2.png/v1/fill/w_148,h_209,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a77a7d91b85f4f05b27f17b28b4ce224~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_ea4724a1c5b3431785d0dcbc469e4711~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/rabbit%20dream%20surround.png | alt=rabbit dream surround.png
+  https://static.wixstatic.com/media/06d726_01ce74d387c04d939b3491360f625e21~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/rabbit%20dream%20vortexcolor.png | alt=rabbit dream vortexcolor.png
+  https://static.wixstatic.com/media/06d726_f8522bf6eb92415fa24d19fc461bbb77~mv2.png/v1/fill/w_169,h_134,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_f8522bf6eb92415fa24d19fc461bbb77~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_1c83548ac42b458c9b96a135ae28cf9d~mv2.png/v1/fill/w_169,h_134,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_1c83548ac42b458c9b96a135ae28cf9d~mv2.png | alt=
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (25) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  '' -> https://therabbittreegilim.wixsite.com/home/bola-bola
+  '' -> https://therabbittreegilim.wixsite.com/home/grandma-room
+  '' -> https://therabbittreegilim.wixsite.com/home/tree-house
+  '' -> https://therabbittreegilim.wixsite.com/home/bamboo-forest
+  '' -> https://therabbittreegilim.wixsite.com/home/twin-rabbit-cave
+  '' -> https://therabbittreegilim.wixsite.com/home/flying-boat
+  '' -> https://therabbittreegilim.wixsite.com/home/bola-bola
+  '' -> https://therabbittreegilim.wixsite.com/home/twin-rabbit-cave
+  '' -> https://therabbittreegilim.wixsite.com/home/family-rabbit-cave
+  '' -> https://therabbittreegilim.wixsite.com/home/lapassion
+  '' -> https://therabbittreegilim.wixsite.com/home/bird-nest
+  '' -> https://therabbittreegilim.wixsite.com/home/rabbitdream
+  '' -> https://therabbittreegilim.wixsite.com/home/copy-of-bola-bola
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/tours
+TITRE: The Rabbit Tree Hostel | Gili Meno| Tours from Lombok
+META: Best and cheapest tours and adventures from the Gili Islands and Lombok. Komodo Trip. Waterfalls. Rinjani Trek.
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h1] Go on an adventure
+  [h1] Komodo Tour
+  [h1] Check all infos and options
+  [h1] Rinjani Trek
+  [h1] Check the activities you will have with us
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree BACK TO MAIN PAGE Go on an adventure We offer different tours, for all tastes... Don’t hesitate to come to the reception to book what you want. Komodo Tour Have you ever think about seeing the dragons and the famous pink beach for real? You will go around Lombok, North Sumbawa and the Komodo Islands, not only to meet the dragons, but also to visit intact areas where the coral reef offers its best colors and wildlife... and the amazing whale sharks! For 3500K per person, it includes 3 days, 4 nights sleeping on the deck, the entrance fees to the Komodo’s National Park, transportations, food and snorkeling material. If you need more confort, for 4000K per person you can choose to sleep in a cabin. It doesn’t include the way back from Labuan Bajo (Flores). Departures usually on Monday, Wednesday and Saturday. Check all infos and options Rinjani Trek You are rather sporty and you like hiking? This one is for you! For 2150k per person, go on a 2 days, 1 nights trek to reach the Rinjani, the famous volcano in Lombok. ​ It will be sporty but you will admire exceptional landscapes! It includes the transportation from Gili Meno, food, tent, porters, and a first night prior to departure. Check all infos and options Check the activities you will have with us Or Explore the Rooms Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () We offer different tours, for all tastes... Don’t hesitate to come to the reception to book what you want.
+  () Have you ever think about seeing the dragons and the famous pink beach for real?
+  () You will go around Lombok, North Sumbawa and the Komodo Islands,
+  () not only to meet the dragons, but also to visit intact areas where the coral reef offers its best colors and wildlife...
+  () and the amazing whale sharks!
+  () For 3500K per person, it includes 3 days, 4 nights sleeping on the deck,
+  () the entrance fees to the Komodo’s National Park, transportations, food and snorkeling material.
+  () If you need more confort, for 4000K per person you can choose to sleep in a cabin.
+  () It doesn’t include the way back from Labuan Bajo (Flores).
+  () Departures usually on Monday, Wednesday and Saturday.
+  () You are rather sporty and you like hiking? This one is for you!
+  () For 2150k per person, go on a 2 days, 1 nights trek to reach the Rinjani, the famous volcano in Lombok.
+  () It will be sporty but you will admire exceptional landscapes!
+  () It includes the transportation from Gili Meno, food, tent, porters, and a first night prior to departure.
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (14) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_cfbd4db650314ab7aa3470ae751e2dd7~mv2.jpg/v1/fill/w_285,h_147,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_cfbd4db650314ab7aa3470ae751e2dd7~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_3ca43bfbabfe450391c9cf8feb1d59a3~mv2.jpg/v1/fill/w_243,h_147,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/komodo_pink%20beach_edited.jpg | alt=komodo_pink beach_edited.jpg
+  https://static.wixstatic.com/media/06d726_2dc8db46b09e4e769f66fce4000fd111~mv2.jpg/v1/fill/w_265,h_175,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_2dc8db46b09e4e769f66fce4000fd111~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_97963b088d2b4a7eaada9e83ee3f45cd~mv2.jpg/v1/crop/x_0,y_0,w_392,h_261/fill/w_265,h_175,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_97963b088d2b4a7eaada9e83ee3f45cd~mv2.jpg | alt=
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (23) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  'BACK TO MAIN PAGE' -> https://therabbittreegilim.wixsite.com/home/welcome
+  'Komodo Tour' -> https://therabbittreegilim.wixsite.com/home/tours/komodotrip
+  '' -> https://therabbittreegilim.wixsite.com/home/tours/komodotrip
+  '' -> https://therabbittreegilim.wixsite.com/home/tours/komodotrip
+  'Check all infos and options' -> https://therabbittreegilim.wixsite.com/home/tours/komodotrip
+  'Rinjani Trek' -> https://therabbittreegilim.wixsite.com/home/tours/rinjanitrek
+  '' -> https://therabbittreegilim.wixsite.com/home/tours/rinjanitrek
+  '' -> https://therabbittreegilim.wixsite.com/home/tours/rinjanitrek
+  'Check all infos and options' -> https://therabbittreegilim.wixsite.com/home/tours/rinjanitrek
+  'Check the activities you will have with us' -> https://therabbittreegilim.wixsite.com/home/welcome-activities
+  'Or Explore the Rooms' -> https://therabbittreegilim.wixsite.com/home/rooms
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/welcome-activities
+TITRE: The Rabbit Tree | Activities
+META: All the activities possible in Gili Meno. Free activities, best prices and bookings in direct.
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h1] What to do in Gili Meno?
+  [h1] Movie night
+  [h1] Yoga, Workout
+  [h1] Sunset on the beach
+  [h1] Traditional dinner
+  [h1] Games night
+  [h1] Go to walk around the island
+  [h1] Discover the lake and mangroves
+  [h1] Relax on the most lovely beach of the 3 Gilis
+  [h1] Admire the sunrise or the sunset
+  [h1] You would like to do some good things?
+  [h1] The main activity on the island:
+  [h1] You liked snorkeling? Ok, let's go deeper
+  [h1] You want to do an unforgettable ride?
+  [h1] You can also go fishing
+  [h1] WHO SAID THERE WAS NOTHING TO DO ON THIS ISLAND ?
+  [h3] Also, you want to go into an adventure? Click here!
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree BACK TO MAIN PAGE What to do in Gili Meno? Before, you must know that there are activities every day at the Rabbit Tree! It would be hard to include everything we do together at the Rabbit Tree, but let's give a few examples... Movie night Yoga, Workout Sunset on the beach Traditional dinner Games night In Gili Meno, many things to do! Go to walk around the island It only takes one hour... Or one day if you slow down and take your time to enjoy the wonderfull places that Gili Meno offers you. Discover the lake and mangroves Relax on the most lovely beach of the 3 Gilis Admire the sunrise or the sunset You would like to do some good things? Visit the turtle sanctuary It’s a place near the beach with 4 small pools. The aim is to collect the eggs from the shore before predators eat them, grow the little turtles until they are about 1 year old, and release them in their natural environment. Thanks to this work, we still have a lot of turtles around Gili Meno. You can support this with a small donation! Join the Trash Heroes Meet locals and tourists every Sunday around 3.30pm at the Brotherhood and walk together to collect the trash. It will be an unforgettable moment to share with locals! They also take care of the trash bins around the island, so be sure to throw your waste in one of those. The main activity on the island: SNORKELING Good news! All the best snorkeling spots are around Gili Meno You can rent a mask from us at the reception for 30K and go to swim with the turtles. We will help you to find the best spots on the surrounding reefs, including the famous underwater statues. Or for only 150K (175k if less than 3 people on the boat) you can book a 3 hours boat trip. With a maximum of 15 people per boat, a local expert will guide you through 4 locations including the statues, the wreck and 2 turtles spots. You liked snorkeling? Ok, let's go deeper DIVING The Gilis are part of the best spots in the world for diving, with an exceptionally warm and clear water, and slow current. Don’t miss that! You can book through us for a dive with Divine Divers. They offer the best services quality, and work in a good atmosphere. They organize discovery dives, fun dives and diving certificate. Let us know if you want to book in advance. (we offer the same prices as the club) You want to do an unforgettable ride? Horse riding For 400K per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. You can go on the morning or in the afternoon to admire the sunset. In both cases, you will stop at some lovely points to take incredible pictures. Departure and arrival at Rabbit Tree. You can also go fishing You have 2 options... Private fishing trip For 350K per person, go for a 3 hours boat trip and try two fishing techniques: -bottom fishing (to catch groupers, snappers, and more) -crowling fishing (to catch barracudas, giant trevally, even sometimes tunas). Spearfishing For 380K per person, go with a guide who will teach you spearfishing during 3 hours. You will leave directly from the beach to catch different kinds of local fish, or maybe octopus. WHO SAID THERE WAS NOTHING TO DO ON THIS ISLAND ? Also, you want to go into an adventure? Click here! Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () Before, you must know that there are activities every day at the Rabbit Tree!
+  () It would be hard to include everything we do together at the Rabbit Tree,
+  () but let's give a few examples...
+  () In Gili Meno, many things to do!
+  () It only takes one hour...
+  () Or one day if you slow down and take your time to enjoy the wonderfull places that Gili Meno offers you.
+  () Visit the turtle sanctuary
+  () It’s a place near the beach with 4 small pools. The aim is to collect the eggs from the shore before predators eat them, grow the little turtles until they are about 1 year old, and release them in their natural environment. Thanks to this work, we still have a lot of turtles around Gili Meno. You can support this with a small donation!
+  () Join the Trash Heroes
+  () Meet locals and tourists every Sunday around 3.30pm at the Brotherhood and walk together to collect the trash.
+  () It will be an unforgettable moment to share with locals! They also take care of the trash bins around the island, so be sure to throw your waste in one of those.
+  () SNORKELING
+  () Good news!
+  () All the best snorkeling spots are around Gili Meno
+  () You can rent a mask from us at the reception for 30K and go to swim with the turtles. We will help you to find the best spots on the surrounding reefs, including the famous underwater statues.
+  () Or for only 150K (175k if less than 3 people on the boat) you can book a 3 hours boat trip. With a maximum of 15 people per boat, a local expert will guide you through 4 locations including the statues, the wreck and 2 turtles spots.
+  () DIVING
+  () The Gilis are part of the best spots in the world for diving, with an exceptionally warm and clear water, and slow current. Don’t miss that!
+  () You can book through us for a dive with Divine Divers. They offer the best services quality, and work in a good atmosphere. They organize discovery dives, fun dives and diving certificate. Let us know if you want to book in advance.
+  () (we offer the same prices as the club)
+  () Horse riding
+  () For 400K per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. You can go on the morning or in the afternoon to admire the sunset. In both cases, you will stop at some lovely points to take incredible pictures. Departure and arrival at Rabbit Tree.
+  () You have 2 options...
+  () Private fishing trip
+  () For 350K per person, go for a 3 hours boat trip and try two fishing techniques: -bottom fishing
+  () (to catch groupers, snappers, and more) -crowling fishing
+  () (to catch barracudas, giant trevally, even sometimes tunas).
+  () Spearfishing
+  () For 380K per person, go with a guide who will teach you spearfishing during 3 hours. You will leave directly from the beach to catch different kinds of local fish, or maybe octopus.
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (31) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_8f57966186bf4e4e94b78e3e3fd11cef~mv2.jpg/v1/crop/x_2000,y_0,w_4000,h_4000/fill/w_124,h_124,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_8f57966186bf4e4e94b78e3e3fd11cef~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_d8d306e80f03480695f2325222481be5~mv2.jpg/v1/crop/x_1006,y_215,w_2046,h_2047/fill/w_124,h_124,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_d8d306e80f03480695f2325222481be5~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_c456b67353654b65b6f6b5ed21da9b09~mv2.jpg/v1/crop/x_0,y_527,w_3000,h_3000/fill/w_124,h_124,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_c456b67353654b65b6f6b5ed21da9b09~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_87a7e4842ee74740b8baeed1388d8c8b~mv2.jpg/v1/crop/x_293,y_293,w_2731,h_2731/fill/w_124,h_124,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_87a7e4842ee74740b8baeed1388d8c8b~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_f5a6ff664b19436c9e08f0dcfb127468~mv2.jpg/v1/crop/x_2,y_180,w_1242,h_1242/fill/w_124,h_124,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_f5a6ff664b19436c9e08f0dcfb127468~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_54422d7d347149509836cb89e13743e9~mv2.jpg/v1/fill/w_153,h_102,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_54422d7d347149509836cb89e13743e9~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_34d6d625dcd941f582a8bb51219edbd5~mv2.jpg/v1/fill/w_293,h_165,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_34d6d625dcd941f582a8bb51219edbd5~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_a1fc1285f6d84fd2a2714449eea6a0cc~mv2.jpg/v1/crop/x_56,y_252,w_2248,h_1262/fill/w_293,h_165,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a1fc1285f6d84fd2a2714449eea6a0cc~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_94cf3654b9f14b55a0ad6ed82f5d5f8b~mv2.jpg/v1/crop/x_42,y_134,w_2262,h_1268/fill/w_293,h_165,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_94cf3654b9f14b55a0ad6ed82f5d5f8b~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_dfa2a5aafa1541d89691d2743badcb18~mv2.jpg/v1/fill/w_254,h_170,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_dfa2a5aafa1541d89691d2743badcb18~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_cd9c56065a43418192a0bea03d339020~mv2.jpg/v1/fill/w_227,h_170,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_cd9c56065a43418192a0bea03d339020~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_0eaffc31922b407bbd433a75fd6d2978~mv2.jpg/v1/crop/x_790,y_249,w_2037,h_2037/fill/w_105,h_105,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_0eaffc31922b407bbd433a75fd6d2978~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_d7a082a9fec1499283a8c510bc8319f3~mv2.jpg/v1/crop/x_120,y_0,w_1080,h_1080/fill/w_105,h_105,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_d7a082a9fec1499283a8c510bc8319f3~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_dde930eb74b34f4d84d355addbc0282f~mv2.jpg/v1/crop/x_687,y_12,w_2602,h_1824/fill/w_226,h_159,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_dde930eb74b34f4d84d355addbc0282f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_adad4e17bdd14a4fa4642eb4c7a81abb~mv2.jpg/v1/crop/x_542,y_612,w_2708,h_1896/fill/w_226,h_159,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_adad4e17bdd14a4fa4642eb4c7a81abb~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_5e40250662f34a4982a547bb719d71a2~mv2.jpg/v1/crop/x_0,y_0,w_3000,h_3720/fill/w_133,h_167,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_5e40250662f34a4982a547bb719d71a2~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_9e20802d59ff4d1cb8ee70e115a43e9d~mv2.png/v1/fill/w_134,h_134,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_9e20802d59ff4d1cb8ee70e115a43e9d~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_2b3c0082b88e4747a3b56438840f5c97~mv2.jpg/v1/fill/w_256,h_192,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_2b3c0082b88e4747a3b56438840f5c97~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_e6c71c77bd1749d19ab53dddc746eb67~mv2.jpg/v1/crop/x_0,y_0,w_427,h_267/fill/w_226,h_141,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_e6c71c77bd1749d19ab53dddc746eb67~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_dc384ff09bd143dcbe138645e042cd2d~mv2.jpg/v1/crop/x_0,y_10,w_474,h_296/fill/w_226,h_141,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_dc384ff09bd143dcbe138645e042cd2d~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_436f5557dc1c41e697351f8731198d31~mv2.png/v1/fill/w_75,h_75,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/smiley.png | alt=smiley.png
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (14) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  'BACK TO MAIN PAGE' -> https://therabbittreegilim.wixsite.com/home/welcome
+  'Click here!' -> https://therabbittreegilim.wixsite.com/home/tours
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with
+
+========================================================================
+PAGE: /home/welcome-transports2
+TITRE: The Rabbit Tree Hostel | Gili Meno | Transports to and from the Gili Islands
+META: Book your transport from and to the Gili Islands. We bargained for you the cheapest prices. Bali-Gili fast-boat from 200.000 only.
+========================================================================
+-- TITRES --
+  [h1] The Rabbit Tree
+  [h1] Gilis Island-hopping boats
+  [h1] Gili T
+  [h1] Gili
+  [h1] Meno
+  [h1] Gili Air
+  [h1] How to come from or to go to Lombok?
+  [h1] Bangsal
+  [h1] Lombok
+  [h1] How to come from or to go to Bali?
+  [h2] SEND US A MESSAGE, W E BOOK IT FOR YOU! ( Therabbittreegilimeno@gmail.com )
+  [h1] You can also go directly to and from other places in Bali
+  [h1] You are adventurous?
+  [h1] And Check here the adventures you can do from lombok
+-- TEXTES --
+  (SITE_CONTAINER) top of page This website was built on Wix. Create yours today. Get Started The Rabbit Tree BACK TO MAIN PAGE Gilis Island-hopping boats It's very easy to travel between the Gilis! You have 2 options... Public boats: Twice a day for 40K Gili T Gili Meno Gili Air 8.50am / 3.20pm 9.30am / 4.00pm 9.50am / 4.20pm 8.30am / 3.00pm Private boats: Every hour for 85 K We bargained for you to get cheaper transportations (or at least same prices than anybody else here). So don’t hesitate to contact us to book your ticket . It would be a shame to miss it. How to come from or to go to Lombok? First, public boats make the link every day between Gili Meno and Bangsal for 25K Gili Meno Bangsal Lombok 8am / 3.30pm 10am / 2pm / 5pm To go to or to leave Bangsal: We have special prices for shuttles or taxis! Mataram Airport: Shuttle 140k pax Taxi for 350K up to 3 people Kuta Lombok: Shuttle for 14 0K pax Taxi for 350K up to 3 people Senggigi: Shuttle for 110K pax Taxi for 180K up to 3 people You want to go to another place? Contact us! How to come from or to go to Bali? Our option, the Cheapest one: There is two departures per day from Padang Bay to Gili Meno, around 9:30am (pick up at 7am) and around 13pm (pick up at 10am). From Gili Meno there also 2 departures a day, around the same times. This boat stops also in Gili AIr, Gili T and Bangsal. ​ - two ways ticket for 630 k It's cheaper to take directly the two ways ticket if you already know that you will come back to Bali. It's an open date return ticket, that means you don't need to know when you leave us. If you want to take shuttles in Bali from or to main areas (Kuta, Seminyak, Canggu, Ubud, Jembaran, Sanur Airport) , count 100K more per way. (So in total 830 K if you take a shuttle in both ways.) ​ - One way ticket for 325 K This is the price from Bali. From the Gilis, the one way ticket is slightly more expensive (350 k). Count only 100K more if you want to be picked up or drop off in South Bali. ​ Then, see above for the boat between Bangsal and Gili Meno. SEND US A MESSAGE, W E BOOK IT FOR YOU! ( Therabbittreegilimeno@gmail.com ) You can also go directly to and from other places in Bali Take a fast boat from Gili T or Bangsal Nusa Penida: for 35 0 K Amed: not available now Lembongan: for 375K Sanur: for 4 0 0K You are adventurous? Here is a cheap way to go to Flores: 26 hours trip to Flores, including bus and ferries for 850K And Check here the adventures you can do from lombok Call us ​ ﻿+62 8810 370 928 55 Find us ​ Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52 Email us ﻿​ therabbittreegilimeno@gmail.com ©2017 by The Rabbit Tree. Proudly created with Wix.com bottom of page
+  () It's very easy to travel between the Gilis!
+  () You have 2 options...
+  () Public boats:
+  () Twice a day for 40K
+  () 8.50am / 3.20pm
+  () 9.30am / 4.00pm
+  () 9.50am / 4.20pm
+  () 8.30am / 3.00pm
+  () Private boats:
+  () Every hour for 85 K
+  () We bargained for you to get cheaper transportations (or at least same prices than anybody else here). So don’t hesitate to contact us to book your ticket . It would be a shame to miss it.
+  () First, public boats make the link every day between Gili Meno and Bangsal for 25K
+  () 8am / 3.30pm
+  () 10am / 2pm / 5pm
+  () To go to or to leave Bangsal:
+  () We have special prices for shuttles or taxis!
+  () Mataram Airport:
+  () Shuttle 140k pax
+  () Taxi for 350K up to 3 people
+  () Kuta Lombok:
+  () Shuttle for 14 0K pax
+  () Senggigi:
+  () Shuttle for 110K pax
+  () Taxi for 180K up to 3 people
+  () You want to go to another place? Contact us!
+  () Our option, the Cheapest one:
+  () There is two departures per day from Padang Bay to Gili Meno, around 9:30am (pick up at 7am) and around 13pm (pick up at 10am). From Gili Meno there also 2 departures a day, around the same times. This boat stops also in Gili AIr, Gili T and Bangsal.
+  () - two ways ticket for 630 k
+  () It's cheaper to take directly the two ways ticket if you already know that you will come back to Bali.
+  () It's an open date return ticket, that means you don't need to know when you leave us.
+  () If you want to take shuttles in Bali from or to main areas (Kuta, Seminyak, Canggu, Ubud, Jembaran, Sanur Airport) , count 100K more per way.
+  () (So in total 830 K if you take a shuttle in both ways.)
+  () - One way ticket for 325 K
+  () This is the price from Bali. From the Gilis, the one way ticket is slightly more expensive (350 k).
+  () Count only 100K more if you want to be picked up or drop off in South Bali.
+  () Then, see above for the boat between Bangsal and Gili Meno.
+  () Take a fast boat from Gili T or Bangsal
+  () Nusa Penida:
+  () for 35 0 K
+  () Amed:
+  () not available now
+  () Lembongan:
+  () for 375K
+  () Sanur:
+  () for 4 0 0K
+  () Here is a cheap way to go to Flores:
+  () 26 hours trip to Flores,
+  () including bus and ferries for 850K
+  () ﻿+62 8810 370 928 55
+  () Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52
+  () ©2017 by The Rabbit Tree. Proudly created with Wix.com
+-- IMAGES (19) --
+  https://static.wixstatic.com/media/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg/v1/fill/w_192,h_288,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/06d726_2668bb99f38848beb3cf1f770737312f~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_b583ed20e5414287a1c5dc90649e4697~mv2.png/v1/fill/w_123,h_84,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_b583ed20e5414287a1c5dc90649e4697~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_5b7545e1a1f642ca8cd29777841ce95c~mv2.png/v1/fill/w_118,h_163,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_5b7545e1a1f642ca8cd29777841ce95c~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_9169f4f5e9714a57a96eab71539b7db6~mv2.png/v1/fill/w_102,h_147,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_9169f4f5e9714a57a96eab71539b7db6~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_2ea85746fbe34fc782121d6a2f428c5c~mv2.png/v1/fill/w_128,h_140,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_2ea85746fbe34fc782121d6a2f428c5c~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_9169f4f5e9714a57a96eab71539b7db6~mv2.png/v1/fill/w_87,h_124,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_9169f4f5e9714a57a96eab71539b7db6~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_eda2d7fa8e834248ae5fa80967955b6c~mv2.png/v1/fill/w_236,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_eda2d7fa8e834248ae5fa80967955b6c~mv2.png | alt=
+  https://static.wixstatic.com/media/06d726_eaf33efaa4fa4f3a853c8f233be7397b~mv2.jpg/v1/fill/w_260,h_161,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_eaf33efaa4fa4f3a853c8f233be7397b~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_4f13e54123624498a61d67aafc7c59ac~mv2.jpg/v1/fill/w_290,h_161,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4f13e54123624498a61d67aafc7c59ac~mv2.jpg | alt=
+  https://static.wixstatic.com/media/06d726_85140e5efe4e466596afe3d87a88e07e~mv2.png/v1/fill/w_164,h_165,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/dragon.png | alt=dragon.png
+  https://static.wixstatic.com/media/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8b3cbae79dcb4a55b4ec2bac32f88d96~mv2.png | alt=Whatsapp
+  https://static.wixstatic.com/media/06d726_a738b85c620c4a139d512eed95319275~mv2.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_a738b85c620c4a139d512eed95319275~mv2.png | alt=booking.com
+  https://static.wixstatic.com/media/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg/v1/fill/w_26,h_26,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/06d726_4b1b12545e4d4564a12996ff2c9b2c51~mv2.jpg | alt=HostelWorld
+  https://static.wixstatic.com/media/8d6893330740455c96d218258a458aa4.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8d6893330740455c96d218258a458aa4.png | alt=Instagram Social Icon
+  https://static.wixstatic.com/media/7c9158607e5e8f1a97f44394700bad4f.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c9158607e5e8f1a97f44394700bad4f.png | alt=Facebook Long Shadow
+  https://static.wixstatic.com/media/aa15b518717141db9d0fb129b9d51e39.png/v1/fill/w_26,h_26,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/aa15b518717141db9d0fb129b9d51e39.png | alt=Trip Advisor Social Icon
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff2/file.woff2 | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/woff/file.woff | alt=(fond)
+  https://static.wixstatic.com/ufonts/06d726_4f1c074fbe4b4670902cc34198bcf821/ttf/file.ttf | alt=(fond)
+-- LIENS (18) --
+  'This website was built on Wix. Create yours today. Get Started' -> https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&orig_msid=e7117a4f-3edc-46e0-8707-bfdaec36991b&adsVersion=banner_2024
+  'The Rabbit Tree' -> https://therabbittreegilim.wixsite.com/home
+  'BACK TO MAIN PAGE' -> https://therabbittreegilim.wixsite.com/home/welcome
+  'Contact us!' -> https://therabbittreegilim.wixsite.com/home/welcome-transports2
+  'SEND US A MESSAGE, W E BOOK IT FOR YOU! ( Therabbittreegilimeno@gmail.com )' -> mailto:therabbittreegilimeno@gmail.com?subject=transport
+  'Therabbittreegilimeno@gmail.com' -> mailto:Therabbittreegilimeno@gmail.com
+  'And Check here the adventures you can do from lombok' -> https://therabbittreegilim.wixsite.com/home/tours
+  '' -> https://therabbittreegilim.wixsite.com/home/tours
+  'Gili Meno, Kabupaten Lombok Utara, West Nusa Tenggara, 833 52' -> https://goo.gl/maps/gdDktcyKkJ8Vy9LZ8
+  'Email us \ufeff\u200b therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com?subject=Ask us anything!
+  'therabbittreegilimeno@gmail.com' -> mailto:therabbittreegilimeno@gmail.com
+  '' -> tel:+62881037092855
+  '' -> https://www.booking.com/hotel/id/gili-gila.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGiIAQGYAQ3CAQNhYm7IAQzYAQHoAQH4AQuSAgF5qAIE;sid=d37ed6788d4c388970b7fd4e73ff335d;all_sr_blocks=188413112_104034889_0_1_0&checkin=2017-12-04&checkout=2017-12-05&dest_id=900048669&dest_type=city&group_adults=2&hapos=1&highlighted_blocks=188413112_104034889_0_1_0&hpos=1&room1=A%2CA&sb_price_type=total&srepoch=1510372077&srfid=61201c0f66d92efa533922d9b6f8209def941c06X1&srpvid=a87e1ab6fc30012f&type=total&ucfs=1&#availability
+  '' -> https://www.hostelworld.com/hosteldetails.php/The-Rabbit-Tree-Hostel/Gili-Meno/274111?dateFrom=2017-11-12&dateTo=2017-11-15&number_of_guests=2
+  '' -> https://www.instagram.com/therabbittreehostel/
+  '' -> https://www.facebook.com/gilimenohostel/
+  '' -> https://www.tripadvisor.com/Hotel_Review-g664665-d12053721-Reviews-Gili_Gila_Hostel-Gili_Meno_Gili_Islands_Lombok_West_Nusa_Tenggara.html
+  'Wix.com' -> http://wix.com/?utm_campaign=vir_created_with

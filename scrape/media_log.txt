@@ -1,0 +1,66 @@
+references medias trouvees: 344
+originaux distincts: 147
+  10/147
+  20/147
+  30/147
+  40/147
+  50/147
+  60/147
+  70/147
+  80/147
+  90/147
+  100/147
+  110/147
+  120/147
+  130/147
+  140/147
+media telecharges: 147 (deja la: 147 )
+
+COULEURS les plus frequentes:
+   #ffffff 1368
+   #000000 650
+   #116dff 216
+   #166aea 144
+   #E21C21 106
+   #5f6360 36
+   #080808 36
+   #eff1f2 36
+   #20303c 36
+   #8F8F8F 28
+   #0C4426 16
+   #FFFFFF 14
+   #474646 8
+   #AE633F 8
+   #2F2E2E 6
+   #ED1566 6
+   #282626 6
+   #E2E2E2 6
+   #744003 6
+   #ea492e 3
+   #070D3A 2
+   #757575 2
+   #ff8c00 1
+   #959595 1
+   #bababa 1
+
+POLICES:
+   'amatic sc' 710
+   georgia,palatino,book antiqua,palatino linotype,serif 324
+   chelsea market,fantasy 207
+   amatic sc,cursive 158
+   'open sans' 144
+   'signika' 144
+   'chelsea market' 118
+   'oswald' 80
+   'open-sans-v2' 80
+   Madefor-Text,Helvetica Neue,Helvetica,Arial,メイリオ,meiryo,ヒラギノ角ゴ pro w3,hiragino k 72
+   'basic' 72
+   'museo-slab-w01-100' 72
+   'niconne' 72
+   Arial,Helvetica,sans-serif 36
+   Helvetica,Arial,sans-serif 36
+   wixFreemiumFontW01-35Thin 36
+   wixFreemiumFontW01-45Ligh 36
+   wixFreemiumFontW01-55Roma 36
+   wixFreemiumFontW01-65Medi 36
+   wixFreemiumFontW02-35Thin 36
