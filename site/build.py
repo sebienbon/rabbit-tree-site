@@ -18,6 +18,14 @@ def stem(url):
 
 _EXCLUDE_PHOTOS = {"old-fashion-boat.webp"}
 
+# optimize.py classe "art" tout fichier qui ne depasse pas strictement 1200x900,
+# or plusieurs vraies photos de chambres font exactement 1200x900 cote Wix :
+# elles etaient donc filtrees par photos_of (ecart E de la revue T-20261031-01).
+# Liste etablie visuellement une par une (vraies photos ; dessins, plans et
+# logos comme pillow-room-on-pillow-png ou bird-nest-room-png en restent exclus).
+ART_PHOTOS = {"birdnest1.webp", "birdnest2.webp", "flyboat.webp", "flying-boat.webp",
+              "family1.webp", "family2.webp", "twin-rabbit-cave.webp", "toilet-white-house.webp"}
+
 
 def photos_of(path, min_bytes=25000, limit=30):
     if path not in INV:
@@ -29,7 +37,7 @@ def photos_of(path, min_bytes=25000, limit=30):
             continue
         s = stem(u)
         m = MAN.get(s)
-        if not m or m["file"] in seen or m["kind"] != "photo" or m["bytes"] < min_bytes:
+        if not m or m["file"] in seen or (m["kind"] != "photo" and m["file"] not in ART_PHOTOS) or m["bytes"] < min_bytes:
             continue
         if m["file"] in _EXCLUDE_PHOTOS or m.get("opaque", 1.0) < 0.9:
             continue
@@ -570,47 +578,59 @@ back to Bali, and it is an open date return, so you do not need to decide when y
 def build_activities():
     body = head("What To Do In Gili Meno?", "Who said there was nothing to do on this island?") + banner_of("activities") + """
 <section class="narrow">
-""" + para("There are activities every day at the Rabbit Tree. It would be hard to include everything we do "
-           "together, but let's give a few examples... In Gili Meno there is a lot to do, and it only takes one "
-           "hour — or one day if you slow down and take your time to enjoy the wonderful places the island offers.") + """
+""" + para("Before, you must know that there are activities every day at the Rabbit Tree! It would be hard to "
+           "include everything we do together at the Rabbit Tree, but let's give a few examples...") + """
+""" + para("In Gili Meno, many things to do! Go to walk around the island — it only takes one hour... or one day "
+           "if you slow down and take your time to enjoy the wonderful places that Gili Meno offers you.") + """
+""" + ul(["Discover the lake and mangroves",
+          "Relax on the most lovely beach of the 3 Gilis",
+          "Admire the sunrise or the sunset"]) + """
 </section>
 <section><h2>At the hostel, every day</h2>
 <div class="grid c3">
-""" + "".join('<div class="card"><h3>{}</h3><p>{}</p></div>'.format(esc(a), esc(b)) for a, b in [
-        ("Movie night", "The main sitting area turns into a cinema."),
-        ("Yoga &amp; workout", "Start the day moving with the group."),
-        ("Sunset on the beach", "Five minutes walk from the dorm."),
-        ("Traditional dinner", "Eat with the staff and the locals."),
-        ("Games night", "Board games, cards and silly challenges."),
-        ("Walk around the island", "One hour by bike, a day if you stop often."),
+""" + "".join('<div class="card"><h3>{}</h3></div>'.format(esc(a)) for a in [
+        "Movie night", "Yoga &amp; workout", "Sunset on the beach",
+        "Traditional dinner", "Games night",
     ]).replace("&amp;amp;", "&amp;") + """
 </div></section>
-<section><h2>On the island</h2>
+<section><h2>You would like to do some good things?</h2>
 <div class="grid c2">
 """ + "".join('<div class="card"><h3>{}</h3>{}</div>'.format(esc(t), para(b)) for t, b in [
-        ("Discover the lake and the mangroves", "Relax on the most lovely beach of the three Gilis, admire the sunrise or the sunset, and follow the lake path through the mangroves."),
-        ("Visit the turtle sanctuary", "A place near the beach with four small pools. The aim is to collect the eggs from the shore before predators eat them, grow the little turtles until they are about a year old, and release them in their natural environment. Thanks to this work there are still a lot of turtles around Gili Meno. You can support it with a small donation."),
-        ("Join the Trash Heroes", "Meet locals and travellers every Sunday around 3.30pm at the Brotherhood and walk together to collect the trash. It is an unforgettable moment to share with locals. They also take care of the trash bins around the island, so be sure to throw your waste in one of those."),
+        ("Visit the turtle sanctuary", "It's a place near the beach with 4 small pools. The aim is to collect the eggs from the shore before predators eat them, grow the little turtles until they are about 1 year old, and release them in their natural environment. Thanks to this work, we still have a lot of turtles around Gili Meno. You can support this with a small donation."),
+        ("Join the Trash Heroes", "Meet locals and tourists every Sunday around 3.30pm at the Brotherhood and walk together to collect the trash. It will be an unforgettable moment to share with locals! They also take care of the trash bins around the island, so be sure to throw your waste in one of those."),
     ]) + """
 </div></section>
-<section><h2>Bookable activities, with us</h2>
-""" + table(["Activity", "Price", "What you get"], [
-        ["Snorkelling gear rental", ("30K",), "Mask for a day, and we mark the best spots on a map: turtles point, coral, the Bounty wreck"],
-        ["Snorkelling boat trip, 3 hours", ("150K",), "4 spots including the underwater statues, the wreck and two turtle points. Max 15 people. 175K if fewer than 3 people on the boat"],
-        ["Diving with Divine Divers", ("Club price",), "Discovery dives, fun dives and certificates. We offer the same prices as the club"],
-        ["Horse riding around the island", ("400K",), "1h to 1h30 through the paths and the beach, morning or sunset. Departure and arrival at the Rabbit Tree"],
-        ["Private fishing trip, 3 hours", ("350K",), "Bottom fishing for groupers and snappers, or crowling fishing for barracudas, giant trevally and sometimes tuna"],
-        ["Spearfishing with a guide, 3 hours", ("380K",), "Leave straight from the beach; different local fish, maybe octopus"],
-    ]) + """
+<section><h2>The main activity on the island: snorkelling</h2>
+""" + para("Good news! All the best snorkelling spots are around Gili Meno. You can rent a mask from us at the "
+           "reception for 30K and go to swim with the turtles. We will help you to find the best spots on the "
+           "surrounding reefs, including the famous underwater statues. Or for only 150K (175K if less than 3 "
+           "people on the boat) you can book a 3 hours boat trip. With a maximum of 15 people per boat, a local "
+           "expert will guide you through 4 locations including the statues, the wreck and 2 turtles spots.") + """
+<h2>You liked snorkelling? Ok, let's go deeper: diving</h2>
+""" + para("The Gilis are part of the best spots in the world for diving, with an exceptionally warm and clear "
+           "water, and slow current. Don't miss that! You can book through us for a dive with Divine Divers. They "
+           "offer the best services quality, and work in a good atmosphere. They organize discovery dives, fun "
+           "dives and diving certificate. Let us know if you want to book in advance. (we offer the same prices "
+           "as the club)") + """
+<h2>You want to do an unforgettable ride? Horse riding</h2>
+""" + para("For 400K per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. "
+           "You can go in the morning or in the afternoon to admire the sunset. In both cases, you will stop at "
+           "some lovely points to take incredible pictures. Departure and arrival at Rabbit Tree.") + """
+<h2>You can also go fishing — you have 2 options...</h2>
+""" + para("Private fishing trip: for 350K per person, go for a 3 hours boat trip and try two fishing techniques "
+           "— bottom fishing (to catch groupers, snappers, and more) and crowling fishing (to catch barracudas, "
+           "giant trevally, even sometimes tunas).") + """
+""" + para("Spearfishing: for 380K per person, go with a guide who will teach you spearfishing during 3 hours. "
+           "You will leave directly from the beach to catch different kinds of local fish, or maybe octopus.") + """
 </section>
-""" + gal_of("activities", "Life at the tree, in pictures") + """
+<section class="narrow center">
+<h2>Who said there was nothing to do on this island?</h2>
+</section>
+""" + gal_of("activities", "In pictures") + """
 <section>
-<div class="note">You would like to do some good things while you are here? The turtle sanctuary and the Trash
-Heroes are two easy ways. Ask at the reception and we will take you.</div>
-<div class="btn-row"><a class="btn primary" href="[[tours]]">Now go on a real adventure</a>
-<a class="btn" href="[[services]]">What we rent at the reception</a></div>
+<div class="btn-row"><a class="btn primary" href="[[tours]]">Also, you want to go into an adventure? Click here!</a></div>
 </section>
-""".replace("[[tours]]", "../tours/").replace("[[services]]", "../services/")
+""".replace("[[tours]]", "../tours/")
     return write("activities/index.html", "Activities in Gili Meno | The Rabbit Tree Hostel", body,
                  "Snorkelling with turtles, the underwater statues, diving, horse riding, fishing, movie nights, yoga and the Trash Heroes on Gili Meno.")
 
@@ -715,21 +735,35 @@ def build_useful():
 def build_tours():
     body = head("Adventures", "Go on an adventure") + banner_of("tours") + """
 <section class="narrow">
-""" + para("We offer different tours for all tastes. Do not hesitate to come to the reception to book what you want.") + """
+""" + para("We offer different tours, for all tastes... Don't hesitate to come to the reception to book what you want.") + """
 </section>
 <section>
 <div class="grid c2">
-  <a class="card" href="[[tours]]komodo/"><div class="thumb"><img src="images/img-3470ae751e2dd7.webp" alt="Komodo dragon" loading="lazy"></div>
-    <h3>Komodo Tour</h3><p>Have you ever thought about seeing the dragons and the famous pink beach for real?
-    3 days, 4 nights sailing around Lombok, north Sumbawa and the Komodo Islands, from 3,500,000 IDR.</p></a>
-  <a class="card" href="[[tours]]rinjani/"><div class="thumb"><img src="images/rinj-jpg.webp" alt="Mount Rinjani trek" loading="lazy"></div>
-    <h3>Rinjani Trek</h3><p>You are rather sporty and you like hiking? This one is for you. A 2 days 1 night trek
-    to the summit of the famous volcano in Lombok, from 2,100,000 IDR.</p></a>
+  <div>
+    <a class="card" href="[[tours]]komodo/"><div class="thumb"><img src="images/img-3470ae751e2dd7.webp" alt="Komodo dragon" loading="lazy"></div>
+      <h3>Komodo Tour</h3><p>Have you ever thought about seeing the dragons and the famous pink beach for real?
+      You will go around Lombok, north Sumbawa and the Komodo Islands, not only to meet the dragons, but also to
+      visit intact areas where the coral reef offers its best colors and wildlife... and the amazing whale sharks!
+      For 3500K per person, it includes 3 days, 4 nights sleeping on the deck, the entrance fees to the Komodo
+      National Park, transportations, food and snorkelling material. If you need more comfort, for 4000K per
+      person you can choose to sleep in a cabin. It doesn't include the way back from Labuan Bajo (Flores).
+      Departures usually on Monday, Wednesday and Saturday.</p></a>
+    <div class="btn-row"><a class="btn" href="[[tours]]komodo/">Check all infos and options</a></div>
+  </div>
+  <div>
+    <a class="card" href="[[tours]]rinjani/"><div class="thumb"><img src="images/rinj-jpg.webp" alt="Mount Rinjani trek" loading="lazy"></div>
+      <h3>Rinjani Trek</h3><p>You are rather sporty and you like hiking? This one is for you! For 2150K per person,
+      go on a 2 days, 1 night trek to reach the Rinjani, the famous volcano in Lombok. It will be sporty but you
+      will admire exceptional landscapes! It includes the transportation from Gili Meno, food, tent, porters, and
+      a first night prior to departure.</p></a>
+    <div class="btn-row"><a class="btn" href="[[tours]]rinjani/">Check all infos and options</a></div>
+  </div>
 </div>
-<div class="btn-row"><a class="btn primary" href="[[activities]]">Everything to do on the island</a></div>
+<div class="btn-row"><a class="btn primary" href="[[activities]]">Check the activities you will have with us</a>
+<a class="btn" href="[[rooms]]">Or Explore the Rooms</a></div>
 </section>
 """.replace("[[tours]]komodo/", "../tours/komodo/").replace("[[tours]]rinjani/", "../tours/rinjani/") \
-   .replace("[[activities]]", "../activities/")
+   .replace("[[activities]]", "../activities/").replace("[[rooms]]", "../rooms/")
     body += gal_of("tours", "The adventures in pictures")
     return write("tours/index.html", "Adventures from Gili Meno | The Rabbit Tree Hostel", body)
 

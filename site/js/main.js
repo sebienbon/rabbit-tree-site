@@ -18,7 +18,10 @@
       }
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") nav.classList.remove("open");
+      if (e.key === "Escape" && nav.classList.contains("open")) {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
     });
   }
 

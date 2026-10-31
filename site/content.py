@@ -183,10 +183,8 @@ PAGE_MEDIA = {
     "tours": {
         "banner": None,
         "gallery": [
-            ("img-3470ae751e2dd7.webp", "A Komodo dragon on the trail"),
             ("komodo-pink-beach-edited-jpg.webp", "The famous pink beach of Komodo"),
             ("img-66fce4000fd111.webp", "A volcano crater lake at dawn"),
-            ("rinj-jpg.webp", "Mount Rinjani and the crater lake"),
             ("img-da9e83ee3f45cd.webp", "Climbing towards the Rinjani summit"),
             ("tiup-kelep-waterfall.webp", "A waterfall stop on the way down"),
         ],
@@ -200,7 +198,7 @@ PAGE_MEDIA = {
         "deco": [("komodo-trip-boat.webp", "The wooden live-on-board boat")],
     },
     "rinjani": {
-        "banner": None,
+        "banner": ("rinjani-banner.webp", "Mount Rinjani and the crater lake"),
         "gallery": [
             ("img-da9e83ee3f45cd.webp", "The long ridge walk to the crater rim"),
             ("rinjani-trek-view-of-the-lake-segara-anak.webp", "View of Lake Segara Anak"),
