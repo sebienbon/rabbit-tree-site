@@ -94,6 +94,23 @@ p { margin: 0 0 1.1em; }
   .nav-links a { font-size: 1.5rem; border-bottom: 1px dashed var(--line); border-radius: 0; padding: 10px 4px; }
 }
 
+/* sous 560 px : la marque ne doit plus forcer la largeur de la barre,
+   sinon .nav-toggle deborde (scrollWidth 414 pour 390) et la page dérive sur le côté */
+@media (max-width: 560px) {
+  html { overflow-x: hidden; }
+  .nav { gap: 10px; }
+  .nav-brand {
+    font-size: 1.1rem; line-height: 1.08; min-width: 0;
+    white-space: normal; overflow-wrap: break-word;
+  }
+  .nav-brand span { font-size: .76rem; letter-spacing: .06em; }
+  .nav-cta {
+    font-size: 1.02rem; letter-spacing: .02em; padding: 6px 11px;
+    box-shadow: 2px 2px 0 var(--ink); min-width: 0;
+  }
+  .nav-toggle { font-size: 1.25rem; padding: 4px 9px; flex: none; }
+}
+
 /* ---------- conteneurs ---------- */
 main { max-width: var(--maxw); margin: 0 auto; padding: clamp(20px, 5vw, 54px) clamp(16px, 4vw, 28px) 60px; }
 .narrow { max-width: 780px; margin: 0 auto; }
