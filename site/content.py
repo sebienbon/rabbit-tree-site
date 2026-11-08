@@ -25,25 +25,40 @@ INTRO = ("Experience a truly unique and creative stay at The Rabbit Tree Hostel.
          "in the vibrant and friendly atmosphere of The Rabbit Tree Hostel and create memories that will "
          "last a lifetime!")
 
-# Les entrees de la carte dessinee de la page d'accueil
+# La carte dessinee de la page d'accueil, recomposee a l'identique du Wix d'origine.
+# Releve fait sur la page publiee (2026-11-08) : scene de 980 x 1090 px centree,
+# chaque dessin = (gauche, haut, largeur, hauteur) en px dans cette scene.
+# "m" = la meme scene recomposee en portrait pour le telephone (400 x 830 unites),
+# pour garder les dessins cliquables au lieu de les remplacer par des cartes.
+# slug None = dessin decoratif (la riviere), sans lien.
+MAP_W, MAP_H = 980, 1090
+MAP_MW, MAP_MH = 400, 830
 MAP_SPOTS = [
-    {"slug": "gallery", "label": "Gallery", "art": "spiral.webp", "x": 76.4, "y": 11.0, "w": 22.4,
-     "blurb": "Photos of the hostel and its secret passageways"},
-    {"slug": "rooms", "label": "Rooms", "art": "tree-home.webp", "x": 50.2, "y": 27.0, "w": 22.4,
-     "blurb": "Eleven rooms, none of them ordinary"},
-    {"slug": "transports", "label": "Cheap Boats", "art": "fast-boat-and-transport-to-the-gilis.webp", "x": 28.2, "y": 32.0, "w": 12.4,
-     "blurb": "Boats to and from Bali and Lombok"},
-    {"slug": "activities", "label": "Activities", "art": "rabbits.webp", "x": 24.6, "y": 39.5, "w": 30.0,
-     "blurb": "What to do on Gili Meno, every day"},
-    {"slug": "reservations", "label": "Reservations", "art": "boat-line.webp", "x": 49.7, "y": 46.0, "w": 20.0,
-     "blurb": "10% cheaper than the booking websites"},
-    {"slug": "how-to-get-here", "label": "How To Get There", "art": "traveler.webp", "x": 50.0, "y": 62.0, "w": 20.0,
-     "blurb": "Finding us once you are on the island"},
-    {"slug": "our-story", "label": "Our Story", "art": "tree-rooms.webp", "x": 79.0, "y": 55.0, "w": 30.0,
-     "blurb": "How a rabbit grew into a tree"},
-    {"slug": "tours", "label": "Adventures", "art": "dragon-edited-png.webp", "x": 33.4, "y": 84.0, "w": 19.7,
-     "blurb": "Komodo by boat, Rinjani on foot"},
+    {"slug": "gallery", "label": "Gallery", "art": "spiral.webp",
+     "d": (645, 162, 222, 150), "m": (262, 112, 118, 100), "fx": "turn"},
+    {"slug": "rooms", "label": "Rooms", "art": "tree-home.webp",
+     "d": (386, 220, 222, 343), "m": (138, 126, 124, 192), "cap": (50, 47)},
+    {"slug": None, "label": "", "art": "river-line.webp",
+     "d": (62, 420, 367, 150), "m": (2, 292, 168, 72)},
+    {"slug": "transports", "label": "Cheap Boats", "art": "fast-boat-and-transport-to-the-gilis.webp",
+     "d": (218, 375, 123, 123), "m": (40, 244, 82, 82), "fx": "bob"},
+    {"slug": "reservations", "label": "Reservations", "art": "burrow-arch.webp",
+     "d": (428, 472, 127, 172), "m": (160, 338, 76, 103), "cap": (50, 66)},
+    {"slug": "how-to-get-here", "label": "How to get there", "art": "rabbit-tracks.webp",
+     "d": (362, 570, 231, 264), "m": (178, 520, 124, 142)},
+    {"slug": "activities", "label": "Activities in Gili Meno", "art": "rabbit-tribe.webp",
+     "d": (77, 556, 271, 327), "m": (4, 430, 158, 190)},
+    {"slug": "our-story", "label": "Our Story", "art": "traveller-wix.webp",
+     "d": (642, 431, 318, 307), "m": (236, 330, 160, 154)},
+    {"slug": "tours", "label": "Adventures", "art": "dragon-edited-png.webp",
+     "d": (234, 839, 195, 243), "m": (214, 676, 150, 120)},
 ]
+MAP_TITLE = {"d": (263, 22, 453, 154), "m": (0, 4, 400, 104)}
+
+# Beds24 : la propriete et la categorie reservable de chaque chambre,
+# relevees sur les pages de reservation Wix (2026-11-08).
+BEDS24_PROP = "https://beds24.com/booking2.php?propid=160163&referer=iframe"
+BEDS24_ROOM = "https://beds24.com/booking.php?roomid={}&referer=iframe"
 
 # "badge" = logo propre de la chambre (sans spirale, comme sur les pages chambres Wix).
 # "spiral" = disque spirale independant pose par-dessus sur l'arbre ; "spiral_on" = visible.
@@ -51,22 +66,22 @@ MAP_SPOTS = [
 # x / y / w = centre et largeur en % de l'image d'arbre, releves sur la page Wix d'origine.
 ROOMS = [
     {
-        "slug": "tree-house", "name": "Tree House", "cat": "Fan dorm",
+        "slug": "tree-house", "beds24": [("", "353329")], "name": "Tree House", "cat": "Fan dorm",
         "badge": "tree-house-rabbit-tree-contour-png.webp", "spiral": "img-14d7de906fbb4c.webp", "spiral_on": True,
         "x": 40.7, "y": 21.9, "w": 14.4,
         "beds": "5 single beds", "air": "Fans", "bath": "Shared bathroom", "sleeps": "1 person per bed",
         "desc": ["The Tree House is a dorm style room containing 5 beds and fans for each bed. Lockers are provided in the room. Please note that access to the room is via a ladder staircase."],
     },
     {
-        "slug": "grandma-room", "name": "Grandma Room", "cat": "Twin room",
+        "slug": "grandma-room", "beds24": [("", "353328")], "name": "Grandma Room", "cat": "Twin room",
         "badge": "img-24082e164ed1a6.webp", "spiral": "img-c98edb30a91abd.webp", "spiral_on": True,
         "x": 58.1, "y": 13.6, "w": 19.9,
         "beds": "2 single beds", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "2 people",
         "desc": ["Take a trip down memory lane in this quaint designed room fitted with AC, two single beds, window and retro decor with grandma's China.",
-                 "This dorm room looks over the courtyard and is a fantastic choice for two friends traveling."],
+                 "This twin room looks over the courtyard and is a fantastic choice for two friends traveling."],
     },
     {
-        "slug": "family-rabbit-cave", "name": "Family Rabbit Cave", "cat": "Triple room",
+        "slug": "family-rabbit-cave", "beds24": [("", "353054")], "name": "Family Rabbit Cave", "cat": "Triple room",
         "badge": "img-1b45943c49f143.webp", "spiral": "img-4390b57989cfe6.webp", "spiral_on": True,
         "x": 14.9, "y": 22.5, "w": 16.9,
         "beds": "3 single beds", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "3 people",
@@ -74,7 +89,7 @@ ROOMS = [
                  "This room holds sound extremely well and is perfect for a well earned rest from traveling."],
     },
     {
-        "slug": "bird-nest", "name": "Bird Nest", "cat": "Double / Twin",
+        "slug": "bird-nest", "beds24": [("", "460596")], "name": "Bird Nest", "cat": "Double / Twin",
         "badge": "img-886241f5da6045.webp", "spiral": "img-c4fa9ee6dbd005.webp", "spiral_on": True,
         "x": 86.5, "y": 19.9, "w": 15.4,
         "beds": "Queen bed or 2 singles", "air": "Fans", "bath": "Shared bathroom", "sleeps": "2 people",
@@ -82,15 +97,15 @@ ROOMS = [
                  "This room can work either as a queen size bed for two or as a twin room with two separate single beds. Fans and mosquito nets are provided and access to the room is via a ladder."],
     },
     {
-        "slug": "passion-room", "name": "Passion Room", "cat": "Double ensuite",
+        "slug": "passion-room", "beds24": [("", "353330")], "name": "Passion Room", "cat": "Double ensuite",
         "badge": "img-25a71d5def56a1.webp", "spiral": "img-d69537421d8908.webp", "spiral_on": True,
         "x": 30.3, "y": 38.1, "w": 18.0,
         "beds": "Double bed", "air": "Air conditioning", "bath": "Private ensuite bathroom", "sleeps": "2 people",
         "desc": ["This is maybe the most special of our double rooms amongst The Rabbit Tree's private rooms that boasts an ensuite bathroom.",
-                 "The unexpected meeting between a tree and an angel, jalousing each other for what they will never have."],
+                 "The unexpected meeting between a tree and an angel, each one jealous of what the other will never have."],
     },
     {
-        "slug": "bamboo-forest", "name": "Bamboo Forest 1 & 2", "cat": "Deluxe double",
+        "slug": "bamboo-forest", "beds24": [("Bamboo Forest 1", "353330"), ("Bamboo Forest 2", "460597")], "name": "Bamboo Forest 1 & 2", "cat": "Deluxe double",
         "badge": "img-35c590b8d9652a.webp", "spiral": "img-cdf416228812cd.webp", "spiral_on": True,
         "x": 56.5, "y": 38.9, "w": 16.9,
         "beds": "Double bed", "air": "Air conditioning", "bath": "Private ensuite bathroom", "sleeps": "2 people",
@@ -99,7 +114,7 @@ ROOMS = [
                  "The Bamboo Forest 2 is located in a separate building to the main hostel, less than 10 seconds walk away. Of course you are still welcome for breakfast and use of all the facilities in the main building. For those looking for a serene, tranquil stay on Gili Meno, this is the perfect choice."],
     },
     {
-        "slug": "rabbit-dream", "name": "Rabbit Dream", "cat": "Private double",
+        "slug": "rabbit-dream", "beds24": [("", "460597")], "name": "Rabbit Dream", "cat": "Private double",
         "badge": "rabbit-dream-surround-png.webp", "spiral": "rabbit-dream-vortexcolor-png.webp", "spiral_on": True,
         "x": 88.9, "y": 74.4, "w": 20.6,
         "beds": "Double bed", "air": "Air conditioning", "bath": "Private ensuite + terrace", "sleeps": "2 people",
@@ -108,7 +123,7 @@ ROOMS = [
                  "Like the other double rooms it includes an ensuite bathroom, but also its own little terrace."],
     },
     {
-        "slug": "flying-boat", "name": "Flying Boat", "cat": "Twin room",
+        "slug": "flying-boat", "beds24": [("", "353329")], "name": "Flying Boat", "cat": "Twin room",
         "badge": "img-d662437612ccc7.webp", "spiral": "img-f8ccb569b68bbd.webp", "spiral_on": True,
         "x": 10.4, "y": 51.4, "w": 17.7,
         "beds": "2 single beds", "air": "A large fan for each bed", "bath": "Shared bathroom", "sleeps": "2 people",
@@ -117,7 +132,7 @@ ROOMS = [
                  "There are two single beds making it perfect for two friends or a solo traveler."],
     },
     {
-        "slug": "bola-bola", "name": "Bola Bola", "cat": "Triple / ball pit",
+        "slug": "bola-bola", "beds24": [("", "460592")], "name": "Bola Bola", "cat": "Triple / ball pit",
         "badge": "img-fa244306688fa0.webp", "spiral": "img-1e32badce2fb23.webp", "spiral_on": True,
         "x": 37.2, "y": 69.2, "w": 18.7,
         "beds": "Ball pit + beds for 3", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "3 people",
@@ -125,16 +140,16 @@ ROOMS = [
                  "This room would be perfect if you are traveling in a group of three or are looking to make new friends on Gili Meno."],
     },
     {
-        "slug": "pillow-room", "name": "Pillow Room", "cat": "Triple / escape game",
+        "slug": "pillow-room", "beds24": [("", "460593")], "name": "Pillow Room", "cat": "Triple / escape game",
         "badge": "pillow-room-on-pillow-png.webp", "spiral": "img-4d19fc461bbb77.webp", "spiral_on": True,
         "x": 79.5, "y": 57.1, "w": 17.4,
-        "beds": "3 beds", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "3 people",
+        "beds": "3 beds", "air": "Ask us", "bath": "Shared bathroom", "sleeps": "3 people",
         "desc": ["You would expect this bedroom to be full of pillows. But hang on! There is not even one on the bed!",
                  "Or maybe if you look a bit better you could spot them. Locked in a net... Will you be smart enough to find the way to free them?",
                  "This bedroom is perfect for a group of 3 people who like challenges."],
     },
     {
-        "slug": "twin-rabbit-cave", "name": "Twin Rabbit Cave", "cat": "Twin room",
+        "slug": "twin-rabbit-cave", "beds24": [("", "460594")], "name": "Twin Rabbit Cave", "cat": "Twin room",
         "badge": "img-5ab13b2a9ee36b.webp", "spiral": "img-2d7a9570caf366.webp", "spiral_on": True,
         "x": 60.6, "y": 78.7, "w": 15.9,
         "beds": "2 single beds", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "2 people",
@@ -143,12 +158,14 @@ ROOMS = [
                  "The outer texture of this room is sand and stone, cooling down the inside — perfect after a long day at the beach!"],
     },
     {
-        "slug": "monk", "name": "Monk", "cat": "Fan dorm",
+        "slug": "monk", "name": "Monk", "cat": "Single room",
         "badge": "img-56372fe7702694.webp", "spiral": "img-a88e84fde22637.webp", "spiral_on": True,
         "x": 12.6, "y": 79.8, "w": 17.7,
-        "beds": "Bunk beds", "air": "Fans", "bath": "Shared bathroom", "sleeps": "Group",
-        "desc": ["A quiet corner of the tree, upside down and out of the noise.",
-                 "Ask at the reception if you would like to sleep in the Monk room."],
+        "beds": "1 single bed", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "1 person",
+        # Source : fiches publiques (Monk Room 1 & 2, chambre simple, clim, salle de bain partagee).
+        # Le Wix n'avait pas de page Monk : texte factuel, a completer par l'equipe.
+        "desc": ["Two small single rooms for solo travellers, Monk 1 and Monk 2: one bed, air conditioning, and the shared bathrooms close by.",
+                 "Ask us about the Monk rooms when you book, and we will tell you which one is free."],
     },
 ]
 

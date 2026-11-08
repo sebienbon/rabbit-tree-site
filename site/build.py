@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Genere le site statique The Rabbit Tree Hostel (content.py + inventory.json -> HTML)."""
 import json, os, re, shutil, sys
-from content import HOSTEL, INTRO, MAP_SPOTS, ROOMS, TREE_EXTRA, BOOKING_NOTE, PAGE_MEDIA, NAV, INFO_LINKS
+from content import (HOSTEL, INTRO, MAP_SPOTS, MAP_W, MAP_H, MAP_MW, MAP_MH, MAP_TITLE, ROOMS, TREE_EXTRA,
+                     BOOKING_NOTE, PAGE_MEDIA, NAV, INFO_LINKS, BEDS24_PROP, BEDS24_ROOM)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -10,6 +11,12 @@ MAN = json.load(open(os.path.join(HERE, "images_manifest.json"), encoding="utf-8
 _MAN_BY_FILE = {v["file"]: (v["orig_w"], v["orig_h"]) for v in MAN.values()}
 DIST = os.path.join(HERE, "dist")
 FAVICON = "tree-home.webp"
+# Adresse publique du site : sert aux balises de partage (og:image doit etre une URL absolue).
+# A remplacer par le vrai nom de domaine le jour de la mise en ligne.
+SITE_URL = "https://sebienbon.github.io/rabbit-tree-site/"
+OG_IMAGE = "og-share.jpg"
+# Visuels charges par le JavaScript (vortex) : a garder meme si aucun HTML ne les cite.
+KEEP_IMAGES = set()
 
 # ------------------------------------------------------------------ helpers
 def stem(url):
@@ -162,7 +169,7 @@ def table(headers, rows):
     h = "".join("<th>{}</th>".format(esc(c)) for c in headers)
     b = "".join("<tr>" + "".join("<td{}>{}</td>".format(' class="price"' if isinstance(c, tuple) else "",
                   c[0] if isinstance(c, tuple) else esc(c)) for c in r) + "</tr>" for r in rows)
-    return '<table><thead><tr>{}</tr></thead><tbody>{}</tbody></table>'.format(h, b)
+    return '<div class="table-wrap"><table><thead><tr>{}</tr></thead><tbody>{}</tbody></table></div>'.format(h, b)
 
 
 # ------------------------------------------------------------------ gabarit
@@ -173,20 +180,26 @@ HEAD = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Amatic+SC:wght@400;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="{font}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{css}">
 <link rel="icon" href="{fav}" type="image/webp">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="The Rabbit Tree Hostel">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{og}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Rabbit Tree Hostel, Gili Meno: the hand drawn tree">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{og}">
 <meta name="theme-color" content="#f2d98c">
 </head>
-<body>
+<body class="{bodyclass}">
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
-  <a class="nav-brand" href="{brand}">The Rabbit Tree<span>Gili Meno</span></a>
+  <a class="nav-brand" href="{brand}" data-vortex>The Rabbit Tree<span>Gili Meno</span></a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
   <ul class="nav-links" id="navlinks">{nav}</ul>
   <a class="nav-cta" href="{cta}">Book a room</a>
@@ -201,7 +214,8 @@ FOOT = """</main>
     <div><h3>Find us</h3><p><a href="{maps}">{addr}</a></p></div>
     <div><h3>Email us</h3><p><a href="mailto:{mail}">{mail}</a></p>
       <div class="socials"><a href="{ig}" aria-label="Instagram">IG</a><a href="{fb}" aria-label="Facebook">FB</a>
-      <a href="{ta}" aria-label="Tripadvisor">TA</a><a href="{wa}" aria-label="WhatsApp">WA</a></div></div>
+      <a href="{ta}" aria-label="Tripadvisor">TA</a><a href="{wa}" aria-label="WhatsApp">WA</a>
+      <a href="{bk}" aria-label="Booking.com">B.</a><a href="{hw}" aria-label="Hostelworld">HW</a></div></div>
     <div><h3>Good to know</h3><p>{info}</p></div>
   </div>
   <div class="foot-note"><span>&copy;2017&ndash;2026 The Rabbit Tree Hostel</span><span>Gili Meno &mdash; {phone}</span></div>
@@ -212,7 +226,7 @@ FOOT = """</main>
 </html>"""
 
 
-def render(rel_path, title, body, desc=""):
+def render(rel_path, title, body, desc="", bodyclass="page"):
     depth = rel_path.count("/")
     pre = "../" * depth
     cur = "/" + rel_path.rsplit("index.html", 1)[0]
@@ -230,13 +244,15 @@ def render(rel_path, title, body, desc=""):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=16",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=17",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
-                       cta=pre + "reservations/")
+                       cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
+                       og=SITE_URL + "images/" + OG_IMAGE,
+                       url=SITE_URL + rel_path.rsplit("index.html", 1)[0].replace("404.html", ""))
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=16")
+                       info=info, js=pre + "js/main.js?v=17", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -244,10 +260,10 @@ DEFAULT_DESC = ("The Rabbit Tree Hostel, Gili Meno: creative rooms, a ball pit b
                 "to and from Bali and Lombok, daily activities and Komodo or Rinjani adventures.")
 
 
-def write(rel_path, title, body, desc=""):
+def write(rel_path, title, body, desc="", bodyclass="page"):
     out = os.path.join(DIST, rel_path)
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(render(rel_path, title, body, desc))
+    open(out, "w", encoding="utf-8").write(render(rel_path, title, body, desc, bodyclass))
     return rel_path
 
 
@@ -258,44 +274,49 @@ def head(title, sub=""):
 
 
 # ============================================================ ACCUEIL
+def _box(d, W, H):
+    l, t, w, h = d
+    return "{:.3f}".format(100.0 * l / W), "{:.3f}".format(100.0 * t / H), \
+           "{:.3f}".format(100.0 * w / W), "{:.3f}".format(100.0 * h / H)
+
+
+def _vars(spot):
+    l, t, w, h = _box(spot["d"], MAP_W, MAP_H)
+    ml, mt, mw, mh = _box(spot["m"], MAP_MW, MAP_MH)
+    cx, cy = spot.get("cap", (50, 100))
+    return "--l:{};--t:{};--w:{};--h:{};--ml:{};--mt:{};--mw:{};--mh:{};--cx:{}%;--cy:{}%".format(
+        l, t, w, h, ml, mt, mw, mh, cx, cy)
+
+
 def build_home():
+    """L'accueil d'origine : une seule scene dessinee, le titre en haut, le texte en bas. Pas de menu."""
     spots = []
     for s in MAP_SPOTS:
-        spots.append(
-            '<a class="spot" href="[[{slug}]]" style="left:{x}%;top:{y}%;width:{w}%" title="{label}">'
-            '<img src="images/{art}" alt="{label}" loading="eager" width="400" height="300">'
-            '<span class="cap">{label}</span></a>'.format(**s))
-    cards = "".join(
-        '<a class="card" href="[[{slug}]]"><div class="thumb"><img src="images/{art}" alt="{label}" loading="lazy"></div>'
-        '<h3>{label}</h3><p>{blurb}</p></a>'.format(**s) for s in MAP_SPOTS)
-    body = head("The Rabbit Tree Hostel", "Welcome to the edge of reality") + """
-<div class="hero">
-  <div class="map">
-    """ + "".join(spots) + """
-  </div>
-  <div class="grid c2 map-fallback">""" + cards + """</div>
-  <div class="btn-row"><a class="btn primary" href="[[rooms]]">See the rooms</a>
-  <a class="btn" href="[[reservations]]">Reservations</a>
-  <a class="btn ghost" href="[[how-to-get-here]]">How to get here</a></div>
+        fx = (" fx-" + s["fx"]) if s.get("fx") else ""
+        img = '<img src="images/{art}" alt="{alt}" loading="eager" draggable="false">'.format(
+            art=s["art"], alt=esc(s["label"]) if s["slug"] else "")
+        if s["slug"]:
+            spots.append('<a class="spot{fx}" href="[[{slug}]]" style="{v}" data-vortex>'
+                         '{img}<span class="cap">{label}</span></a>'.format(
+                             fx=fx, slug=s["slug"], v=_vars(s), img=img, label=esc(s["label"])))
+        else:
+            spots.append('<span class="spot deco{fx}" style="{v}" aria-hidden="true">{img}</span>'.format(
+                fx=fx, v=_vars(s), img=img))
+    title = '<h1 class="map-title" style="{v}">The Rabbit Tree<span>Hostel</span></h1>'.format(v=_vars(MAP_TITLE))
+    body = """
+<div class="scene" style="--ratio:{r};--mratio:{mr}">
+  {title}
+  {spots}
 </div>
-<section class="narrow center">
-""" + para(INTRO, "lead") + """
+<section class="scene-text">
+{intro}
 </section>
-<section>
-  <h2>Everything on the map</h2>
-  <p class="lead">Click a drawing, or use these if the map is too small on your screen.</p>
-  <div class="grid c2">""" + cards + """</div>
-</section>
-<section class="center">
-  <h2>10% cheaper than the booking websites</h2>
-  <p class="lead">Write to us with your dates and we will sort out your room, your boat from Bali or Lombok,
-  and everything you will do on the island.</p>
-  <div class="btn-row"><a class="btn hot" href="mailto:THERABBITTREEGILIMENO@GMAIL.COM?subject=Room%20enquiry">Email us</a>
-  <a class="btn primary" href="https://wa.me/62881037092855">WhatsApp us</a>
-  <a class="btn" href="[[reservations]]">Booking form</a></div>
-</section>
-""".replace("THERABBITTREEGILIMENO@GMAIL.COM", HOSTEL["email"])
-    return write("index.html", "The Rabbit Tree Hostel | Gili Meno, Lombok", body)
+""".format(r="{}/{}".format(MAP_W, MAP_H), mr="{}/{}".format(MAP_MW, MAP_MH), title=title,
+           spots="\n  ".join(spots), intro=para(INTRO, "intro"))
+    return write("index.html", "Hostel Gili Meno | The Rabbit Tree Hostel, Lombok", body,
+                 "A unique and creative hostel on Gili Meno, Lombok: a ball pit bedroom, an escape room, daily "
+                 "activities, cheap boats from Bali and Lombok. 10% cheaper when you book with us.",
+                 bodyclass="home")
 
 
 # ============================================================ CHAMBRES
@@ -305,22 +326,21 @@ def build_rooms():
         cap = '<span class="cap">{name}{}</span>'.format(
             ' <em>&middot; coming soon</em>' if r.get("soon") else "", **r)
         logo = '<img class="logo" src="images/{badge}" alt="{name}" loading="lazy">'.format(**r)
+        swirl = ""
+        if r.get("spiral"):
+            swirl = '<img class="swirl" src="images/{spiral}" alt="" aria-hidden="true" loading="lazy">'.format(**r)
         if r.get("slug"):
-            hit = '<a class="hit" href="[[rooms]]{}/" title="{name}">{}</a>'.format(r["slug"], logo + cap, **r)
+            hit = '<a class="hit" href="[[rooms]]{}/" title="{name}" data-vortex>{}</a>'.format(
+                r["slug"], logo + swirl + cap, **r)
         else:
             hit = '<span class="hit static" title="{name} {}">{}</span>'.format(r.get("soon", ""), logo + cap, **r)
-        disc = ""
-        if r.get("spiral") and r.get("spiral_on"):
-            disc = ('<button class="disc" type="button" aria-label="Open {name}" title="{name}">'
-                    '<img src="images/{spiral}" alt="" loading="lazy"></button>').format(**r)
-        nodes.append('<div class="node" style="left:{x}%;top:{y}%;width:{w}%">'.format(**r)
-                     + hit + disc + '</div>')
+        nodes.append('<div class="node" style="left:{x}%;top:{y}%;width:{w}%">'.format(**r) + hit + '</div>')
     cards = "".join(
         '<a class="card" href="[[rooms]]{slug}/"><div class="thumb"><img src="images/{badge}" alt="{name}" loading="lazy"></div>'
         '<span class="cat">{cat}</span><h3>{name}</h3><p>{beds} &middot; {air} &middot; {bath}</p></a>'.format(**r)
         for r in ROOMS)
     body = """<p class="crumb"><a href="[[home]]">Home</a> &rsaquo; Rooms</p>
-<div class="page-head"><h1>The Rooms</h1><div class="lead">Eleven rooms, none of them ordinary. Click a branch.</div>
+<div class="page-head"><h1>The Rooms</h1><div class="lead">Every room has its own story. Pick a branch.</div>
 <div class="rule"></div></div>
 <div class="tree-wrap">
   <img class="trunk" src="images/tree-rooms.webp" alt="Hand drawn tree holding the hostel rooms" width="1000" height="800">
@@ -361,16 +381,27 @@ def build_room(r):
     {specs}
     {desc}
     <div class="btn-row" style="justify-content:flex-start">
-      <a class="btn primary" href="[[reservations]]">Book this room</a>
+      <a class="btn primary" href="{book_href}">Book this room</a>
       <a class="btn" href="[[rooms]]">Back to the tree</a>
     </div>
   </div>
 </div>
 """.format(name=esc(r["name"]), cat=esc(r["cat"]), badge=r["badge"], specs=specs,
-           desc=para(" ".join(r["desc"])))
+           desc=para(" ".join(r["desc"])), book_href="#book" if r.get("beds24") else "[[reservations]]")
     if photos_block:
         body += photos_block
-    body += '<div class="note">' + esc(BOOKING_NOTE) + "</div>"
+    if r.get("beds24"):
+        body += '<section id="book" class="book"><h2>Book this room</h2>'
+        body += '<div class="note">' + esc(BOOKING_NOTE) + "</div>"
+        for label, rid in r["beds24"]:
+            if label:
+                body += "<h3>{}</h3>".format(esc(label))
+            body += ('<div class="beds24"><iframe src="{}" title="Book {} with Beds24" loading="lazy" '
+                     'height="720"></iframe></div>').format(BEDS24_ROOM.format(rid), esc(label or r["name"]))
+        body += ('<p class="center">Booking directly with us is about 10% cheaper than the booking websites. '
+                 'A question first? <a href="{}">WhatsApp us</a>.</p></section>').format(HOSTEL["whatsapp"])
+    else:
+        body += '<div class="note">' + esc(BOOKING_NOTE) + "</div>"
     return write("rooms/{}/index.html".format(r["slug"]),
                  "{} | Rooms | The Rabbit Tree Hostel".format(r["name"]), body,
                  "{} at The Rabbit Tree Hostel, Gili Meno: {}. {}, {}.".format(
@@ -380,12 +411,17 @@ def build_room(r):
 # ============================================================ RESERVATIONS
 def build_reservations():
     rows = [[r["name"], r["cat"], r["sleeps"]] for r in ROOMS]
-    body = head("Reservations", "10% cheaper than the booking websites") + banner_of("reservations") + """
+    body = head("Reservations", "10% cheaper than the booking websites") + """
 <section class="narrow">
 """ + para("Booking directly with us is cheaper than the big booking websites, and it is the only way to "
-           "ask for one of the specific rooms you have fallen for. Tell us your dates and we will confirm "
-           "straight away.") + """
+           "ask for one of the specific rooms you have fallen for. Choose your dates below.") + """
 <div class="note">""" + esc(BOOKING_NOTE) + """</div>
+</section>
+<section id="book" class="book">
+<div class="beds24 tall"><iframe src="""" + BEDS24_PROP + """" title="Book The Rabbit Tree with Beds24" height="2000"></iframe></div>
+</section>
+<section class="narrow">
+<p class="center">A question before you book? Write to us.</p>
 <div class="btn-row">
   <a class="btn hot" href="mailto:{mail}?subject=Booking%20request%20%E2%80%94%20The%20Rabbit%20Tree">Email us your dates</a>
   <a class="btn primary" href="{wa}">WhatsApp us</a>
@@ -394,7 +430,7 @@ def build_reservations():
 </section>
 <section>
   <h2>The rooms at a glance</h2>
-  <p>Prices change with the season, so ask us for an exact quote for your dates. Here is what each room holds:</p>
+  <p>The booking form above shows the live prices for your dates. Here is what each room holds:</p>
   """ + table(["Room", "Category", "Sleeps"], rows) + """
   <div class="btn-row"><a class="btn" href="[[rooms]]">Open the tree</a></div>
 </section>
@@ -483,7 +519,8 @@ Check our offers and contact us, we will make the booking for you.</div>
 """ + ul(["Daily public boat at 09:30 and 16:00 — 40,000 IDR.",
           "Every hour by fast boat — 85,000 IDR."]) + """
 <h3>From Lombok (Bangsal)</h3>
-""" + ul(["Public boat at 10:00, 14:00 and 17:00 — 25,000 IDR."]) + """
+""" + ul(["Public boat at 10:00, 14:00 and 17:00 — 25,000 IDR.",
+          "Every hour by fast boat — 85,000 IDR."]) + """
 <h2>How to find The Rabbit Tree</h2>
 <h3>Once on Gili Meno</h3>
 """ + para("Once arrived at the Gili Meno harbour, turn right and follow the coast road until you reach "
@@ -514,12 +551,13 @@ Check our offers and contact us, we will make the booking for you.</div>
 
 # ============================================================ TRANSPORTS
 TRANSPORT = {
-    "hop": table(["Between", "Public boat", "Private / fast boat"],
-        [["Gili Trawangan &harr; Gili Meno", ("40K",), ("85K, every hour",)],
-         ["Gili Meno &harr; Gili Air", ("40K",), ("85K, every hour",)],
-         ["Gili Air &harr; Gili Trawangan", ("40K",), ("85K, every hour",)]]),
+    "hop": table(["Route", "Public boat (40K)", "Private boat"],
+        [["Gili Meno &rarr; Gili Trawangan", "8.50am, 3.20pm", ("85K, every hour",)],
+         ["Gili Trawangan &rarr; Gili Meno", "9.30am, 4.00pm", ("85K, every hour",)],
+         ["Gili Meno &rarr; Gili Air", "9.50am, 4.20pm", ("85K, every hour",)],
+         ["Gili Air &rarr; Gili Meno", "8.30am, 3.00pm", ("85K, every hour",)]]),
     "lombok": table(["From / to", "Option", "Price"],
-        [["Gili Meno &harr; Bangsal (Lombok)", "Public boat, 8am and 3.30pm", ("25K",)],
+        [["Gili Meno &harr; Bangsal (Lombok)", "Public boat: from Gili Meno 8am, 3.30pm; from Bangsal 10am, 2pm, 5pm", ("25K",)],
          ["Bangsal &harr; Mataram Airport", "Shuttle per person", ("140K",)],
          ["Bangsal &harr; Mataram Airport", "Taxi, up to 3 people", ("350K",)],
          ["Bangsal &harr; Kuta Lombok", "Shuttle per person", ("140K",)],
@@ -551,11 +589,10 @@ Gili Air, Gili Trawangan and Bangsal.</div>
 </section>
 """ + deco_of("transports") + gal_of("transports", "") + """
 <section><h2>Gili island hopping</h2>
-<p>Public boats run twice a day for 40K (8.50am / 3.20pm from Gili T, 9.30am / 4.00pm and 9.50am / 4.20pm
-between the other pairs); private boats run every hour for 85K.</p>
+<p>Public boats run twice a day in each direction for 40K; private boats run every hour for 85K.</p>
 """ + TRANSPORT["hop"] + """</section>
 <section><h2>To and from Lombok</h2>
-<p>Public boats link Gili Meno and Bangsal every day for 25K, at 8am and 3.30pm (10am, 2pm and 5pm the other way).
+<p>Public boats link Gili Meno and Bangsal every day for 25K: from Gili Meno at 8am and 3.30pm, from Bangsal at 10am, 2pm and 5pm.
 To go to or leave Bangsal we have special prices for shuttles and taxis.</p>
 """ + TRANSPORT["lombok"] + """</section>
 <section><h2>To and from Bali</h2>
@@ -794,20 +831,50 @@ def build_komodo():
         ["Deck class", ("3,500,000 IDR",), "A mattress, pillow and blanket per person on a shared deck"],
         ["Cabin class", ("4,000,000 IDR",), "A private cabin for two with a fan, a double mattress, a pillow and a blanket per person"],
     ]) + """
-<p>The return from Labuan Bajo (Flores) is not included. Two companies offer the same program and service in a
-similar boat; the real difference is their communication skills, clarity of organisation, and the price.</p>
-<h2>Included</h2>
-""" + ul(["Three Indonesian meals a day (vegetarian and vegan options available) and snacks",
-          "Unlimited coffee, tea and mineral water; a fruit plate for breakfast and fresh fruit juice once a day",
+<p>The way back from Labuan Bajo (Flores) is not included.</p>
+<h2>Two companies, the same trip</h2>
+<p>Both companies offer the same program and service in a similar boat. The only real difference is their
+communication skills and clarity of organisation. And also the price.</p>
+<div class="grid c2">
+<div class="card"><h3>Kareem The Explorer &middot; the most reliable</h3>
+<p class="price-line">3,500,000 IDR</p>
+""" + para("Kareem travels with boats that have the capacity for 30 to 40 people, depending on the size of the boat. "
+           "All the boats have a simple fresh water shower, although a dip in the ocean is preferred by most guests.\n\n"
+           "They cannot always know beforehand which boat will sail: it depends on which boat is where and on the "
+           "number of guests. Sometimes they sail with two or more boats at the same time.\n\n"
+           "All the boats are equipped with lifejackets and lifeboats for your safety in the unlikely event of an "
+           "emergency. Joining the boat trip is still at your own risk.") + """
+<h4>Included</h4>
+""" + ul(["Three Indonesian meals a day (vegetarian and vegan options available) and snacks*",
+          "Unlimited coffee, tea and mineral water",
+          "Beanbags",
+          "Charging points for electronic devices (solar energy)",
+          "Mask, snorkel and traditional simple fishing gear",
+          "Deck class: a mattress, pillow and blanket per person",
+          "Cabin class: a private cabin for two with a double mattress"]) + """
+</div>
+<div class="card"><h3>Explore Komodo &middot; the easiest to book</h3>
+<p class="price-line">3,500,000 IDR</p>
+<h4>Their boat</h4>
+""" + ul(["Wifi connection",
+          "AIS (automatic identification system), radio, GPS, compass",
+          "Maximum 60 passengers",
+          "Safety equipment: life raft, life jackets, ring lifebuoy",
+          "Fresh water and a simple shower",
+          "Snorkelling gear (mask and snorkel, no fins) and traditional simple fishing gear",
+          "Charging points for electronic devices",
+          "A small motor boat to reach the beaches",
+          "Lockers for your valuables, a cool box with ice for your extra drinks",
+          "Deck class: a mattress, pillow and blanket per person on a shared deck",
+          "Cabin class: a private cabin with a fan for two, a double mattress, a pillow and a blanket each"]) + """
+<h4>Included</h4>
+""" + ul(["A fruit plate for breakfast, fresh fruit juice once a day",
+          "Unlimited coffee, tea and mineral water",
           "Entrance fee to Komodo National Park and an English speaking guide",
-          "Bus to the departure port, and boat tickets from Gili Trawangan and Gili Air",
-          "Mask and snorkel, plus traditional simple fishing gear",
-          "Beanbags, and charging points for electronic devices (solar energy)",
-          "Fresh water and a simple shower, lockers for your valuables, a cool box with ice for your extra drinks",
-          "Safety equipment: lifejackets, life raft and ring lifebuoy"]) + """
-<h2>Not included</h2>
-""" + ul(["Wifi connection", "Fins", "Pick up from Kuta Lombok (negotiate transport with the agent you book from)",
-          "The way back from Labuan Bajo"]) + """
+          "Bus to the departure port, boat ticket from Gili Trawangan and Gili Air",
+          "Pick up from Senggigi or Mataram to the meeting point (not from Kuta Lombok: arrange it with the agent you book with)"]) + """
+</div>
+</div>
 <div class="note">Please tell your tour guide about any dietary requirement. Guests with food allergies should be
 aware that the food may contain or come into contact with common allergens such as dairy, eggs, wheat, soybeans,
 tree nuts, peanuts, fish and shellfish, and that cross-contamination may occur.</div>
@@ -842,18 +909,32 @@ def build_rinjani():
            "will be transported to your next destination.") + """
 <h2>3 days &amp; 2 nights — Summit, lake and hot springs</h2>
 """ + para("The 3 days 2 nights program starts at 1,156 m at Sembalun village and goes to the crater rim, the "
-           "summit, the lake, the hot spring, the Senaru crater rim and down to Senaru village. Day 1 follows the "
-           "same route as the 2 day trek. On the final day, after breakfast we commence our descent of the mountain, "
-           "using the rest spots of Pos 3, Pos 2 and Pos 1 and stopping for lunch along the way. As we descend, the "
-           "forest becomes thicker and increasingly lush. We arrive in Senaru (601 m) at approximately 1 pm, from "
-           "where you will be transported to your next destination.") + """
+           "summit, the lake, the hot spring, the Senaru crater rim and down to Senaru village.") + """
+<h3>Day 1</h3>
+""" + para("The same as the 2 day trek: from Sembalun (1,156 m) through the grasslands, Pos 1, 2 and 3, and the steep "
+           "climb to camp on the Sembalun Crater Rim (2,639 m), with the sunset over Lake Segara Anak.") + """
+<h3>Day 2</h3>
+""" + para("We wake at 3am for a light breakfast before commencing the challenging three hour trek to the summit "
+           "(3,726 m). We arrive in time for sunrise, the best time to enjoy the spectacular views. Returning to our "
+           "campsite on the crater rim we pause for a hot breakfast and a rest before continuing our descent into "
+           "the crater. We stop for lunch on the shore of Lake Segara Anak (2,000 m) where we can swim in the hot "
+           "springs. After lunch we continue our trek around the lakeshore before commencing our climb out of the "
+           "crater. The trail is steep and rocky and passes through dense forest. At the Senaru Crater Rim (2,641 m) "
+           "we stop for dinner and camp for the night. The crater rim offers views across the lake back toward the "
+           "summit and a good vantage point of Gunung Baru, the small volcanic cone within the crater of Mount "
+           "Rinjani. Mount Agung in Bali and the Gili Islands can also be seen from here.") + """
+<h3>Day 3</h3>
+""" + para("After breakfast we commence our descent of the mountain, using the rest spots of Pos 3, Pos 2 and Pos 1 "
+           "and stopping for a longer break for lunch along the way. As we descend the mountain the forest becomes "
+           "thicker and increasingly lush. We arrive in Senaru (601 m) at approximately 1 pm, from where you will be "
+           "transported to your next destination.") + """
 </section>
 """ + gal_of("rinjani", "The trek in pictures") + """
 <section><h2>Prices</h2>
 """ + table(["Trek", "Price per person", "Notes"], [
-        ["Rinjani 2D/1N summit", ("2,100,000 IDR",), "Includes one night in a homestay prior to departure"],
-        ["Rinjani 2D/1N summit", ("2,150,000 IDR",), "The option sold from the hostel, transport from Gili Meno included"],
-        ["Rinjani 3D/2N summit, lake and hot springs", ("2,350,000 IDR",), "The longer route down through Senaru"],
+        ["Rinjani 2D/1N summit", ("2,100,000 IDR",), "Plus one night in a homestay before departure"],
+        ["Rinjani 2D/1N from Gili Meno", ("2,150,000 IDR",), "Booked at the hostel: transport from Gili Meno, food, tent, porters and the night before"],
+        ["Rinjani 3D/2N summit, lake and hot springs", ("2,350,000 IDR",), "Plus one night in a homestay before departure"],
     ]) + """
 <h2>Included</h2>
 """ + ul(["Pick up from your designated location within Lombok and transfer to Senaru",
@@ -931,6 +1012,7 @@ def main():
     shutil.copytree(os.path.join(HERE, "images"), os.path.join(DIST, "images"))
     shutil.copytree(os.path.join(HERE, "css"), os.path.join(DIST, "css"))
     shutil.copytree(os.path.join(HERE, "js"), os.path.join(DIST, "js"))
+    shutil.copytree(os.path.join(HERE, "fonts"), os.path.join(DIST, "fonts"))
 
     # menage : ne garder que les visuels reellement utilises (HTML src/href + CSS url())
     used = set()
@@ -944,6 +1026,7 @@ def main():
         used |= set(re.findall(r"url\([\"']?[^)\"']*?images/([\w.\-]+\.webp)",
                                open(cssp, encoding="utf-8").read()))
     used.add(FAVICON)
+    used |= KEEP_IMAGES
     imgdir = os.path.join(DIST, "images")
     dropped = 0
     for f in sorted(os.listdir(imgdir)):
@@ -953,6 +1036,12 @@ def main():
     kb = sum(os.path.getsize(os.path.join(r, x)) for r, _, xs in os.walk(DIST) for x in xs) / 1024
     print("images conservees:", len(os.listdir(imgdir)), "| retirees:", dropped, "| site: {:.1f} Mo".format(kb / 1024))
     print("pages generees:", len(made))
+    # GitHub Pages publie le dossier docs/ : on le remplace par la version fraiche
+    docs = os.path.join(ROOT, "docs")
+    if os.path.isdir(docs):
+        shutil.rmtree(docs)
+    shutil.copytree(DIST, docs)
+    print("docs/ mis a jour")
     for m in sorted(made):
         print("  ", m)
 

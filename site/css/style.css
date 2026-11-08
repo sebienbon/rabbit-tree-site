@@ -13,14 +13,30 @@
   --hot: #e21c21;
   --line: rgba(28, 26, 23, .28);
 
-  --f-display: "Chelsea Market", "Comic Sans MS", cursive;
+  /* les trois polices du site Wix d'origine :
+     titres "Alice in Wonderland" (police propre au site, auto-hebergee),
+     intertitres Amatic SC, texte courant Chelsea Market */
+  --f-title: "Alice in Wonderland", "Chelsea Market", Georgia, serif;
+  --f-display: "Alice in Wonderland", "Chelsea Market", Georgia, serif;
   --f-hand: "Amatic SC", "Bradley Hand", cursive;
-  --f-body: "Kalam", "Segoe Print", cursive;
+  --f-body: "Chelsea Market", "Trebuchet MS", sans-serif;
+  --ink-title: #3b382b;
 
   --maxw: 1180px;
   --nav-h: 62px;
   --r: 14px;
 }
+
+@font-face {
+  font-family: "Alice in Wonderland";
+  src: url("../fonts/alice-in-wonderland.woff2") format("woff2");
+  font-display: swap;
+}
+/* Amatic SC et Chelsea Market (SIL Open Font License) servies par le site lui-meme :
+   plus d'appel a Google Fonts */
+@font-face { font-family: "Amatic SC"; font-weight: 400; font-display: swap; src: url("../fonts/amatic-sc-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Amatic SC"; font-weight: 700; font-display: swap; src: url("../fonts/amatic-sc-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Chelsea Market"; font-weight: 400; font-display: swap; src: url("../fonts/chelsea-market-latin-400-normal.woff2") format("woff2"); }
 
 * { box-sizing: border-box; }
 
@@ -29,20 +45,26 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--f-body);
-  font-size: 18px;
-  line-height: 1.62;
+  font-size: 17px;
+  line-height: 1.68;
   color: var(--ink);
-  background: var(--paper) url("../images/paper-bg.webp") repeat;
-  background-size: 100% auto;
+  background: var(--paper);
   overflow-x: hidden;
+}
+/* le parchemin d'origine : une seule feuille, fixe, bords plus sombres.
+   Porte par un calque fixe (background-attachment: fixed ne marche pas sur iPhone). */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--paper) url("../images/paper-bg.webp") center / cover no-repeat;
 }
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--ink); }
 
-h1, h2, h3, h4 { font-family: var(--f-display); font-weight: 400; line-height: 1.15; margin: 0 0 .5em; }
-h1 { font-size: clamp(2.1rem, 6vw, 3.6rem); letter-spacing: .01em; }
-h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+h1, h2, h3, h4 { font-family: var(--f-hand); font-weight: 700; line-height: 1.15; margin: 0 0 .5em; letter-spacing: .03em; }
+h1 { font-family: var(--f-title); font-weight: 400; color: var(--ink-title); font-size: clamp(2.3rem, 6.4vw, 4rem); letter-spacing: 0; }
+h2 { font-size: clamp(2rem, 4.6vw, 2.9rem); }
+h4 { font-size: 1.45rem; margin-top: 1em; }
 h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); font-family: var(--f-hand); font-weight: 700; letter-spacing: .04em; }
 p { margin: 0 0 1.1em; }
 
@@ -60,7 +82,7 @@ p { margin: 0 0 1.1em; }
   box-shadow: 0 3px 0 rgba(28, 26, 23, .12);
 }
 .nav-brand {
-  font-family: var(--f-display); font-size: 1.35rem; text-decoration: none;
+  font-family: var(--f-title); font-size: 1.55rem; color: var(--ink-title); text-decoration: none;
   white-space: nowrap; margin-right: auto;
 }
 .nav-brand span { display: block; font-family: var(--f-hand); font-size: .95rem; letter-spacing: .12em; line-height: 1; color: var(--ink-soft); }
@@ -140,6 +162,7 @@ section { margin-bottom: clamp(38px, 7vw, 72px); }
 .grid { display: grid; gap: clamp(16px, 2.6vw, 26px); }
 .grid.c2 { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
 .grid.c3 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+@media (max-width: 560px) { .grid.c3 { grid-template-columns: 1fr 1fr; gap: 12px; } .grid.c3 .card { padding: 10px; } .grid.c3 .card p { font-size: 14px; } }
 
 .card {
   position: relative; display: block; text-decoration: none; color: var(--ink);
@@ -161,77 +184,133 @@ section { margin-bottom: clamp(38px, 7vw, 72px); }
   font-family: var(--f-hand); font-weight: 700; font-size: 1.4rem; line-height: 1.35;
 }
 
-/* ---------- accueil : la carte dessinee ---------- */
-.hero { position: relative; text-align: center; padding: clamp(10px, 3vw, 26px) 0 clamp(20px, 4vw, 40px); }
-.hero-art { width: min(430px, 72vw); margin: 0 auto; }
-.hero h1 { font-size: clamp(2.6rem, 9vw, 5.2rem); line-height: 1; margin-bottom: 0; }
-.hero .sub { font-family: var(--f-display); font-size: clamp(1.5rem, 5vw, 2.6rem); margin-bottom: 14px; }
-.hero .lizard { width: min(200px, 40vw); margin: 0 auto 12px; }
-
-/* zones cliquables de la carte */
-.map { position: relative; width: 100%; max-width: 980px; margin: 0 auto; aspect-ratio: 1000 / 960; }
-.map .spot {
-  position: absolute; display: block; text-decoration: none; color: var(--ink);
-  transform: translate(-50%, -50%); text-align: center; transition: .18s;
+/* ---------- accueil : la scene dessinee d'origine ----------
+   Chaque dessin est place en % d'une scene 980 x 1090 (le Wix d'origine),
+   puis d'une scene portrait 400 x 830 sur telephone : la magie reste sur mobile. */
+body.home .nav { display: none; }
+body.home main { max-width: none; padding: 0 0 40px; }
+.scene {
+  position: relative; width: min(980px, 100%); margin: 0 auto;
+  aspect-ratio: var(--ratio);
 }
-.map .spot img { margin: 0 auto; filter: drop-shadow(2px 3px 0 rgba(28,26,23,.18)); }
-@media (min-width: 981px) { .map .spot .cap { font-size: 1.35rem; } }
-.map .spot .cap {
-  display: inline-block; margin-top: 2px; padding: 1px 10px; background: var(--paper-hi);
-  border: 2px solid var(--ink); border-radius: 999px;
-  font-family: var(--f-hand); font-weight: 700; font-size: clamp(.95rem, 2.1vw, 1.4rem); letter-spacing: .06em; white-space: nowrap;
+.scene .spot, .scene .map-title {
+  position: absolute;
+  left: calc(var(--l) * 1%); top: calc(var(--t) * 1%);
+  width: calc(var(--w) * 1%); height: calc(var(--h) * 1%);
 }
-.map .spot:hover { transform: translate(-50%, -50%) scale(1.07) rotate(-1deg); }
-.map .spot:hover .cap { background: var(--ink); color: var(--paper-hi); }
-@media (max-width: 720px) { .map { display: none; } }
-.map-fallback { display: none; }
-@media (max-width: 720px) { .map-fallback { display: grid; } }
+.scene .spot { display: block; text-decoration: none; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+.scene .spot img {
+  width: 100%; height: 100%; object-fit: contain;
+  transition: transform .35s cubic-bezier(.3,1.6,.5,1), filter .35s;
+  -webkit-user-drag: none; user-select: none;
+}
+.scene .spot.deco { pointer-events: none; }
+.scene .map-title {
+  margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  font: 400 clamp(2.4rem, 6.84vw, 4.19rem)/1.05 var(--f-title); color: var(--ink-title); text-align: center;
+}
+.scene .map-title span { display: block; margin-top: .12em; }
 
-/* ---------- arbre des chambres ---------- */
-.tree-wrap { position: relative; width: 100%; max-width: 1200px; margin: 0 auto 150px; aspect-ratio: 1200 / 972; }
+/* l'etiquette n'apparait qu'au survol, comme sur Wix ; au doigt elle reste visible (voir plus bas) */
+.scene .spot .cap {
+  position: absolute; left: var(--cx, 50%); top: var(--cy, 100%); transform: translate(-50%, -4px);
+  white-space: nowrap; pointer-events: none;
+  font: 700 clamp(1.3rem, 2.6vw, 1.85rem)/1 var(--f-hand); letter-spacing: .05em; color: var(--ink-title);
+  opacity: 0; transition: opacity .25s, transform .25s;
+}
+.scene .spot .cap::after {
+  content: ""; display: block; height: 9px; margin-top: 3px;
+  background: url("../images/underline.webp") no-repeat center / 100% 100%;
+}
+.scene .spot:hover img, .scene .spot:focus-visible img { transform: scale(1.07) rotate(-2deg); filter: drop-shadow(3px 4px 0 rgba(28,26,23,.18)); }
+.scene .spot:hover .cap, .scene .spot:focus-visible .cap { opacity: 1; transform: translate(-50%, 2px); }
+.scene .spot:focus-visible { outline: none; }
+
+/* petites vies propres a certains dessins */
+.scene .fx-turn img { animation: slow-turn 38s linear infinite; }
+.scene .fx-turn:hover img { animation-duration: 6s; }
+.scene .fx-bob img { animation: bob 3.4s ease-in-out infinite; }
+@keyframes slow-turn { to { transform: rotate(360deg); } }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
+
+/* le texte sous la scene (utile au referencement), dans l'intertitre d'origine */
+.scene-text { max-width: 900px; margin: 10px auto 0; padding: 0 clamp(16px, 4vw, 28px); text-align: center; }
+.scene-text .intro {
+  font: 700 clamp(1.45rem, 3.1vw, 1.95rem)/1.35 var(--f-hand); color: var(--ink-title); letter-spacing: .02em;
+}
+
+/* au doigt (pas de survol) : etiquettes toujours visibles, en petit */
+@media (hover: none) {
+  .scene .spot .cap { opacity: .92; transform: translate(-50%, 0); font-size: clamp(1.05rem, 4.2vw, 1.5rem); }
+  .scene .spot .cap::after { display: none; }
+}
+/* telephone : la meme scene recomposee en portrait */
+@media (max-width: 700px) {
+  .scene { aspect-ratio: var(--mratio); width: 100%; }
+  .scene .spot, .scene .map-title {
+    left: calc(var(--ml) * 1%); top: calc(var(--mt) * 1%);
+    width: calc(var(--mw) * 1%); height: calc(var(--mh) * 1%);
+  }
+  .scene .map-title { font-size: clamp(2rem, 10.5vw, 3.2rem); }
+  .scene .spot .cap { font-size: clamp(1rem, 4.6vw, 1.4rem); }
+}
+
+/* ---------- arbre des chambres ----------
+   Le medaillon montre son dessin ; au survol, sa version "vortex" apparait (comme sur Wix).
+   Un seul clic : le vortex tourne puis aspire la page (voir main.js). */
+.tree-wrap { position: relative; width: 100%; max-width: 1200px; margin: 0 auto clamp(40px, 12vw, 150px); aspect-ratio: 1200 / 972; }
 .tree-wrap > .trunk { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: .95; }
 .node { position: absolute; transform: translate(-50%, -50%); text-align: center; }
 .node .hit {
   display: block; position: relative; z-index: 1; text-decoration: none; color: var(--ink);
-  transition: transform .18s;
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1); -webkit-tap-highlight-color: transparent;
 }
 .node .hit.static { cursor: default; }
 .node .logo { width: 100%; display: block; margin: 0 auto; filter: drop-shadow(2px 3px 0 rgba(28,26,23,.14)); }
+.node .swirl {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+  opacity: 0; transition: opacity .3s; pointer-events: none;
+}
 .node .cap { display: none; }
 .node .cap em { font-style: normal; color: var(--accent); }
-.node:hover .hit { transform: scale(1.08) rotate(1.5deg); }
-/* spirale independante posee par-dessus le logo : un clic la fait tourner en fondu */
-.node .disc {
-  position: absolute; left: 0; top: 0; width: 100%; z-index: 3;
-  padding: 0; border: 0; background: none; cursor: pointer; line-height: 0;
-  backface-visibility: hidden;
+.node a.hit:hover, .node a.hit:focus-visible { transform: scale(1.08); }
+.node a.hit:hover .swirl, .node a.hit:focus-visible .swirl, .node a.hit.opening .swirl { opacity: 1; }
+.node a.hit.opening .swirl { animation: swirl-open .5s cubic-bezier(.5,0,.8,.4) forwards; }
+@keyframes swirl-open { to { transform: rotate(-300deg) scale(.9); } }
+
+/* ---------- le vortex qui emmene d'une page a l'autre ---------- */
+#vortex {
+  position: fixed; z-index: 9999; pointer-events: none; border-radius: 50%;
+  background: var(--paper-hi) url("../images/paper-bg.webp") center / cover;
+  transform: translate(-50%, -50%) scale(0); opacity: 0; overflow: hidden;
+  box-shadow: 0 0 0 2px rgba(59,56,43,.25);
 }
-.node .disc img { width: 100%; display: block; filter: drop-shadow(2px 3px 0 rgba(28,26,23,.14)); }
-.node .disc:not(.gone):hover { transform: scale(1.05); }
-.node .disc.gone { animation: disc-spin .55s cubic-bezier(.3,.1,.6,.9) forwards; pointer-events: none; }
-/* indice que la spirale mene quelque part : halo en pointille qui pulse.
-   porte par ::after pour ne pas ecraser le transform du hover ci-dessus */
-.node .disc:not(.gone)::after {
-  content: ""; position: absolute; inset: -7px; border-radius: 50%;
-  border: 2.5px dashed var(--ink); opacity: 0; pointer-events: none;
-  animation: disc-invite 3.6s ease-in-out infinite;
+#vortex svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+#vortex.in { opacity: 1; animation: vortex-in .72s cubic-bezier(.6,0,.85,.35) forwards; }
+#vortex.out { opacity: 1; animation: vortex-out .7s cubic-bezier(.2,.65,.4,1) forwards; }
+@keyframes vortex-in {
+  0% { transform: translate(-50%, -50%) scale(.06) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(-540deg); }
 }
-.node .disc:not(.gone):hover::after { animation: none; opacity: .5; }
-@keyframes disc-invite {
-  0%, 66%, 100% { opacity: 0; transform: scale(.93); }
-  78% { opacity: .32; transform: scale(1); }
-  88% { opacity: .12; transform: scale(1.04); }
-}
-@keyframes disc-spin {
-  0% { transform: rotate(0deg) scale(1); opacity: 1; }
-  100% { transform: rotate(600deg) scale(.55); opacity: 0; }
+@keyframes vortex-out {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(.02) rotate(-420deg); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .node .disc.gone { animation: disc-fade .35s ease forwards; }
-  .node .disc:not(.gone)::after { animation: none; opacity: .26; }
-  @keyframes disc-fade { to { opacity: 0; } }
+  .scene .fx-turn img, .scene .fx-bob img { animation: none; }
+  #vortex.in { animation: vortex-fade .3s ease forwards; transform: translate(-50%, -50%) scale(1); }
+  #vortex.out { animation: vortex-fade .3s ease reverse forwards; transform: translate(-50%, -50%) scale(1); }
+  @keyframes vortex-fade { from { opacity: 0; } to { opacity: 1; } }
 }
-@media (max-width: 860px) { .tree-wrap { display: none; } }
+
+/* ---------- moteur de reservation Beds24 ---------- */
+.book { scroll-margin-top: 80px; }
+.beds24 { max-width: 860px; margin: 0 auto 22px; background: #fff; border: 2.5px solid var(--ink); border-radius: 14px; overflow: hidden; box-shadow: 5px 5px 0 rgba(28,26,23,.16); }
+.beds24 iframe { display: block; width: 100%; height: 720px; border: 0; }
+.beds24.tall iframe { height: 2000px; }
+@media (max-width: 600px) { .beds24 iframe { height: 900px; } .beds24.tall iframe { height: 2400px; } }
+.price-line { font: 700 1.6rem/1.2 var(--f-hand); color: var(--accent); margin: 0 0 .4em; }
 
 /* ---------- banniere & figures ---------- */
 .banner { max-width: 1080px; margin: 6px auto 30px; }
@@ -282,26 +361,14 @@ section { margin-bottom: clamp(38px, 7vw, 72px); }
 .deco-item:nth-child(even) img { transform: rotate(2deg); }
 .deco-item em { display: block; margin-top: 8px; font-family: var(--f-hand); font-weight: 700; font-size: 1rem; font-style: normal; color: var(--ink); }
 
-/* ---------- transition spirale entre pages ---------- */
-#spiral-wipe { position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0; }
-#spiral-wipe img { position: absolute; width: 40px; height: 40px; object-fit: contain; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-#spiral-wipe.go { opacity: 1; }
-#spiral-wipe.go img { animation: spiral-in .62s cubic-bezier(.55,.05,.85,.3) forwards; }
-@keyframes spiral-in {
-  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: .95; }
-  100% { transform: translate(-50%, -50%) scale(90) rotate(540deg); opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  #spiral-wipe.go img { animation: wipe-fade .4s ease forwards; transform: translate(-50%, -50%) scale(90); }
-  @keyframes wipe-fade { from { opacity: 0; } to { opacity: 1; } }
-}
 .lightbox { position: fixed; inset: 0; background: rgba(20, 16, 8, .93); display: none; place-items: center; z-index: 200; padding: 24px; }
 .lightbox.on { display: grid; }
 .lightbox img { max-width: 94vw; max-height: 88vh; border: 3px solid var(--paper-hi); border-radius: 8px; }
 .lightbox .x { position: absolute; top: 14px; right: 22px; font: 700 2.4rem/1 var(--f-hand); color: var(--paper-hi); background: none; border: 0; cursor: pointer; }
 
 /* ---------- tableaux prix ---------- */
-table { width: 100%; border-collapse: collapse; margin: 0 0 26px; font-size: 17px; }
+table { width: 100%; border-collapse: collapse; margin: 0 0 26px; font-size: 16px; }
+.table-wrap { overflow-x: auto; }
 th, td { padding: 9px 12px; text-align: left; border-bottom: 1.5px dashed var(--line); vertical-align: top; }
 th { font-family: var(--f-hand); font-weight: 700; font-size: 1.35rem; letter-spacing: .06em; border-bottom: 2px solid var(--ink); }
 td.price { white-space: nowrap; font-family: var(--f-hand); font-weight: 700; font-size: 1.3rem; color: var(--accent); }

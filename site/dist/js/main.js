@@ -1,5 +1,5 @@
 /* The Rabbit Tree Hostel — interactions
-   1. menu mobile   2. spirales de l'arbre   3. lightbox de la galerie */
+   1. menu mobile   3. diaporama   4. vortex entre les pages   5. lightbox */
 (function () {
   "use strict";
 
@@ -25,19 +25,6 @@
     });
   }
 
-  /* --- 2. spirales de l'arbre : un clic les ouvre, le logo reste dessous --- */
-  [].slice.call(document.querySelectorAll(".disc")).forEach(function (d) {
-    d.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (d.classList.contains("gone")) return;
-      d.classList.add("gone");
-      var kill = function () { if (d.parentNode) d.parentNode.removeChild(d); };
-      d.addEventListener("animationend", kill, { once: true });
-      setTimeout(kill, 1500); /* filet de securite si l'animation ne se declenche pas */
-    });
-  });
-
   /* --- 3. diaporama des chambres : pellicule + glissement dans le cadre --- */
   var stage = document.querySelector(".stage");
   if (stage) {
@@ -62,30 +49,75 @@
     sync();
   }
 
-  /* --- 4. transition spirale quand on entre dans une chambre depuis l'arbre --- */
-  var roomLinks = [].slice.call(document.querySelectorAll(".node a.hit"));
-  if (roomLinks.length) {
-    var logo = document.querySelector(".node img");
-    var base = logo ? logo.getAttribute("src").replace(/[^/]*$/, "") : "images/";
-    var wipe = document.createElement("div");
-    wipe.id = "spiral-wipe";
-    wipe.innerHTML = '<img src="' + base + 'spiral.webp" alt="">';
-    document.body.appendChild(wipe);
-    var wimg = wipe.querySelector("img");
-    roomLinks.forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        var href = a.getAttribute("href");
-        if (!href) return;
-        e.preventDefault();
-        var r = a.getBoundingClientRect();
-        wimg.style.left = (e.clientX || r.left + r.width / 2) + "px";
-        wimg.style.top = (e.clientY || r.top + r.height / 2) + "px";
-        wipe.classList.remove("go"); void wipe.offsetWidth; wipe.classList.add("go");
-        setTimeout(function () { window.location.href = href; }, 560);
-      });
-    });
+  /* --- 4. le vortex : on clique un dessin, il tourne et aspire la page ; la page suivante
+         s'ouvre en sortant du meme vortex. Un seul clic, deux mouvements enchaines. --- */
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function spiralPath(phase) {
+    var d = "", turns = 7, n = 300;
+    for (var i = 0; i <= n; i++) {
+      var t = i / n * turns * 2 * Math.PI, r = 50 * i / n;
+      d += (i ? " L" : "M") + (50 + r * Math.cos(t + phase)).toFixed(1) + "," + (50 + r * Math.sin(t + phase)).toFixed(1);
+    }
+    return d;
   }
+  var vortex = document.createElement("div");
+  vortex.id = "vortex";
+  vortex.setAttribute("aria-hidden", "true");
+  vortex.innerHTML = '<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">' +
+    '<path d="' + spiralPath(0) + '" fill="none" stroke="#3b382b" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="round"/>' +
+    '<path d="' + spiralPath(Math.PI) + '" fill="none" stroke="#3b382b" stroke-opacity=".2" stroke-width="2" stroke-linecap="round"/></svg>';
+  document.body.appendChild(vortex);
+
+  function place(x, y) {
+    /* un disque assez grand pour couvrir l'ecran depuis le point de depart */
+    var w = window.innerWidth, h = window.innerHeight;
+    var R = Math.sqrt(Math.pow(Math.max(x, w - x), 2) + Math.pow(Math.max(y, h - y), 2)) * 2.1;
+    vortex.style.width = vortex.style.height = R + "px";
+    vortex.style.left = x + "px";
+    vortex.style.top = y + "px";
+  }
+  function remember(x, y) {
+    try { sessionStorage.setItem("rt-vortex", JSON.stringify({ x: x / window.innerWidth, y: y / window.innerHeight, t: Date.now() })); } catch (e) {}
+  }
+
+  /* arrivee : si on vient d'un vortex, la page sort du tourbillon */
+  try {
+    var v = JSON.parse(sessionStorage.getItem("rt-vortex") || "null");
+    sessionStorage.removeItem("rt-vortex");
+    if (v && Date.now() - v.t < 4000 && !reduce) {
+      place(window.innerWidth / 2, window.innerHeight / 2);
+      vortex.classList.add("out");
+      vortex.addEventListener("animationend", function () { vortex.classList.remove("out"); }, { once: true });
+    }
+  } catch (e) {}
+
+  [].slice.call(document.querySelectorAll("a[data-vortex]")).forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+      var href = a.getAttribute("href");
+      if (!href || href.charAt(0) === "#") return;
+      e.preventDefault();
+      var r = a.getBoundingClientRect();
+      var x = r.left + r.width / 2, y = r.top + r.height / 2;
+      var go = function () { window.location.href = href; };
+      if (reduce) { remember(x, y); go(); return; }
+      /* 1er mouvement : sur l'arbre, la spirale du medaillon s'ouvre en tournant */
+      var delay = 0;
+      if (a.querySelector(".swirl")) { a.classList.add("opening"); delay = 380; }
+      setTimeout(function () {
+        /* 2e mouvement : le vortex part du dessin et grandit en tournant jusqu'a couvrir la page */
+        place(x, y);
+        vortex.classList.remove("out", "in"); void vortex.offsetWidth; vortex.classList.add("in");
+        remember(x, y);
+        setTimeout(go, 680);
+      }, delay);
+    });
+  });
+  /* retour arriere depuis la page suivante : ne pas rester sur un ecran couvert */
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) { vortex.classList.remove("in", "out"); }
+    [].slice.call(document.querySelectorAll(".opening")).forEach(function (x) { x.classList.remove("opening"); });
+  });
 
   /* --- 5. lightbox --- */
   var box = document.getElementById("lightbox");
