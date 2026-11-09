@@ -280,11 +280,13 @@ body.home main { max-width: none; padding: 0 0 40px; }
 @keyframes swirl-open { to { transform: rotate(-300deg) scale(.9); } }
 
 /* ---------- le vortex qui emmene d'une page a l'autre ---------- */
+/* le disque est transparent : seules les bandes d'encre de la spirale se voient,
+   la page reste visible entre elles. Il est pose sur <html>, pas sur <body>,
+   pour ne pas tourner avec la page. */
 #vortex {
   position: fixed; z-index: 9999; pointer-events: none; border-radius: 50%;
-  background: var(--paper-hi) url("../images/paper-bg.webp") center / cover;
+  background: none;
   transform: translate(-50%, -50%) scale(0); opacity: 0; overflow: hidden;
-  box-shadow: 0 0 0 2px rgba(59,56,43,.25);
 }
 #vortex svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 #vortex.in { opacity: 1; animation: vortex-in .72s cubic-bezier(.6,0,.85,.35) forwards; }
@@ -298,8 +300,26 @@ body.home main { max-width: none; padding: 0 0 40px; }
   80% { opacity: 1; }
   100% { transform: translate(-50%, -50%) scale(.02) rotate(-420deg); opacity: 0; }
 }
+/* toute la fenetre tourne : la page s'enroule dans le dessin clique,
+   la suivante se deroule au centre de l'ecran. Le fond qui apparait derriere = l'encre. */
+html.rt-spin, html.rt-arrive { background: #1f1c17; overflow-x: hidden; }
+html.rt-spin body { will-change: transform; }
+body.spin-out { animation: page-out .72s cubic-bezier(.6,0,.85,.35) forwards; }
+@keyframes page-out {
+  0% { transform: rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: rotate(-200deg) scale(.06); opacity: .15; }
+}
+/* arrivee : fonctionne sans JavaScript (la classe est posee dans <head>) */
+html.rt-arrive body { transform-origin: 50vw 50vh; animation: page-in .85s cubic-bezier(.2,.65,.35,1) both; }
+@keyframes page-in {
+  0% { transform: rotate(200deg) scale(.06); opacity: 0; }
+  60% { opacity: 1; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scene .fx-turn img, .scene .fx-bob img { animation: none; }
+  body.spin-out, html.rt-arrive body { animation: none; }
   #vortex.in { animation: vortex-fade .3s ease forwards; transform: translate(-50%, -50%) scale(1); }
   #vortex.out { animation: vortex-fade .3s ease reverse forwards; transform: translate(-50%, -50%) scale(1); }
   @keyframes vortex-fade { from { opacity: 0; } to { opacity: 1; } }

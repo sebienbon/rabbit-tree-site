@@ -64,9 +64,10 @@
   vortex.id = "vortex";
   vortex.setAttribute("aria-hidden", "true");
   vortex.innerHTML = '<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">' +
-    '<path d="' + spiralPath(0) + '" fill="none" stroke="#3b382b" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="round"/>' +
-    '<path d="' + spiralPath(Math.PI) + '" fill="none" stroke="#3b382b" stroke-opacity=".2" stroke-width="2" stroke-linecap="round"/></svg>';
-  document.body.appendChild(vortex);
+    '<path d="' + spiralPath(0) + '" fill="none" stroke="#1c1a17" stroke-width="3.4" stroke-linecap="round"/>' +
+    '<path d="' + spiralPath(Math.PI) + '" fill="none" stroke="#1c1a17" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  document.documentElement.appendChild(vortex);
+  var root = document.documentElement, body = document.body;
 
   function place(x, y) {
     /* un disque assez grand pour couvrir l'ecran depuis le point de depart */
@@ -90,6 +91,12 @@
       vortex.addEventListener("animationend", function () { vortex.classList.remove("out"); }, { once: true });
     }
   } catch (e) {}
+  /* fin de l'arrivee en tourbillon (lancee par la classe rt-arrive posee dans <head>) */
+  if (root.classList.contains("rt-arrive")) {
+    var done = function () { root.classList.remove("rt-arrive"); };
+    body.addEventListener("animationend", function (ev) { if (ev.target === body) done(); }, { once: true });
+    setTimeout(done, 1200);
+  }
 
   [].slice.call(document.querySelectorAll("a[data-vortex]")).forEach(function (a) {
     a.addEventListener("click", function (e) {
@@ -108,6 +115,10 @@
         /* 2e mouvement : le vortex part du dessin et grandit en tournant jusqu'a couvrir la page */
         place(x, y);
         vortex.classList.remove("out", "in"); void vortex.offsetWidth; vortex.classList.add("in");
+        /* ... et toute la page s'enroule autour du dessin clique */
+        body.style.transformOrigin = x + "px " + (y + window.pageYOffset) + "px";
+        root.classList.add("rt-spin");
+        body.classList.add("spin-out");
         remember(x, y);
         setTimeout(go, 680);
       }, delay);
@@ -115,7 +126,10 @@
   });
   /* retour arriere depuis la page suivante : ne pas rester sur un ecran couvert */
   window.addEventListener("pageshow", function (e) {
-    if (e.persisted) { vortex.classList.remove("in", "out"); }
+    if (e.persisted) {
+      vortex.classList.remove("in", "out");
+      body.classList.remove("spin-out"); root.classList.remove("rt-spin", "rt-arrive"); body.style.transformOrigin = "";
+    }
     [].slice.call(document.querySelectorAll(".opening")).forEach(function (x) { x.classList.remove("opening"); });
   });
 
