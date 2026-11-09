@@ -190,8 +190,22 @@ def strip_html(items, swap=False):
                        '<img src="images/{f}" alt="{a}" loading="lazy"></a>'.format(
                            f=f, a=esc(a), c="active" if i == 0 else ""))
         else:
-            out.append('<a href="images/{f}" data-lb><img src="images/{f}" alt="{a}" loading="lazy"></a>'.format(f=f, a=esc(a)))
-    return '<div class="strip">' + "".join(out) + "</div>"
+            w, h = img_size(f)
+            out.append('<a href="images/{f}" data-lb><img src="images/{f}" alt="{a}" width="{w}" height="{h}" loading="lazy"></a>'.format(
+                f=f, a=esc(a), w=w, h=h))
+    return '<div class="strip"{}>'.format("" if swap else " data-cflow") + "".join(out) + "</div>"
+
+
+_SIZES = {}
+def img_size(f):
+    """Dimensions reelles d'une image (pour le carrousel : jamais de photo coupee)."""
+    if f not in _SIZES:
+        try:
+            from PIL import Image
+            _SIZES[f] = Image.open(os.path.join(HERE, "images", f)).size
+        except Exception:
+            _SIZES[f] = (4, 3)
+    return _SIZES[f]
 
 
 def table(headers, rows):
@@ -274,7 +288,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=35",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=37",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -282,7 +296,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=29", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=31", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -681,15 +695,15 @@ timetable below, updated every night.</div>
 To go to or leave Bangsal we have special prices for shuttles and taxis.</p>
 """ + TRANSPORT["lombok"] + """</section>
 <section><h2>To and from Bali</h2>
-<p><b>Booked at the reception in two minutes, and we handle the rest</b>: pick-up, check-in at the harbour, and a phone
+<p><b>Send us a WhatsApp, your ticket is booked in two minutes</b> (or just ask at the reception), and we handle the rest: pick-up, check-in at the harbour, and a phone
 call to the boat company if anything is late or cancelled. Same price as on the boat company's own website. The two-way
 ticket is cheaper if you already know you will come back to Bali, and it is an open date return, so you do not need to
 decide when you leave us.</p>
 """ + TRANSPORT["bali"] + wijaya_table() + """
 <p>You can also go directly to and from other places in Bali:</p>
 """ + TRANSPORT["elsewhere"] + """
-<div class="btn-row"><a class="btn hot" href="mailto:{mail}?subject=Transport%20booking">Ask us to book a ticket</a>
-<a class="btn primary" href="{wa}">WhatsApp us</a></div>
+<div class="btn-row"><a class="btn primary" href="{wa}">Book your boat on WhatsApp</a>
+<a class="btn" href="mailto:{mail}?subject=Transport%20booking">Or by email</a></div>
 </section>
 """
     body = body.format(mail=HOSTEL["email"], wa=HOSTEL["whatsapp"])

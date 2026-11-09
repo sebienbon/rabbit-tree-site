@@ -294,6 +294,89 @@
     }).catch(function () {});
   }
 
+  /* --- 3b. carrousel « coverflow » : les rubans de photos deviennent un manege arrondi en 3D.
+         Photo du centre en grand, voisines inclinees de chaque cote ; il tourne tout seul, s'arrete
+         sous la souris, la photo du centre suit le curseur ; clic sur une voisine = elle vient au centre,
+         clic au centre = plein ecran. Glisser au doigt, fleches du clavier. Sans JS : le ruban simple. --- */
+  [].slice.call(document.querySelectorAll(".strip[data-cflow]")).forEach(function (strip) {
+    var links = [].slice.call(strip.children);
+    if (links.length < 3) return;
+    var reduce2 = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var box = document.createElement("div");
+    box.className = "cflow"; box.tabIndex = 0;
+    box.setAttribute("role", "region"); box.setAttribute("aria-label", "Photo carousel, use the arrow keys");
+    var track = document.createElement("div"); track.className = "cf-track";
+    links.forEach(function (a) { a.classList.add("cf-item"); track.appendChild(a); });
+    var prev = document.createElement("button"), next = document.createElement("button"), count = document.createElement("div");
+    prev.className = "cf-nav cf-prev"; prev.setAttribute("aria-label", "Previous photo"); prev.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    next.className = "cf-nav cf-next"; next.setAttribute("aria-label", "Next photo"); next.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    count.className = "cf-count";
+    box.appendChild(track); box.appendChild(prev); box.appendChild(next); box.appendChild(count);
+    strip.parentNode.replaceChild(box, strip);
+    var n = links.length, cur = 0, timer = null, tilt = 0;
+
+    function layout() {
+      var W = box.clientWidth, H = box.clientHeight, step = Math.min(W * .3, 330);
+      links.forEach(function (a) {                                  /* une photo tres large ne deborde jamais */
+        var im = a.firstChild, r = (+im.getAttribute("width") || 4) / (+im.getAttribute("height") || 3);
+        a.style.height = Math.min(H * (W < 560 ? .76 : .78), W * .84 / r) + "px";
+      });
+      links.forEach(function (a, i) {
+        var d = i - cur;
+        if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+        var ad = Math.abs(d), img = a.firstChild;
+        if (ad <= 3 && img.loading === "lazy") img.loading = "eager";
+        var x = d * step - (d ? Math.sign(d) * Math.pow(ad, 1.3) * 18 : 0);
+        var rot = d === 0 ? tilt : -Math.sign(d) * Math.min(ad * 24, 52);
+        var sc = d === 0 ? 1 : Math.max(.55, 1 - ad * .16);
+        a.style.transform = "translate(-50%, -50%) translateX(" + x + "px) translateZ(" + (-ad * 140) + "px) rotateY(" + rot + "deg) scale(" + sc + ")";
+        a.style.opacity = ad > 3 ? 0 : 1 - ad * .18;
+        a.style.zIndex = 10 - ad;
+        a.style.pointerEvents = ad > 3 ? "none" : "";
+        a.classList.toggle("cf-on", d === 0);
+        a.setAttribute("aria-hidden", ad > 0 ? "true" : "false");
+        a.tabIndex = d === 0 ? 0 : -1;
+      });
+      count.textContent = (cur + 1) + " / " + n;
+    }
+    function go(i) { cur = (i + n) % n; tilt = 0; layout(); }
+    function play() { if (reduce2 || timer) return; timer = setInterval(function () { go(cur + 1); }, 3800); }
+    function stop() { clearInterval(timer); timer = null; }
+
+    prev.addEventListener("click", function () { go(cur - 1); });
+    next.addEventListener("click", function () { go(cur + 1); });
+    links.forEach(function (a, i) {
+      a.addEventListener("click", function (e) {
+        if (i !== cur) { e.preventDefault(); e.stopImmediatePropagation(); go(i); }
+      }, true);
+    });
+    box.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { go(cur - 1); e.preventDefault(); }
+      if (e.key === "ArrowRight") { go(cur + 1); e.preventDefault(); }
+    });
+    box.addEventListener("mouseenter", stop);
+    box.addEventListener("mouseleave", function () { tilt = 0; layout(); play(); });
+    box.addEventListener("mousemove", function (e) {                 /* la photo du centre suit la souris */
+      var r = box.getBoundingClientRect();
+      tilt = ((e.clientX - r.left) / r.width - .5) * 16;
+      var on = links[cur]; if (on) on.style.transform = on.style.transform.replace(/rotateY\([^)]*\)/, "rotateY(" + tilt + "deg)");
+    });
+    var sx = null, moved = false;                                     /* glisser au doigt ou a la souris */
+    box.addEventListener("pointerdown", function (e) { sx = e.clientX; moved = false; stop(); });
+    box.addEventListener("pointerup", function (e) {
+      if (sx === null) return;
+      var dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) { moved = true; go(cur + (dx < 0 ? 1 : -1)); }
+      if (e.pointerType !== "mouse") setTimeout(play, 4000);
+    });
+    box.addEventListener("click", function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    window.addEventListener("resize", layout);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) play(); else stop(); }); }).observe(box);
+    } else play();
+    layout();
+  });
+
   /* --- 5. lightbox --- */
   var box = document.getElementById("lightbox");
   if (!box) return;

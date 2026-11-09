@@ -537,3 +537,22 @@ footer {
 .tt h3 { font: 700 1.4rem/1 var(--f-hand); letter-spacing: .05em; color: #1d6f78; margin: 6px 0 4px; }
 .tt td:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .tt-src { font-size: 13px; color: var(--ink-soft); }
+
+/* ---------- carrousel « coverflow » (main.js transforme les rubans .strip[data-cflow]) ---------- */
+.cflow { position: relative; height: clamp(300px, 50vw, 540px); margin: 6px 0 26px; perspective: 1300px; overflow: hidden;
+  touch-action: pan-y; outline: none; -webkit-user-select: none; user-select: none; }
+.cf-track { position: absolute; inset: 0; transform-style: preserve-3d; }
+.cf-item { position: absolute; left: 50%; top: 46%; height: 78%; max-width: 92%; display: block; border-radius: 30px; overflow: hidden;
+  border: 3px solid var(--ink); background: var(--paper-lo); box-shadow: 6px 8px 0 rgba(28,26,23,.2);
+  transition: transform .7s cubic-bezier(.22,.8,.3,1), opacity .7s, box-shadow .3s; will-change: transform; cursor: pointer; }
+.cf-item img { display: block; height: 100%; width: auto; max-width: none; pointer-events: none; -webkit-user-drag: none; }
+.cf-item.cf-on { box-shadow: 10px 14px 0 rgba(28,26,23,.22), 0 0 0 6px rgba(255,248,224,.6); cursor: zoom-in; transition: transform .25s ease-out, opacity .7s, box-shadow .3s; }
+.cflow:hover .cf-item.cf-on { box-shadow: 14px 18px 0 rgba(28,26,23,.24), 0 0 0 7px rgba(255,248,224,.75); }
+.cf-nav { position: absolute; top: 46%; z-index: 20; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%;
+  border: 2.5px solid var(--ink); background: #fff8e3; color: var(--ink); cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink); transition: transform .2s; display: flex; align-items: center; justify-content: center; padding: 0; }
+.cf-nav:hover { transform: translateY(-50%) scale(1.1) rotate(-6deg); }
+.cf-prev { left: max(6px, 2%); } .cf-next { right: max(6px, 2%); }
+.cf-count { position: absolute; left: 50%; bottom: 2%; transform: translateX(-50%); font: 700 1.3rem/1 var(--f-hand); letter-spacing: .08em; color: var(--ink-title); }
+@media (max-width: 560px) { .cflow { height: clamp(260px, 82vw, 420px); } .cf-item { border-radius: 22px; } .cf-nav { width: 40px; height: 40px; } }
+@media (prefers-reduced-motion: reduce) { .cf-item { transition: none; } }
