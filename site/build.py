@@ -274,7 +274,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=34",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=35",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -638,15 +638,39 @@ TRANSPORT = {
 }
 
 
+def wijaya_table():
+    """Horaires Wijaya Perkasa (data/wijaya.json, mis a jour chaque nuit par tools/wijaya.py)."""
+    try:
+        d = json.load(open(os.path.join(HERE, "data", "wijaya.json")))
+    except Exception:
+        return ""
+    def rows(sel, other):
+        out = {}
+        for r in d["rows"]:
+            if sel(r):
+                out.setdefault(r[other], []).append("{}&nbsp;&rarr;&nbsp;{}".format(r["dep"], r["arr"]))
+        return out
+    def block(title, data, col):
+        if not data:
+            return ""
+        return ('<div class="tt"><h3>{}</h3>'.format(title) + table([col, "Departure → arrival"],
+                [[k, ("<br>".join(v),)] for k, v in sorted(data.items())]) + "</div>")
+    y, m, dd = d["updated"].split("-")
+    return ('<h3 class="tt-title">Fast boat timetable (Wijaya Perkasa)</h3><div class="tt-grid">' +
+            block("Leaving Gili Meno", rows(lambda r: r["from"] == "Gili Meno", "to"), "To") +
+            block("Coming to Gili Meno", rows(lambda r: r["to"] == "Gili Meno", "from"), "From") +
+            '</div><p class="tt-src">Checked every night on <a href="{}" target="_blank" rel="noopener">the boat company\'s website</a>, '
+            'last change {}/{}/{}. Times can move with the weather: we confirm yours when you book.</p>'.format(d["source"], dd, m, y))
+
+
 def build_transports():
     body = head("Transports", "Boats to and from the Gili Islands") + banner_of("transports") + """
 <section class="narrow">
 """ + para("It is very easy to travel between the Gilis, and we have bargained for you to get cheaper "
            "transportation, or at least the same price as anybody else here. So do not hesitate to contact us "
            "to book your ticket. It would be a shame to miss it.") + """
-<div class="note">Two departures per day from Padang Bai to Gili Meno, around 9:30am (pick up 7am) and around
-1pm (pick up 10am). From Gili Meno, two departures a day at about the same times. The boat also stops at
-Gili Air, Gili Trawangan and Bangsal.</div>
+<div class="note">Fast boats link Gili Meno and Bali (Padang Bai, Sanur, Nusa Penida) several times a day: see the
+timetable below, updated every night.</div>
 </section>
 """ + deco_of("transports") + gal_of("transports", "") + """
 <section><h2>Gili island hopping</h2>
@@ -657,9 +681,11 @@ Gili Air, Gili Trawangan and Bangsal.</div>
 To go to or leave Bangsal we have special prices for shuttles and taxis.</p>
 """ + TRANSPORT["lombok"] + """</section>
 <section><h2>To and from Bali</h2>
-<p>Our option is the cheapest one. It is cheaper to take the two-way ticket if you already know you will come
-back to Bali, and it is an open date return, so you do not need to decide when you leave us.</p>
-""" + TRANSPORT["bali"] + """
+<p><b>Booked at the reception in two minutes, and we handle the rest</b>: pick-up, check-in at the harbour, and a phone
+call to the boat company if anything is late or cancelled. Same price as on the boat company's own website. The two-way
+ticket is cheaper if you already know you will come back to Bali, and it is an open date return, so you do not need to
+decide when you leave us.</p>
+""" + TRANSPORT["bali"] + wijaya_table() + """
 <p>You can also go directly to and from other places in Bali:</p>
 """ + TRANSPORT["elsewhere"] + """
 <div class="btn-row"><a class="btn hot" href="mailto:{mail}?subject=Transport%20booking">Ask us to book a ticket</a>

@@ -530,3 +530,10 @@ footer {
 .menu-cat .mi small { display: block; font-size: 12.5px; color: var(--ink-soft); }
 .menu-cat .dots { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-4px); min-width: 12px; }
 .menu-cat .px { font-size: 1.15em; }
+
+/* horaires Wijaya */
+.tt-title { font: 400 1.7rem/1.1 var(--f-title); color: var(--ink-title); margin: 26px 0 8px; }
+.tt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 0 28px; }
+.tt h3 { font: 700 1.4rem/1 var(--f-hand); letter-spacing: .05em; color: #1d6f78; margin: 6px 0 4px; }
+.tt td:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tt-src { font-size: 13px; color: var(--ink-soft); }

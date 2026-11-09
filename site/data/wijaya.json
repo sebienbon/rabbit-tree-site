@@ -1,0 +1,96 @@
+{
+ "source": "https://www.wijayaperkasa.com/schedule/",
+ "updated": "2026-11-10",
+ "rows": [
+  {
+   "from": "Gili Meno",
+   "to": "Nusa Penida",
+   "dep": "08:45",
+   "arr": "10:45"
+  },
+  {
+   "from": "Gili Meno",
+   "to": "Sanur",
+   "dep": "08:45",
+   "arr": "11:45"
+  },
+  {
+   "from": "Gili Meno",
+   "to": "Padang Bay",
+   "dep": "09:00",
+   "arr": "11:00"
+  },
+  {
+   "from": "Gili Meno",
+   "to": "Padang Bay",
+   "dep": "11:15",
+   "arr": "13:15"
+  },
+  {
+   "from": "Gili Meno",
+   "to": "Nusa Penida",
+   "dep": "12:45",
+   "arr": "15:15"
+  },
+  {
+   "from": "Gili Meno",
+   "to": "Sanur",
+   "dep": "12:45",
+   "arr": "16:45"
+  },
+  {
+   "from": "Gili Meno",
+   "to": "Padang Bay",
+   "dep": "15:30",
+   "arr": "17:30"
+  },
+  {
+   "from": "Sanur",
+   "to": "Gili Meno",
+   "dep": "08:00",
+   "arr": "12:45"
+  },
+  {
+   "from": "Padang Bay",
+   "to": "Gili Meno",
+   "dep": "09:00",
+   "arr": "11:00"
+  },
+  {
+   "from": "Gili Trawangan",
+   "to": "Gili Meno",
+   "dep": "09:45",
+   "arr": "09:55"
+  },
+  {
+   "from": "Nusa Penida",
+   "to": "Gili Meno",
+   "dep": "10:20",
+   "arr": "12:45"
+  },
+  {
+   "from": "Padang Bay",
+   "to": "Gili Meno",
+   "dep": "11:30",
+   "arr": "13:15"
+  },
+  {
+   "from": "Sanur",
+   "to": "Gili Meno",
+   "dep": "12:30",
+   "arr": "15:30"
+  },
+  {
+   "from": "Nusa Penida",
+   "to": "Gili Meno",
+   "dep": "13:30",
+   "arr": "15:30"
+  },
+  {
+   "from": "Padang Bay",
+   "to": "Gili Meno",
+   "dep": "13:30",
+   "arr": "15:30"
+  }
+ ]
+}

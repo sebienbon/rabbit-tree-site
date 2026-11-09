@@ -1,0 +1,29 @@
+# Chaque nuit, les serveurs de GitHub (gratuits) relisent les horaires de Wijaya Perkasa
+# et, s'ils ont change, regenerent le site et le publient. Rien a faire tourner chez nous.
+name: Wijaya timetable
+on:
+  schedule:
+    - cron: "17 20 * * *"   # 04:17 a Gili Meno (UTC+8)
+  workflow_dispatch: {}      # bouton "Run workflow" pour lancer a la main
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Read the timetable
+        run: python site/tools/wijaya.py
+      - name: Rebuild and publish if it changed
+        run: |
+          if git diff --quiet site/data/wijaya.json; then echo "No change"; exit 0; fi
+          cd site && python build.py && cd ..
+          git config user.name "rabbit-tree-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A site/data docs
+          git commit -m "Wijaya timetable update"
+          git push
