@@ -377,6 +377,36 @@
     layout();
   });
 
+  /* --- 3c. reservation de bateau : le formulaire prepare le message WhatsApp (lien wa.me?text=, gratuit) --- */
+  var waf = document.getElementById("book-boat");
+  if (waf) {
+    var d0 = waf.querySelector("[name=date]");
+    if (d0) d0.min = new Date().toISOString().slice(0, 10);
+    waf.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = function (n) { var el = waf.querySelector("[name=" + n + "]"); return el ? el.value.trim() : ""; };
+      var date = v("date");
+      if (date) { var p = date.split("-"); date = p[2] + "/" + p[1] + "/" + p[0]; }
+      var lines = [
+        "Hi Rabbit Tree! " + (v("name") ? "This is " + v("name") + ". " : "") + "I would like to book a boat:",
+        "- From: " + v("from"),
+        "- To: " + v("to"),
+        "- Date: " + (date || "not sure yet"),
+        "- People: " + (v("people") || "1"),
+        "- Ticket: " + v("trip"),
+        "- Pick-up / drop-off: " + v("pick"),
+        "- Preferred time: " + v("time")
+      ];
+      if (v("note")) lines.push("- Note: " + v("note"));
+      lines.push("Thank you!");
+      window.open(waf.getAttribute("data-wa") + "?text=" + encodeURIComponent(lines.join("\n")), "_blank", "noopener");
+    });
+  }
+
+  [].slice.call(document.querySelectorAll('a[href^="https://wa.me/"]')).forEach(function (a) {
+    if (a.href.indexOf("?") < 0) a.href += "?text=" + encodeURIComponent("Hi Rabbit Tree! I have a question: ");
+  });
+
   /* --- 5. lightbox --- */
   var box = document.getElementById("lightbox");
   if (!box) return;

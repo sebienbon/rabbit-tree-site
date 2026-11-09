@@ -288,7 +288,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=37",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=38",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -296,7 +296,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=31", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=32", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -702,8 +702,23 @@ decide when you leave us.</p>
 """ + TRANSPORT["bali"] + wijaya_table() + """
 <p>You can also go directly to and from other places in Bali:</p>
 """ + TRANSPORT["elsewhere"] + """
-<div class="btn-row"><a class="btn primary" href="{wa}">Book your boat on WhatsApp</a>
-<a class="btn" href="mailto:{mail}?subject=Transport%20booking">Or by email</a></div>
+<form class="wa-form" id="book-boat" data-wa="{wa}">
+  <h3>Book your boat on WhatsApp</h3>
+  <p>Fill in what you know, press the button: WhatsApp opens with your message ready, you just hit send.</p>
+  <div class="wa-grid">
+    <label>Your name<input name="name" autocomplete="name" placeholder="Alex"></label>
+    <label>Date<input name="date" type="date"></label>
+    <label>From<select name="from"><option>Gili Meno</option><option>Padang Bai (Bali)</option><option>Sanur (Bali)</option><option>Nusa Penida</option><option>Gili Trawangan</option><option>Gili Air</option><option>Bangsal (Lombok)</option><option>Lombok Airport</option><option>Kuta Lombok</option><option>Senggigi</option></select></label>
+    <label>To<select name="to"><option>Padang Bai (Bali)</option><option>Sanur (Bali)</option><option>Nusa Penida</option><option>Gili Meno</option><option>Gili Trawangan</option><option>Gili Air</option><option>Bangsal (Lombok)</option><option>Lombok Airport</option><option>Kuta Lombok</option><option>Senggigi</option></select></label>
+    <label>People<input name="people" type="number" min="1" max="30" value="1"></label>
+    <label>Ticket<select name="trip"><option>One way</option><option>Return (open date)</option></select></label>
+    <label>Pick-up / drop-off on the mainland<select name="pick"><option>Yes please</option><option>No, boat only</option></select></label>
+    <label>Preferred time<select name="time"><option>Morning</option><option>Afternoon</option><option>Whatever is best</option></select></label>
+  </div>
+  <label class="wa-wide">Anything else (hotel in Bali, flight time…)<input name="note" placeholder="Hotel name, flight at 6pm…"></label>
+  <div class="btn-row"><button class="btn primary" type="submit">Send on WhatsApp</button>
+  <a class="btn" href="mailto:{mail}?subject=Transport%20booking">Or by email</a></div>
+</form>
 </section>
 """
     body = body.format(mail=HOSTEL["email"], wa=HOSTEL["whatsapp"])

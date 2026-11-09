@@ -556,3 +556,14 @@ footer {
 .cf-count { position: absolute; left: 50%; bottom: 2%; transform: translateX(-50%); font: 700 1.3rem/1 var(--f-hand); letter-spacing: .08em; color: var(--ink-title); }
 @media (max-width: 560px) { .cflow { height: clamp(260px, 82vw, 420px); } .cf-item { border-radius: 22px; } .cf-nav { width: 40px; height: 40px; } }
 @media (prefers-reduced-motion: reduce) { .cf-item { transition: none; } }
+
+/* formulaire WhatsApp (reservation de bateau) */
+.wa-form { margin: 26px 0 10px; padding: 20px 22px 6px; background: rgba(255,248,224,.85); border: 2px solid var(--ink); border-radius: 18px 12px 20px 14px; box-shadow: 5px 5px 0 rgba(28,26,23,.2); }
+.wa-form h3 { margin: 0 0 4px; font: 400 1.8rem/1.1 var(--f-title); color: var(--ink-title); }
+.wa-form p { margin: 0 0 14px; font-size: 15px; }
+.wa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px 16px; }
+.wa-form label { display: flex; flex-direction: column; gap: 4px; font: 700 1.2rem/1.1 var(--f-hand); letter-spacing: .04em; color: var(--ink-title); }
+.wa-form .wa-wide { margin-top: 12px; }
+.wa-form input, .wa-form select { font: 15px var(--f-body); color: var(--ink); background: #fffdf3; border: 2px solid var(--ink); border-radius: 10px; padding: 9px 10px; min-width: 0; }
+.wa-form input:focus, .wa-form select:focus { outline: 3px solid rgba(12,68,38,.35); outline-offset: 1px; }
+.wa-form .btn-row { margin-top: 16px; }
