@@ -86,16 +86,29 @@
     var v = JSON.parse(sessionStorage.getItem("rt-vortex") || "null");
     sessionStorage.removeItem("rt-vortex");
     if (v && Date.now() - v.t < 4000 && !reduce) {
-      place(window.innerWidth / 2, window.innerHeight / 2);
-      vortex.classList.add("out");
       vortex.addEventListener("animationend", function () { vortex.classList.remove("out"); }, { once: true });
     }
   } catch (e) {}
-  /* fin de l'arrivee en tourbillon (lancee par la classe rt-arrive posee dans <head>) */
+  /* arrivee : on ressort du logo de la page (data-portal), sinon du centre de l'ecran */
   if (root.classList.contains("rt-arrive")) {
-    var done = function () { root.classList.remove("rt-arrive"); };
+    var ox = window.innerWidth / 2, oy = window.innerHeight / 2;
+    var portal = document.querySelector("[data-portal]");
+    if (portal) {
+      body.style.transform = "none";              /* mesure sans le zoom d'attente */
+      var pr = portal.getBoundingClientRect();
+      body.style.transform = "";
+      if (pr.width) { ox = pr.left + pr.width / 2; oy = pr.top + pr.height / 2; }
+    }
+    body.style.transformOrigin = ox + "px " + (oy + window.pageYOffset) + "px";
+    place(ox, oy);
+    vortex.classList.remove("out"); void vortex.offsetWidth; vortex.classList.add("out");
+    var done = function () {
+      root.classList.remove("rt-arrive"); body.classList.remove("spin-in"); body.style.transformOrigin = "";
+    };
     body.addEventListener("animationend", function (ev) { if (ev.target === body) done(); }, { once: true });
-    setTimeout(done, 1200);
+    void body.offsetWidth;
+    body.classList.add("spin-in");
+    setTimeout(done, 1400);
   }
 
   [].slice.call(document.querySelectorAll("a[data-vortex]")).forEach(function (a) {

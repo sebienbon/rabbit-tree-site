@@ -211,7 +211,7 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{og}">
 <meta name="theme-color" content="#f2d98c">
-<script>try{{var v=JSON.parse(sessionStorage.getItem("rt-vortex")||"null");if(v&&Date.now()-v.t<4000&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.className+=" rt-arrive"}}catch(e){{}}</script>
+<script>try{{var v=JSON.parse(sessionStorage.getItem("rt-vortex")||"null");if(v&&Date.now()-v.t<4000&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){{document.documentElement.className+=" rt-arrive";setTimeout(function(){{document.documentElement.classList.remove("rt-arrive")}},2500)}}}}catch(e){{}}</script>
 </head>
 <body class="{bodyclass}">
 <a class="skip" href="#main">Skip to content</a>
@@ -261,7 +261,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=20",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=21",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -269,7 +269,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=19", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=20", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -391,7 +391,7 @@ def build_room(r):
                   [[r["sleeps"], r["beds"], r["air"], r["bath"]]])
     body = """<p class="crumb"><a href="[[home]]">Home</a> &rsaquo; <a href="[[rooms]]">Rooms</a> &rsaquo; {name}</p>
 <div class="room-hero">
-  <img class="room-badge" src="images/{badge}" alt="{name} room badge">
+  <img class="room-badge" src="images/{badge}" alt="{name} room badge" data-portal>
   <div>
     <span class="cat" style="font-family:var(--f-hand);font-weight:700;font-size:1.4rem;letter-spacing:.1em">{cat}</span>
     <h1>{name}</h1>

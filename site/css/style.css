@@ -300,26 +300,28 @@ body.home main { max-width: none; padding: 0 0 40px; }
   80% { opacity: 1; }
   100% { transform: translate(-50%, -50%) scale(.02) rotate(-420deg); opacity: 0; }
 }
-/* toute la fenetre tourne : la page s'enroule dans le dessin clique,
-   la suivante se deroule au centre de l'ecran. Le fond qui apparait derriere = l'encre. */
-html.rt-spin, html.rt-arrive { background: #1f1c17; overflow-x: hidden; }
-html.rt-spin body { will-change: transform; }
-body.spin-out { animation: page-out .72s cubic-bezier(.6,0,.85,.35) forwards; }
+/* on entre dans le dessin : toute la fenetre tourne en plongeant vers le dessin clique
+   (zoom avant), puis la page suivante sort du logo de la chambre (ou du centre de l'ecran)
+   en tournant et en reculant jusqu'a sa taille reelle. Le centre est pose par main.js. */
+html.rt-spin, html.rt-arrive { background: #1f1c17; overflow: hidden; }
+html.rt-spin body, html.rt-arrive body { will-change: transform; }
+body.spin-out { animation: page-out .75s cubic-bezier(.55,0,.9,.4) forwards; }
 @keyframes page-out {
-  0% { transform: rotate(0deg) scale(1); opacity: 1; }
-  100% { transform: rotate(-200deg) scale(.06); opacity: .15; }
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(-220deg) scale(9); }
 }
-/* arrivee : fonctionne sans JavaScript (la classe est posee dans <head>) */
-html.rt-arrive body { transform-origin: 50vw 50vh; animation: page-in .85s cubic-bezier(.2,.65,.35,1) both; }
+/* arrivee : la page attend, plongee dans son logo, que main.js lance le recul */
+html.rt-arrive body { transform-origin: 50vw 50vh; transform: rotate(220deg) scale(9); }
+html.rt-arrive body.spin-in { animation: page-in .95s cubic-bezier(.12,.6,.3,1) forwards; }
 @keyframes page-in {
-  0% { transform: rotate(200deg) scale(.06); opacity: 0; }
-  60% { opacity: 1; }
-  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+  0% { transform: rotate(220deg) scale(9); }
+  100% { transform: rotate(0deg) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .scene .fx-turn img, .scene .fx-bob img { animation: none; }
-  body.spin-out, html.rt-arrive body { animation: none; }
+  body.spin-out, html.rt-arrive body.spin-in { animation: none; }
+  html.rt-arrive body { transform: none; }
   #vortex.in { animation: vortex-fade .3s ease forwards; transform: translate(-50%, -50%) scale(1); }
   #vortex.out { animation: vortex-fade .3s ease reverse forwards; transform: translate(-50%, -50%) scale(1); }
   @keyframes vortex-fade { from { opacity: 0; } to { opacity: 1; } }
