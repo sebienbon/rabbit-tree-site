@@ -277,10 +277,17 @@
   });
 })();
 
-/* 7. Accueil : jusqu'ou tombe le nom d'un dessin quand on le survole (juste sous le bas de l'ecran) */
+/* 7. Accueil : le saut du nom (hauteur, cote au hasard) et jusqu'ou il tombe d'un dessin quand on le survole (juste sous le bas de l'ecran) */
 [].slice.call(document.querySelectorAll(".scene .spot .cap")).forEach(function (cap) {
   cap.parentNode.addEventListener("mouseenter", function () {
     var top = cap.parentNode.getBoundingClientRect().top + cap.offsetTop;
     cap.style.setProperty("--fall", Math.max(120, window.innerHeight - top + 60) + "px");
+    /* hauteur, cote et rotation tires au hasard, dans des limites raisonnables */
+    var side = Math.random() < .5 ? -1 : 1, jx = side * (50 + Math.random() * 130);
+    cap.style.setProperty("--jy", -(200 + Math.random() * 140) + "px");
+    cap.style.setProperty("--jx", jx + "px");
+    cap.style.setProperty("--fx", jx * (1.6 + Math.random() * .8) + "px");
+    cap.style.setProperty("--r1", side * (6 + Math.random() * 14) + "deg");
+    cap.style.setProperty("--r2", side * (25 + Math.random() * 50) + "deg");
   });
 });

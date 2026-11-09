@@ -235,9 +235,10 @@ body.home main { max-width: none; padding: 0 0 40px; }
 }
 @keyframes cap-fly {
   0%   { opacity: 1; transform: translate(-50%, 2px) rotate(0deg); animation-timing-function: cubic-bezier(.1,.9,.35,1); }
-  20%  { opacity: 1; transform: translate(-50%, -156px) rotate(-7deg); animation-timing-function: cubic-bezier(.55,0,.9,.5); }
-  100% { opacity: 1; transform: translate(-50%, var(--fall, 110vh)) rotate(24deg); }
+  20%  { opacity: 1; transform: translate(calc(-50% + var(--jx, 40px)), var(--jy, -240px)) rotate(var(--r1, -8deg)); animation-timing-function: cubic-bezier(.55,0,.9,.5); }
+  100% { opacity: 1; transform: translate(calc(-50% + var(--fx, 90px)), var(--fall, 110vh)) rotate(var(--r2, 24deg)); }
 }
+
 
 
 /* petites vies propres a certains dessins */
