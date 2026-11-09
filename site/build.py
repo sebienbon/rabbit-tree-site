@@ -127,19 +127,18 @@ def ul(items):
 
 
 def banner_of(key):
+    """Photo pleine largeur, toujours montree en entier (jamais rognee).
+    Hauteur limitee a ~560 px : une photo haute est simplement moins large."""
     b = PAGE_MEDIA.get(key, {}).get("banner")
     if not b:
         return ""
     f, a = b[0], b[1]
-    keep = b[2] if len(b) > 2 else 1.0
-    if keep and keep < 1.0:
-        dims = _MAN_BY_FILE.get(f)
-        if dims:
-            nw, nh = dims
-            style = ' style="aspect-ratio:{w}/{h};object-fit:cover;object-position:center;height:auto"'.format(
-                w=nw, h=int(round(nh * keep)))
-            return '<div class="banner"><img src="images/{f}" alt="{a}" loading="eager"{s}></div>'.format(f=f, a=esc(a), s=style)
-    return '<div class="banner"><img src="images/{f}" alt="{a}" loading="eager"></div>'.format(f=f, a=esc(a))
+    from PIL import Image
+    with Image.open(os.path.join(HERE, "images", f)) as im:
+        w, h = im.size
+    maxw = min(1080, int(560 * w / h))
+    return ('<div class="banner" style="max-width:{m}px"><img src="images/{f}" alt="{a}" width="{w}" height="{h}" '
+            'loading="eager"></div>').format(m=maxw, f=f, a=esc(a), w=w, h=h)
 
 
 def gal_of(key, title="In pictures"):
