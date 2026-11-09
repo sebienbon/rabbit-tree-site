@@ -528,7 +528,7 @@ def build_howto():
 <div class="note">The Rabbit Tree team works hard to get you the best prices and keep you away from scams.
 Check our offers and contact us, we will make the booking for you.</div>
 <h2>Coming to Gili Meno</h2>
-<h3>From Bali (South Bali, Amed, Sanur, Nusa Penida/Lembongan...)</h3>
+<h3>From Bali (South Bali, Amed, Sanur, Nusa Penida...)</h3>
 """ + ul(["Every day: a minibus picks you up in the biggest cities of Bali to reach Padang Bai.",
           "Then a daily ferry to Gili Trawangan (or Gili Air), and a local boat on to Gili Meno.",
           "We have the cheapest prices possible, have a look and ask us."]) + """
@@ -590,9 +590,7 @@ TRANSPORT = {
          ["Fast boat Bali &harr; Gili Meno (Wijaya)", ("[[$-Wijaya bali +Pick up (P&S)|550K]]",), "One way, with pick up in Bali"]]),
     "elsewhere": table(["Destination", "Price", "How"],
         [["Sanur (Bali) or Nusa Penida", ("[[$-Wijaya Meno/ Nusa Penida/Sanur|550K]]",), "Fast boat from Gili Meno"],
-         ["Lembongan", ("375K",), "Fast boat"],
-         ["Amed", "Not available now", ""],
-         ["Flores (Labuan Bajo)", ("850K",), "26 hours, bus and ferries"]]),
+         ["Amed", "Not available now", ""]]),
 }
 
 
@@ -620,7 +618,6 @@ back to Bali, and it is an open date return, so you do not need to decide when y
 """ + TRANSPORT["bali"] + """
 <p>You can also go directly to and from other places in Bali:</p>
 """ + TRANSPORT["elsewhere"] + """
-<div class="note">You are adventurous? A cheap way to reach Flores: a 26 hour trip including bus and ferries for 850K.</div>
 <div class="btn-row"><a class="btn hot" href="mailto:{mail}?subject=Transport%20booking">Ask us to book a ticket</a>
 <a class="btn primary" href="{wa}">WhatsApp us</a></div>
 </section>
