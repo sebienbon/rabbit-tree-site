@@ -64,6 +64,13 @@ def main():
     req = urllib.request.Request(URL, headers={"User-Agent": "Mozilla/5.0 (RabbitTreeHostel timetable)"})
     html = urllib.request.urlopen(req, timeout=60).read().decode("utf-8", "ignore")
     rows = parse(html)
+    if "--debug" in sys.argv:
+        print(len(html), html.count("<table"), html.count("<tr"), html.count("<td"))
+        for k in ("admin-ajax", "tablepress", "data-tab", "elementor-tab", "e-n-tab", "jet-", "wpdt", "ninja_table"):
+            print(k, html.count(k))
+        i = html.find("<table"); print(html[i:i + 3000])
+        j = html.find("<table", i + 10); print("SECOND", html[j - 800:j + 1500] if j > 0 else None)
+        for r in Rows.__new__(Rows) and []: pass
     mine = [r for r in rows if HOME in (r["from"].lower(), r["to"].lower())
             and not any(s in (r["from"] + r["to"]).lower() for s in SKIP)]
     # dedoublonnage + tri par heure de depart
