@@ -261,7 +261,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=23",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=24",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -269,7 +269,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=22", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=23", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 

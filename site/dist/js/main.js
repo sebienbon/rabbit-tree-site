@@ -101,40 +101,83 @@
     }
     body.style.transformOrigin = ox + "px " + (oy + window.pageYOffset) + "px";
     place(ox, oy);
-    vortex.classList.remove("out"); void vortex.offsetWidth; vortex.classList.add("out");
     var done = function () {
       root.classList.remove("rt-arrive"); body.classList.remove("spin-in"); body.style.transformOrigin = "";
     };
     body.addEventListener("animationend", function (ev) { if (ev.target === body) done(); }, { once: true });
-    void body.offsetWidth;
-    body.classList.add("spin-in");
-    setTimeout(done, 1400);
+    /* on attend que la page soit dessinee (logo + polices) pour que le recul soit fluide */
+    var ready = [];
+    if (portal && portal.decode) ready.push(portal.decode().catch(function () {}));
+    if (document.fonts && document.fonts.ready) ready.push(document.fonts.ready);
+    Promise.race([Promise.all(ready), wait(700)]).then(function () {
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        vortex.classList.remove("out"); void vortex.offsetWidth; vortex.classList.add("out");
+        body.classList.add("spin-in");
+        setTimeout(done, 1400);
+      }); });
+    });
   }
 
+  /* la page suivante est chargee a l'avance (HTML + ses premieres images) des qu'on
+     survole ou touche un dessin ; au clic, le petit tourbillon tourne tant qu'elle n'est pas prete. */
+  var cache = {};
+  function preload(href) {
+    if (cache[href]) return cache[href];
+    cache[href] = fetch(href, { credentials: "same-origin" }).then(function (res) { return res.text(); }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html"), base = new URL(href, location.href);
+      var imgs = [].slice.call(doc.querySelectorAll("[data-portal], main img:not([loading=lazy]), .trunk, .scene img"))
+        .slice(0, 8).map(function (im) { return new URL(im.getAttribute("src"), base).href; });
+      return Promise.all(imgs.map(function (src) {
+        return new Promise(function (ok) {
+          var i = new Image(); i.onload = i.onerror = function () { ok(); }; i.src = src;
+          if (i.decode) i.decode().then(ok, ok);
+        });
+      }));
+    }).catch(function () {});
+    return cache[href];
+  }
+  function wait(ms) { return new Promise(function (ok) { setTimeout(ok, ms); }); }
+  var seed = document.createElement("div");
+  seed.id = "vortex-seed"; seed.setAttribute("aria-hidden", "true");
+  seed.innerHTML = '<svg viewBox="0 0 100 100"><path d="' + spiralPath(0) + '" fill="none" stroke="#1c1a17" stroke-width="5" stroke-linecap="round"/></svg>';
+  root.appendChild(seed);
+
   [].slice.call(document.querySelectorAll("a[data-vortex]")).forEach(function (a) {
+    var href0 = a.getAttribute("href");
+    if (!href0 || href0.charAt(0) === "#") return;
+    ["pointerenter", "touchstart", "focus"].forEach(function (ev) {
+      a.addEventListener(ev, function () { preload(a.href); }, { passive: true, once: true });
+    });
     a.addEventListener("click", function (e) {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
-      var href = a.getAttribute("href");
-      if (!href || href.charAt(0) === "#") return;
       e.preventDefault();
+      if (a.classList.contains("opening")) return;
+      var href = a.href;
       var r = a.getBoundingClientRect();
       var x = r.left + r.width / 2, y = r.top + r.height / 2;
       var go = function () { window.location.href = href; };
       if (reduce) { remember(x, y); go(); return; }
-      /* 1er mouvement : sur l'arbre, la spirale du medaillon s'ouvre en tournant */
-      var delay = 0;
-      if (a.querySelector(".swirl")) { a.classList.add("opening"); delay = 380; }
-      setTimeout(function () {
-        /* 2e mouvement : le vortex part du dessin et grandit en tournant jusqu'a couvrir la page */
-        place(x, y);
-        vortex.classList.remove("out", "in"); void vortex.offsetWidth; vortex.classList.add("in");
-        /* ... et toute la page s'enroule autour du dessin clique */
-        body.style.transformOrigin = x + "px " + (y + window.pageYOffset) + "px";
-        root.classList.add("rt-spin");
-        body.classList.add("spin-out");
-        remember(x, y);
-        setTimeout(go, 680);
-      }, delay);
+      /* 1er mouvement : le tourbillon du dessin tourne... jusqu'a ce que la page suivante soit prete */
+      a.classList.add("opening");
+      if (!a.querySelector(".swirl")) {
+        seed.style.left = x + "px"; seed.style.top = y + "px";
+        seed.style.width = seed.style.height = Math.max(44, Math.min(90, Math.min(r.width, r.height) * .6)) + "px";
+        seed.classList.add("spinning");
+      }
+      Promise.all([wait(420), Promise.race([preload(href), wait(5000)])]).then(function () {
+        requestAnimationFrame(function () {
+          seed.classList.remove("spinning");
+          /* 2e mouvement : le vortex part du dessin et grandit en tournant jusqu'a couvrir la page */
+          place(x, y);
+          vortex.classList.remove("out", "in"); void vortex.offsetWidth; vortex.classList.add("in");
+          /* ... et toute la page s'enroule autour du dessin clique */
+          body.style.transformOrigin = x + "px " + (y + window.pageYOffset) + "px";
+          root.classList.add("rt-spin");
+          body.classList.add("spin-out");
+          remember(x, y);
+          setTimeout(go, 680);
+        });
+      });
     });
   });
   /* retour arriere depuis la page suivante : ne pas rester sur un ecran couvert */
@@ -144,6 +187,7 @@
       body.classList.remove("spin-out"); root.classList.remove("rt-spin", "rt-arrive"); body.style.transformOrigin = "";
     }
     [].slice.call(document.querySelectorAll(".opening")).forEach(function (x) { x.classList.remove("opening"); });
+    seed.classList.remove("spinning");
   });
 
   /* --- 6. prix en direct : feuille "Data activities" (colonnes A et B) via le fichier relais public.

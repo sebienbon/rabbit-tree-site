@@ -279,8 +279,13 @@ body.home main { max-width: none; padding: 0 0 40px; }
 .node .cap em { font-style: normal; color: var(--accent); }
 .node a.hit:hover, .node a.hit:focus-visible { transform: scale(1.08); }
 .node a.hit:hover .swirl, .node a.hit:focus-visible .swirl, .node a.hit.opening .swirl { opacity: 1; }
-.node a.hit.opening .swirl { animation: swirl-open .5s cubic-bezier(.5,0,.8,.4) forwards; }
-@keyframes swirl-open { to { transform: rotate(-300deg) scale(.9); } }
+.node a.hit.opening .swirl { animation: swirl-spin .8s linear infinite; }
+@keyframes swirl-spin { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+/* le petit tourbillon qui tourne sur un dessin de l'accueil pendant que la page suivante se charge */
+#vortex-seed { position: fixed; z-index: 9998; pointer-events: none; transform: translate(-50%, -50%); opacity: 0; transition: opacity .15s; }
+#vortex-seed svg { display: block; width: 100%; height: 100%; }
+#vortex-seed.spinning { opacity: 1; }
+#vortex-seed.spinning svg { animation: swirl-spin .8s linear infinite; }
 
 /* les racines (dessinees par main.js) : derriere les cartes, encre du tronc */
 .rooted { position: relative; }
