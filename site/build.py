@@ -114,12 +114,23 @@ def price_spans(html):
 
 
 def esc(s):
-    return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    # les entites deja ecrites (&rarr;, &harr;...) restent telles quelles
+    return re.sub(r"&(?![a-zA-Z]+;|#\d+;)", "&amp;", str(s)).replace("<", "&lt;").replace(">", "&gt;")
 
 
 def para(text, cls=""):
     parts = [p.strip() for p in str(text).split("\n\n") if p.strip()]
     return "".join('<p class="{}">{}</p>'.format(cls, esc(p)) if cls else "<p>{}</p>".format(esc(p)) for p in parts)
+
+
+def fiche(kicker, title, img, price, chips, text):
+    """Une fiche d'activite : photo ronde, titre, etiquette de prix, reperes rapides, texte (avec **surlignage**)."""
+    hl = lambda s: re.sub(r"\*\*(.+?)\*\*", r'<mark>\1</mark>', esc(s))
+    tag = '<span class="tag">{}{}</span>'.format(price[0], '<small>{}</small>'.format(esc(price[1])) if price[1] else "")
+    return ('<article class="fiche"><img class="fiche-img" src="images/{}" alt="{}" loading="lazy">'
+            '<div class="fiche-body"><p class="kicker">{}</p><h3>{}</h3>{}'
+            '<ul class="chips">{}</ul><p>{}</p></div></article>').format(
+        img, esc(title), esc(kicker), esc(title), tag, "".join("<li>{}</li>".format(c) for c in chips), hl(text))
 
 
 def ul(items):
@@ -261,7 +272,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=31",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=32",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -277,10 +288,34 @@ DEFAULT_DESC = ("The Rabbit Tree Hostel, Gili Meno: creative rooms, a ball pit b
                 "to and from Bali and Lombok, daily activities and Komodo or Rinjani adventures.")
 
 
+STATIC_PRICE = re.compile(r"(?<![\w.,/-])(\d{1,3}(?:[.,]\d{3})*\s?(?:K|IDR)|Rp\s?\d{1,3}(?:[.,]\d{3})+)(?![\w])")
+
+
+def static_prices(html):
+    """Les prix ecrits en dur (40K, 25K, 150,000 IDR...) prennent aussi l'etiquette verte, dans <main> seulement."""
+    a = html.find("<main"); z = html.find("</main>")
+    if a < 0 or z < 0:
+        return html
+    main = html[a:z]
+    out, depth = [], 0
+    for part in re.split(r"(<[^>]+>)", main):
+        if part.startswith("<"):
+            if re.match(r'<span class="px"', part): depth += 1
+            elif depth and part == "</span>": depth -= 1
+            if re.match(r"<(script|style|title)", part): depth += 100
+            if re.match(r"</(script|style|title)", part): depth -= 100
+            out.append(part)
+        elif depth:
+            out.append(part)
+        else:
+            out.append(STATIC_PRICE.sub(r'<span class="px">\1</span>', part))
+    return html[:a] + "".join(out) + html[z:]
+
+
 def write(rel_path, title, body, desc="", bodyclass="page"):
     out = os.path.join(DIST, rel_path)
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(price_spans(render(rel_path, title, body, desc, bodyclass)))
+    open(out, "w", encoding="utf-8").write(static_prices(price_spans(render(rel_path, title, body, desc, bodyclass))))
     return rel_path
 
 
@@ -659,34 +694,42 @@ def build_activities():
     ]) + """
 </div></section>
 <section><h2>You would like to do some good things?</h2>
-<div class="grid c2">
-""" + "".join('<div class="card"><h3>{}</h3>{}</div>'.format(esc(t), para(b)) for t, b in [
-        ("Visit the turtle sanctuary", "It's a place near the beach with 4 small pools. The aim is to collect the eggs from the shore before predators eat them, grow the little turtles until they are about 1 year old, and release them in their natural environment. Thanks to this work, we still have a lot of turtles around Gili Meno. You can support this with a small donation."),
-        ("Join the Trash Heroes", "Meet locals and tourists every Sunday around 3.30pm at the Brotherhood and walk together to collect the trash. It will be an unforgettable moment to share with locals! They also take care of the trash bins around the island, so be sure to throw your waste in one of those."),
+<div class="fiches">
+""" + "".join(fiche(*f) for f in [
+        ("Good things to do", "Visit the turtle sanctuary", "img-91d2743badcb18.webp", ("Small donation", ""), ["Near the beach", "4 pools", "Baby turtles"],
+         "It's a place near the beach with 4 small pools. The aim is to collect the eggs from the shore before predators eat them, **grow the little turtles until they are about 1 year old, and release them** in their natural environment. Thanks to this work, we still have a lot of turtles around Gili Meno. You can support this with a small donation."),
+        ("Good things to do", "Join the Trash Heroes", "img-a0bea03d339020.webp", ("Free", ""), ["Every Sunday", "3.30pm", "At the Brotherhood"],
+         "Meet locals and tourists **every Sunday around 3.30pm** at the Brotherhood and walk together to collect the trash. It will be an unforgettable moment to share with locals! They also take care of the trash bins around the island, so be sure to throw your waste in one of those."),
     ]) + """
 </div></section>
-<section><h2>The main activity on the island: snorkelling</h2>
-""" + para("Good news! All the best snorkelling spots are around Gili Meno. You can rent a mask from us at the "
-           "reception for [[$Snorkeling Mask|30K]] and go to swim with the turtles. We will help you to find the best spots on the "
-           "surrounding reefs, including the famous underwater statues. Or for only [[$-Snorkeling Trip|150K]] "
-           "you can book a 3 hours boat trip. With a maximum of 15 people per boat, a local "
-           "expert will guide you through 4 locations including the statues, the wreck and 2 turtles spots.") + """
-<h2>You liked snorkelling? Ok, let's go deeper: diving</h2>
-""" + para("The Gilis are part of the best spots in the world for diving, with an exceptionally warm and clear "
-           "water, and slow current. Don't miss that! You can book through us for a dive with Divine Divers. They "
-           "offer the best services quality, and work in a good atmosphere. They organize discovery dives, fun "
-           "dives and diving certificate. Let us know if you want to book in advance. (we offer the same prices "
-           "as the club)") + """
-<h2>You want to do an unforgettable ride? Horse riding</h2>
-""" + para("For [[$-Horse Riding|400K]] per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. "
-           "You can go in the morning or in the afternoon to admire the sunset. In both cases, you will stop at "
-           "some lovely points to take incredible pictures. Departure and arrival at Rabbit Tree.") + """
-<h2>You can also go fishing — you have 2 options...</h2>
-""" + para("Private fishing trip: for [[$-Private Fishing Trip (2 people)/2|350K]] per person (2 people), go for a 3 hours boat trip and try two fishing techniques "
-           "— bottom fishing (to catch groupers, snappers, and more) and crowling fishing (to catch barracudas, "
-           "giant trevally, even sometimes tunas).") + """
-""" + para("Spearfishing: for [[$-Spearfishing|380K]] per person, go with a guide who will teach you spearfishing during 3 hours. "
-           "You will leave directly from the beach to catch different kinds of local fish, or maybe octopus.") + """
+<section><h2>On the water, under the water</h2>
+<div class="fiches">
+""" + "".join(fiche(*f) for f in [
+        ("The main activity on the island", "Snorkelling", "img-642eb4c7a81abb.webp", ("[[$-Snorkeling Trip|150K]]", "boat trip"), ["3 hours", "Max 15 people", "4 spots", "Mask [[$Snorkeling Mask|30K]]"],
+         "Good news! All the best snorkelling spots are around Gili Meno. You can rent a mask from us at the "
+         "reception for [[$Snorkeling Mask|30K]] and go to swim with the turtles. We will help you to find the best spots on the "
+         "surrounding reefs, including the famous underwater statues. Or for only [[$-Snorkeling Trip|150K]] "
+         "you can book a 3 hours boat trip. With a maximum of 15 people per boat, a local "
+         "expert will guide you through **4 locations including the statues, the wreck and 2 turtles spots**."),
+        ("You liked snorkelling? Let's go deeper", "Diving", "img-a547bb719d71a2.webp", ("Club prices", ""), ["Discovery dives", "Fun dives", "Certificates"],
+         "The Gilis are part of the best spots in the world for diving, with an exceptionally warm and clear "
+         "water, and slow current. Don't miss that! You can book through us for a dive with Divine Divers. They "
+         "offer the best services quality, and work in a good atmosphere. They organize discovery dives, fun "
+         "dives and diving certificate. Let us know if you want to book in advance. (we offer the same prices "
+         "as the club)"),
+        ("An unforgettable ride", "Horse riding", "img-b56438840f5c97.webp", ("[[$-Horse Riding|400K]]", "per person"), ["1h – 1h30", "Morning or sunset", "From the hostel"],
+         "For [[$-Horse Riding|400K]] per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. "
+         "You can go in the morning or in the afternoon to **admire the sunset**. In both cases, you will stop at "
+         "some lovely points to take incredible pictures. Departure and arrival at Rabbit Tree."),
+        ("Fishing, option 1", "Private fishing trip", "img-b53dddc746eb67.webp", ("[[$-Private Fishing Trip (2 people)/2|350K]]", "per person"), ["3 hours", "2 people", "2 techniques"],
+         "Private fishing trip: for [[$-Private Fishing Trip (2 people)/2|350K]] per person (2 people), go for a 3 hours boat trip and try two fishing techniques "
+         "— bottom fishing (to catch groupers, snappers, and more) and crowling fishing (to catch **barracudas, "
+         "giant trevally, even sometimes tunas**)."),
+        ("Fishing, option 2", "Spearfishing", "img-138645e042cd2d.webp", ("[[$-Spearfishing|380K]]", "per person"), ["3 hours", "With a guide", "From the beach"],
+         "Spearfishing: for [[$-Spearfishing|380K]] per person, go with a guide who will **teach you spearfishing** during 3 hours. "
+         "You will leave directly from the beach to catch different kinds of local fish, or maybe octopus."),
+    ]) + """
+</div>
 <h2>More trips from the reception</h2>
 """ + table(["Trip", "Price"], [
         ["Sunset boat", ("[[$-Sunset Boat|250K]]",)],

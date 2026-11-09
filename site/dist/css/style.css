@@ -438,7 +438,56 @@ th { font-family: var(--f-hand); font-weight: 700; font-size: 1.35rem; letter-sp
   td, th { overflow-wrap: anywhere; }
 }
 @media (max-width: 380px) { td.price { white-space: normal; } }
-td.price { white-space: nowrap; font-family: var(--f-hand); font-weight: 700; font-size: 1.3rem; color: var(--accent); }
+td.price { white-space: nowrap; }
+
+/* ---------- les prix : une etiquette verte, comme accrochee a la main ---------- */
+.px, td.price .px {
+  display: inline-block; white-space: nowrap; vertical-align: .05em;
+  font: 700 1.3em/1 var(--f-hand); letter-spacing: .03em; color: #fff8e3;
+  background: var(--accent); padding: .1em .42em .14em; margin: 0 .08em;
+  border-radius: .5em .25em .55em .3em; transform: rotate(-2.5deg);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+td.price { font-size: 1.05rem; }
+td.price .px { font-size: 1.35rem; }
+/* un mot-cle surligne au feutre */
+mark {
+  color: inherit; padding: 0 .12em; border-radius: .3em .1em .4em .15em;
+  background: linear-gradient(100deg, rgba(255,226,92,0) 0, rgba(255,214,64,.85) 4%, rgba(255,222,84,.75) 92%, rgba(255,226,92,0) 100%);
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+
+/* ---------- fiches d'activite : photo, titre, prix, reperes, texte ---------- */
+.fiches { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 26px; margin: 10px 0 34px; }
+.fiche {
+  position: relative; display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 18px; align-items: start;
+  background: rgba(255, 248, 224, .82); border: 2px solid var(--ink); border-radius: 16px 10px 18px 12px;
+  padding: 18px 18px 16px; box-shadow: 4px 4px 0 rgba(28,26,23,.22);
+}
+.fiche-img { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; border: 3px solid var(--ink); box-shadow: 3px 3px 0 rgba(28,26,23,.18); }
+.fiche .kicker { margin: 0; padding-right: 128px; font: 700 1.2rem/1.1 var(--f-hand); letter-spacing: .06em; color: #1d6f78; }
+.fiche h3 { margin: 2px 0 8px; font: 400 1.85rem/1.05 var(--f-title); color: var(--ink-title); padding-right: 96px; }
+.fiche .tag {
+  position: absolute; top: -14px; right: 14px; display: flex; flex-direction: column; align-items: center;
+  background: var(--accent); color: #fff8e3; padding: 7px 12px 6px; border-radius: 12px 8px 14px 9px;
+  border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); transform: rotate(4deg);
+  font: 700 1.75rem/1 var(--f-hand); letter-spacing: .03em; text-align: center;
+}
+.fiche .tag .px { all: unset; }
+.fiche .tag small { font: 700 .95rem/1 var(--f-hand); letter-spacing: .06em; opacity: .85; margin-top: 2px; }
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; padding: 0; }
+.chips li {
+  margin: 0; padding: 3px 10px 4px; border: 1.5px solid #1d6f78; border-radius: 999px; background: rgba(29,111,120,.1);
+  font: 700 1.12rem/1 var(--f-hand); letter-spacing: .04em; color: #164f55;
+}
+.chips li .px { font-size: 1.05em; box-shadow: 1px 1px 0 var(--ink); }
+.fiche p:last-child { margin: 0; font-size: 15px; line-height: 1.65; }
+@media (max-width: 560px) {
+  .fiche { grid-template-columns: minmax(0, 1fr); padding-top: 22px; }
+  .fiche-img { width: 100%; height: 170px; border-radius: 12px; }
+  .fiche h3, .fiche .kicker { padding-right: 0; }
+  .fiche .tag { top: -12px; right: 10px; }
+}
 
 /* ---------- footer ---------- */
 footer {
