@@ -274,7 +274,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=33",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=34",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -282,7 +282,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=28", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=29", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -1141,6 +1141,11 @@ def build_hostel_life():
     ]) + """
 </div>
 <div class="note">Drinking water, Lombok coffee and black tea are free for everyone, all day, in the common area.</div>
+</section>
+<section class="menu-live" id="menu" data-menu hidden>
+<h2>From our bar &amp; kitchen</h2>
+<p>Straight from our till, so the prices are always the right ones. Order at the bar, or put it on your room.</p>
+<div class="menu-cols"></div>
 </section>
 """ + gal_of("hostel-life", "In pictures") + """
 <section>

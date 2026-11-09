@@ -245,6 +245,55 @@
     }
   }
 
+  /* --- 6b. carte du bar et de la cuisine, en lecture seule : onglet "Menu" du fichier relais public,
+         rempli par la caisse (POS). Colonnes : Category | Item | Price | Web | Sort | Description.
+         Si l'onglet n'existe pas ou ne repond pas, la section reste cachee et les prix de repli restent. --- */
+  var menuBox = document.querySelector("[data-menu]"), posEls = [].slice.call(document.querySelectorAll(".px[data-pos]"));
+  if ((menuBox || posEls.length) && window.fetch) {
+    var MENU = "https://docs.google.com/spreadsheets/d/19A5y3XcOOgQ0mxiDxdueaXwKxcSGujh_5xpgT4QfocI/gviz/tq?tqx=out:csv&sheet=Menu";
+    var csv = function (text) {
+      var rows = [], row = [], cell = "", q = false;
+      for (var i = 0; i < text.length; i++) {
+        var c = text[i];
+        if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+        else if (c === '"') q = true; else if (c === ",") { row.push(cell); cell = ""; }
+        else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; } else if (c !== "\r") cell += c;
+      }
+      if (cell || row.length) { row.push(cell); rows.push(row); }
+      return rows;
+    };
+    var key = function (k) { return String(k).toLowerCase().replace(/[^a-z0-9]/g, ""); };
+    var kfmt = function (n) { return String(Math.round(n / 1000)).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "K"; };
+    var esc2 = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+    fetch(MENU).then(function (r) { return r.ok ? r.text() : Promise.reject(); }).then(function (text) {
+      var rows = csv(text);
+      var h = (rows[0] || []).map(key);
+      var ci = h.indexOf("category"), ii = h.indexOf("item"), pi = h.indexOf("price"), wi = h.indexOf("web"), si = h.indexOf("sort"), di = h.indexOf("description");
+      if (ci < 0 || ii < 0 || pi < 0) return;            /* pas (encore) d'onglet Menu : on ne touche a rien */
+      var items = rows.slice(1).map(function (r) {
+        return { cat: (r[ci] || "").trim(), name: (r[ii] || "").trim(), price: parseInt(String(r[pi] || "").replace(/[^\d]/g, ""), 10) || 0,
+                 web: wi < 0 || !/^(no|non|0|false|n)$/i.test((r[wi] || "").trim()), sort: parseFloat(r[si]) || 0, desc: di < 0 ? "" : (r[di] || "").trim() };
+      }).filter(function (x) { return x.name && x.price > 0; });
+      var byName = {};
+      items.forEach(function (x) { byName[key(x.name)] = x.price; });
+      posEls.forEach(function (el) { var v = byName[key(el.getAttribute("data-pos"))]; if (v) el.textContent = kfmt(v); });
+      if (!menuBox) return;
+      var cats = [], groups = {};
+      items.filter(function (x) { return x.web; }).sort(function (a, b) { return a.sort - b.sort; }).forEach(function (x) {
+        if (!groups[x.cat]) { groups[x.cat] = []; cats.push(x.cat); }
+        groups[x.cat].push(x);
+      });
+      if (!cats.length) return;
+      menuBox.querySelector(".menu-cols").innerHTML = cats.map(function (c) {
+        return '<div class="menu-cat"><h3>' + esc2(c || "Menu") + "</h3><ul>" + groups[c].map(function (x) {
+          return '<li><span class="mi">' + esc2(x.name) + (x.desc ? "<small>" + esc2(x.desc) + "</small>" : "") +
+                 '</span><span class="dots"></span><span class="px">' + kfmt(x.price) + "</span></li>";
+        }).join("") + "</ul></div>";
+      }).join("");
+      menuBox.hidden = false;
+    }).catch(function () {});
+  }
+
   /* --- 5. lightbox --- */
   var box = document.getElementById("lightbox");
   if (!box) return;

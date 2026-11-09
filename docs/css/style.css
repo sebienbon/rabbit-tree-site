@@ -519,3 +519,14 @@ footer {
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto; } }
 @media print { .nav, footer, .btn { display: none; } body { background: #fff; } }
+
+/* ---------- la carte du bar (remplie par main.js depuis la caisse) ---------- */
+.menu-cols { columns: 2 320px; column-gap: 34px; }
+.menu-cat { break-inside: avoid; margin: 0 0 22px; padding: 14px 18px 8px; border: 2px solid var(--ink); border-radius: 14px 9px 16px 10px; background: rgba(255,248,224,.82); box-shadow: 4px 4px 0 rgba(28,26,23,.2); }
+.menu-cat h3 { margin: 0 0 8px; font: 400 1.6rem/1.1 var(--f-title); color: var(--ink-title); }
+.menu-cat ul { list-style: none; margin: 0; padding: 0; }
+.menu-cat li { display: flex; align-items: baseline; gap: 8px; margin: 0 0 8px; }
+.menu-cat .mi { font-size: 15px; }
+.menu-cat .mi small { display: block; font-size: 12.5px; color: var(--ink-soft); }
+.menu-cat .dots { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-4px); min-width: 12px; }
+.menu-cat .px { font-size: 1.15em; }
