@@ -260,7 +260,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=18",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=19",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -434,7 +434,7 @@ def build_reservations():
 <div class="note">""" + esc(BOOKING_NOTE) + """</div>
 </section>
 <section id="book" class="book">
-<div class="beds24 tall"><iframe src="""" + BEDS24_PROP + """" title="Book The Rabbit Tree with Beds24" height="2000"></iframe></div>
+<div class="beds24 tall"><iframe src="{b24}" title="Book The Rabbit Tree with Beds24" height="2000"></iframe></div>
 </section>
 <section class="narrow">
 <p class="center">A question before you book? Write to us.</p>
@@ -462,7 +462,7 @@ def build_reservations():
 """
     for k, v in {"mail": HOSTEL["email"], "wa": HOSTEL["whatsapp"], "phone": HOSTEL["phone_display"],
                  "phone_link": "tel:" + HOSTEL["phone_tel"], "booking": HOSTEL["booking"],
-                 "hostelworld": HOSTEL["hostelworld"], "ta": HOSTEL["tripadvisor"]}.items():
+                 "hostelworld": HOSTEL["hostelworld"], "ta": HOSTEL["tripadvisor"], "b24": BEDS24_PROP}.items():
         body = body.replace("{" + k + "}", v)
     return write("reservations/index.html", "Reservations | The Rabbit Tree Hostel, Gili Meno", body,
                  "Book The Rabbit Tree Hostel directly and pay about 10% less than the booking websites.")
@@ -639,11 +639,16 @@ def build_activities():
           "Admire the sunrise or the sunset"]) + """
 </section>
 <section><h2>At the hostel, every day</h2>
-<div class="grid c3">
-""" + "".join('<div class="card"><h3>{}</h3></div>'.format(esc(a)) for a in [
-        "Movie night", "Yoga &amp; workout", "Sunset on the beach",
-        "Traditional dinner", "Games night",
-    ]).replace("&amp;amp;", "&amp;") + """
+<div class="daily">
+""" + "".join('<figure><img src="images/{}" alt="{}" style="object-position:{}" loading="lazy"><figcaption>{}</figcaption></figure>'.format(
+        f, esc(t), pos, esc(t)) for f, t, pos in [
+        # (photo, legende, point de cadrage : on garde les visages dans le cercle)
+        ("img-f2325222481be5.webp", "Movie night", "50% 55%"),
+        ("img-f6b5ed21da9b09.webp", "Yoga & workout", "45% 40%"),
+        ("img-b78e3e3fd11cef.webp", "Sunset on the beach", "70% 60%"),
+        ("img-baeed1388d8c8b.webp", "Traditional dinner", "60% 40%"),
+        ("img-08f0dcfb127468.webp", "Games night", "50% 40%"),
+    ]) + """
 </div></section>
 <section><h2>You would like to do some good things?</h2>
 <div class="grid c2">

@@ -175,8 +175,9 @@ section { margin-bottom: clamp(38px, 7vw, 72px); }
 .card h3 { margin: 0 0 4px; }
 .card .cat { font-family: var(--f-hand); font-weight: 700; letter-spacing: .1em; font-size: 1.15rem; color: var(--ink-soft); }
 .card p { margin: .5em 0 0; font-size: 16.5px; }
-.card .thumb { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 9px; border: 2px solid var(--ink); margin-bottom: 12px; background: var(--paper-lo); }
-.card .thumb img { width: 100%; height: 100%; object-fit: contain; }
+/* la vignette d'une carte prend le format de sa photo : ni bandes vides, ni recadrage */
+.card .thumb { overflow: hidden; border-radius: 9px; border: 2px solid var(--ink); margin-bottom: 12px; background: var(--paper-lo); }
+.card .thumb img { display: block; width: 100%; height: auto; }
 
 .note {
   border-left: 5px solid var(--ink); background: rgba(255, 248, 224, .6);
@@ -310,6 +311,12 @@ body.home main { max-width: none; padding: 0 0 40px; }
 .beds24 iframe { display: block; width: 100%; height: 720px; border: 0; }
 .beds24.tall iframe { height: 2000px; }
 @media (max-width: 600px) { .beds24 iframe { height: 900px; } .beds24.tall iframe { height: 2400px; } }
+/* activites du quotidien : photos rondes comme sur le Wix, cadrees sur les visages */
+.daily { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(14px, 3vw, 34px); margin: 8px 0 10px; }
+.daily figure { margin: 0; width: clamp(120px, 17vw, 168px); text-align: center; }
+.daily img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--ink); box-shadow: 3px 4px 0 rgba(28,26,23,.16); }
+.daily figcaption { margin-top: 6px; font: 700 1.45rem/1.1 var(--f-hand); color: var(--ink-title); }
+
 .price-line { font: 700 1.6rem/1.2 var(--f-hand); color: var(--accent); margin: 0 0 .4em; }
 
 /* ---------- banniere & figures ---------- */
@@ -330,20 +337,24 @@ body.home main { max-width: none; padding: 0 0 40px; }
 .specs b { display: inline-block; min-width: 92px; color: var(--accent); }
 
 /* ---------- galerie ---------- */
-.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
-.gal a { display: block; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--paper-lo); }
-.gal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: .25s; }
+/* galerie en colonnes (« mur de photos ») : chaque photo garde son format, rien n'est coupe */
+.gal { columns: 4 200px; column-gap: 12px; }
+.gal a { display: block; break-inside: avoid; margin-bottom: 12px; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--paper-lo); }
+.gal img { display: block; width: 100%; height: auto; transition: .25s; }
 .gal a:hover img { transform: scale(1.06); }
 
 /* ---------- pellicule & diaporama (modele Wix) ----------
+   2026-11-09 : Seb prefere des photos jamais coupees, vignettes comprises. La pellicule
+   garde une hauteur fixe et chaque vignette prend la largeur de sa photo (paysage large,
+   portrait etroit), comme une planche-contact. Le texte ci-dessous est l'ancienne regle.
    Arbitrage Seb (2026-10-31, fiche T-20261031-04) : la regle « aucune photo rognee »
    porte sur les photos montrees en entier (.banner, .stage .slide). Les miniatures de
    pellicule et de grille restent des carres recadres (object-fit: cover) : c'est ce que
    fait le Wix d'origine, et un contain produirait des vignettes de hauteurs inegales.
    La photo entiere est toujours accessible au clic (lightbox / pleine resolution). */
 .strip { display: flex; gap: 10px; overflow-x: auto; padding: 8px 4px 18px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
-.strip > a { flex: 0 0 auto; width: clamp(128px, 17vw, 184px); aspect-ratio: 1; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--paper-lo); scroll-snap-align: center; box-shadow: 3px 3px 0 rgba(28,26,23,.14); }
-.strip > a img { width: 100%; height: 100%; object-fit: cover; transition: .25s; }
+.strip > a { flex: 0 0 auto; height: clamp(96px, 13vw, 140px); border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--paper-lo); scroll-snap-align: center; box-shadow: 3px 3px 0 rgba(28,26,23,.14); }
+.strip > a img { display: block; height: 100%; width: auto; transition: .25s; }
 .strip > a:hover img { transform: scale(1.08); }
 .strip > a.active { outline: 3px solid var(--accent); outline-offset: 2px; }
 .strip::-webkit-scrollbar { height: 8px; }
