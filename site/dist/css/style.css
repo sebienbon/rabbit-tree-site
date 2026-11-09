@@ -229,17 +229,16 @@ body.home main { max-width: none; padding: 0 0 40px; }
 .scene .spot:hover img, .scene .spot:focus-visible img { transform: scale(1.07) rotate(-2deg); filter: drop-shadow(3px 4px 0 rgba(28,26,23,.18)); }
 .scene .spot:hover .cap, .scene .spot:focus-visible .cap { opacity: 1; transform: translate(-50%, 2px); }
 .scene .spot:focus-visible { outline: none; }
-/* au survol (souris) : le nom apparait, puis « piou » : il saute vers le haut et retombe jusqu'a sortir de l'ecran */
+/* au survol (souris) : « piou » : le nom saute aussitot vers le haut et retombe jusqu'a sortir de l'ecran */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .scene .spot:hover .cap { animation: cap-fly 2.1s forwards; }
+  .scene .spot:hover .cap { animation: cap-fly 1.6s forwards; }
 }
 @keyframes cap-fly {
-  0%   { opacity: 0; transform: translate(-50%, -4px) rotate(0deg); animation-timing-function: ease-out; }
-  14%  { opacity: 1; transform: translate(-50%, 2px) rotate(0deg); }
-  30%  { opacity: 1; transform: translate(-50%, 2px) rotate(0deg); animation-timing-function: cubic-bezier(.2,.7,.4,1); }
-  46%  { opacity: 1; transform: translate(-50%, -78px) rotate(-7deg); animation-timing-function: cubic-bezier(.55,0,.9,.5); }
+  0%   { opacity: 0; transform: translate(-50%, 2px) rotate(0deg); animation-timing-function: cubic-bezier(.2,.7,.4,1); }
+  22%  { opacity: 1; transform: translate(-50%, -78px) rotate(-7deg); animation-timing-function: cubic-bezier(.55,0,.9,.5); }
   100% { opacity: 1; transform: translate(-50%, var(--fall, 110vh)) rotate(24deg); }
 }
+
 
 /* petites vies propres a certains dessins */
 .scene .fx-turn img { animation: slow-turn 38s linear infinite; }
