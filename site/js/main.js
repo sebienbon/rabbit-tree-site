@@ -119,6 +119,54 @@
     [].slice.call(document.querySelectorAll(".opening")).forEach(function (x) { x.classList.remove("opening"); });
   });
 
+  /* --- 6. prix en direct : feuille "Data activities" (colonnes A et B) via le fichier relais public.
+         Le nom de la colonne A sert de cle ; la page garde son prix de repli si la feuille ne repond pas. --- */
+  var pxEls = [].slice.call(document.querySelectorAll(".px[data-price]"));
+  if (pxEls.length) {
+    var SHEET = "https://docs.google.com/spreadsheets/d/19A5y3XcOOgQ0mxiDxdueaXwKxcSGujh_5xpgT4QfocI/gviz/tq?tqx=out:csv";
+    var norm = function (k) { return String(k).toLowerCase().replace(/^\s*-\s*/, "").replace(/\s+/g, ""); };
+    var parseCsv = function (text) {
+      var rows = [], row = [], cell = "", q = false;
+      for (var i = 0; i < text.length; i++) {
+        var c = text[i];
+        if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+        else if (c === '"') q = true;
+        else if (c === ",") { row.push(cell); cell = ""; }
+        else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+        else if (c !== "\r") cell += c;
+      }
+      if (cell || row.length) { row.push(cell); rows.push(row); }
+      return rows;
+    };
+    var fmt = function (n, sample) {
+      var commas = function (x) { return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+      if (/IDR/i.test(sample)) return commas(n) + " IDR";
+      return commas(n / 1000) + "K";
+    };
+    var apply = function (prices) {
+      pxEls.forEach(function (el) {
+        var v = prices[norm(el.getAttribute("data-price"))];
+        if (!v) return;
+        var div = parseInt(el.getAttribute("data-div"), 10) || 1;
+        el.textContent = fmt(v / div, el.textContent);
+      });
+    };
+    var cached = null;
+    try { cached = JSON.parse(sessionStorage.getItem("rt-prices") || "null"); } catch (e) {}
+    if (cached && Date.now() - cached.t < 10 * 60 * 1000) apply(cached.p);
+    else if (window.fetch) {
+      fetch(SHEET).then(function (r) { return r.ok ? r.text() : Promise.reject(); }).then(function (text) {
+        var prices = {};
+        parseCsv(text).slice(1).forEach(function (r) {
+          var n = parseInt(String(r[1] || "").replace(/[^\d]/g, ""), 10);
+          if (r[0] && n > 0) prices[norm(r[0])] = n;
+        });
+        apply(prices);
+        try { sessionStorage.setItem("rt-prices", JSON.stringify({ t: Date.now(), p: prices })); } catch (e) {}
+      }).catch(function () {});
+    }
+  }
+
   /* --- 5. lightbox --- */
   var box = document.getElementById("lightbox");
   if (!box) return;

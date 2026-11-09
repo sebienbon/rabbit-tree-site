@@ -96,6 +96,23 @@ def all_photos(include_activities=True):
     return out
 
 
+import re as _re
+PRICE_TOKEN = _re.compile(r"\[\[\$([^|\]]+)\|([^\]]+)\]\]")
+
+
+def price_spans(html):
+    """[[$-Horse Riding|400K]] -> un prix que main.js remplace par celui de la feuille Data activities.
+    La valeur de repli reste dans la page (Google, visiteurs sans JavaScript)."""
+    def sub(m):
+        key, fallback = m.group(1), m.group(2)
+        div = "1"
+        if "/" in key and key.rsplit("/", 1)[1].isdigit():
+            key, div = key.rsplit("/", 1)
+        return '<span class="px" data-price="{}" data-div="{}">{}</span>'.format(
+            key.replace('"', "&quot;"), div, fallback)
+    return PRICE_TOKEN.sub(sub, html)
+
+
 def esc(s):
     return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -244,7 +261,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=17",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=18",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -252,7 +269,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=17", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=18", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -263,7 +280,7 @@ DEFAULT_DESC = ("The Rabbit Tree Hostel, Gili Meno: creative rooms, a ball pit b
 def write(rel_path, title, body, desc="", bodyclass="page"):
     out = os.path.join(DIST, rel_path)
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(render(rel_path, title, body, desc, bodyclass))
+    open(out, "w", encoding="utf-8").write(price_spans(render(rel_path, title, body, desc, bodyclass)))
     return rel_path
 
 
@@ -558,20 +575,22 @@ TRANSPORT = {
          ["Gili Air &rarr; Gili Meno", "8.30am, 3.00pm", ("85K, every hour",)]]),
     "lombok": table(["From / to", "Option", "Price"],
         [["Gili Meno &harr; Bangsal (Lombok)", "Public boat: from Gili Meno 8am, 3.30pm; from Bangsal 10am, 2pm, 5pm", ("25K",)],
-         ["Bangsal &harr; Mataram Airport", "Shuttle per person", ("140K",)],
-         ["Bangsal &harr; Mataram Airport", "Taxi, up to 3 people", ("350K",)],
-         ["Bangsal &harr; Kuta Lombok", "Shuttle per person", ("140K",)],
-         ["Bangsal &harr; Senggigi", "Shuttle per person", ("110K",)],
-         ["Bangsal &harr; Senggigi", "Taxi, up to 3 people", ("180K",)]]),
+         ["Bangsal &harr; Lombok Airport", "Shuttle per person", ("[[$-Shuttle bangsal Airport|170K]]",)],
+         ["Bangsal &harr; Lombok Airport", "Private taxi", ("[[$-Taxi Bangsal / Airport|500K]]",)],
+         ["Bangsal &harr; Kuta Lombok", "Shuttle per person", ("[[$-Shuttle Bangsal / Kuta|160K]]",)],
+         ["Bangsal &harr; Kuta Lombok", "Private taxi", ("[[$-Taxi Bangsal / Kuta|500K]]",)],
+         ["Bangsal &harr; Senggigi or Mataram", "Shuttle per person", ("[[$-Shuttle Senggigi or Mataram|115K]]",)],
+         ["Bangsal &harr; Senggigi", "Private taxi", ("[[$-Taxi Bangsal / Senggigi|250K]]",)],
+         ["Bangsal &harr; Tetebatu", "Private taxi", ("[[$-Taxi Tetebatu|450K]]",)],
+         ["Bangsal &harr; Selong Belanak", "Private taxi", ("[[$-Taxi bangsal to selong belanak|500K]]",)]]),
     "bali": table(["Ticket", "Price", "Notes"],
-        [["Return Bali &harr; Gili Meno", ("630K",), "Open date return, two departures a day"],
-         ["One way from Bali", ("325K",), "Pick up from 7am, boat around 9:30am"],
-         ["One way from the Gilis", ("350K",), "Second departure around 13:00, pick up 10am"],
-         ["Shuttle in Bali (Kuta, Seminyak, Canggu, Ubud, Jimbaran, Sanur Airport)", ("+100K",), "Per way"]]),
+        [["Fast boat Bali &harr; Gili Meno (Semaya)", ("[[$-Semaya Bali (no pick up)|430K]]",), "One way, boat only"],
+         ["Fast boat Bali &harr; Gili Meno (Semaya)", ("[[$-Semaya Bali + Pick up|530K]]",), "One way, with pick up in Bali"],
+         ["Fast boat Bali &harr; Gili Meno (Wijaya)", ("[[$-Wijaya bali(no pick,mn boat)|450K]]",), "One way, boat only"],
+         ["Fast boat Bali &harr; Gili Meno (Wijaya)", ("[[$-Wijaya bali +Pick up (P&S)|550K]]",), "One way, with pick up in Bali"]]),
     "elsewhere": table(["Destination", "Price", "How"],
-        [["Sanur (Bali)", ("400K",), "Fast boat from Gili Trawangan or Bangsal"],
+        [["Sanur (Bali) or Nusa Penida", ("[[$-Wijaya Meno/ Nusa Penida/Sanur|550K]]",), "Fast boat from Gili Meno"],
          ["Lembongan", ("375K",), "Fast boat"],
-         ["Nusa Penida", ("350K",), "Fast boat"],
          ["Amed", "Not available now", ""],
          ["Flores (Labuan Bajo)", ("850K",), "26 hours, bus and ferries"]]),
 }
@@ -639,9 +658,9 @@ def build_activities():
 </div></section>
 <section><h2>The main activity on the island: snorkelling</h2>
 """ + para("Good news! All the best snorkelling spots are around Gili Meno. You can rent a mask from us at the "
-           "reception for 30K and go to swim with the turtles. We will help you to find the best spots on the "
-           "surrounding reefs, including the famous underwater statues. Or for only 150K (175K if less than 3 "
-           "people on the boat) you can book a 3 hours boat trip. With a maximum of 15 people per boat, a local "
+           "reception for [[$Snorkeling Mask|30K]] and go to swim with the turtles. We will help you to find the best spots on the "
+           "surrounding reefs, including the famous underwater statues. Or for only [[$-Snorkeling Trip|150K]] "
+           "you can book a 3 hours boat trip. With a maximum of 15 people per boat, a local "
            "expert will guide you through 4 locations including the statues, the wreck and 2 turtles spots.") + """
 <h2>You liked snorkelling? Ok, let's go deeper: diving</h2>
 """ + para("The Gilis are part of the best spots in the world for diving, with an exceptionally warm and clear "
@@ -650,15 +669,21 @@ def build_activities():
            "dives and diving certificate. Let us know if you want to book in advance. (we offer the same prices "
            "as the club)") + """
 <h2>You want to do an unforgettable ride? Horse riding</h2>
-""" + para("For 400K per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. "
+""" + para("For [[$-Horse Riding|400K]] per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. "
            "You can go in the morning or in the afternoon to admire the sunset. In both cases, you will stop at "
            "some lovely points to take incredible pictures. Departure and arrival at Rabbit Tree.") + """
 <h2>You can also go fishing — you have 2 options...</h2>
-""" + para("Private fishing trip: for 350K per person, go for a 3 hours boat trip and try two fishing techniques "
+""" + para("Private fishing trip: for [[$-Private Fishing Trip (2 people)/2|350K]] per person (2 people), go for a 3 hours boat trip and try two fishing techniques "
            "— bottom fishing (to catch groupers, snappers, and more) and crowling fishing (to catch barracudas, "
            "giant trevally, even sometimes tunas).") + """
-""" + para("Spearfishing: for 380K per person, go with a guide who will teach you spearfishing during 3 hours. "
+""" + para("Spearfishing: for [[$-Spearfishing|380K]] per person, go with a guide who will teach you spearfishing during 3 hours. "
            "You will leave directly from the beach to catch different kinds of local fish, or maybe octopus.") + """
+<h2>More trips from the reception</h2>
+""" + table(["Trip", "Price"], [
+        ["Sunset boat", ("[[$-Sunset Boat|250K]]",)],
+        ["Night boat to Gili Trawangan", ("[[$-Gili T Night Boat|170K]]",)],
+        ["Senaru waterfall (2 people minimum)", ("[[$-Senaru Waterfall (2pax min)|400K]]",)],
+    ]) + """
 </section>
 <section class="narrow center">
 <h2>Who said there was nothing to do on this island?</h2>
@@ -680,10 +705,10 @@ def build_services():
 </section>
 <section>
 """ + table(["Service", "Price", "Details"], [
-        ["Laundry", ("30K / kg",), "We take care of your clothes"],
-        ["Towels", ("Free / 50K deposit",), "Free for guests in the couple bedrooms. Otherwise a 50K deposit, 30K given back after use"],
-        ["Snorkelling mask", ("30K / day",), "We indicate the spots on a map: turtles point, best corals, Bounty wreck. We do not rent fins, but shops next to the beach do"],
-        ["Bike rental", ("50K / day",), "To go faster around the island"],
+        ["Laundry", ("[[$Laundry|30K]] / kg",), "We take care of your clothes"],
+        ["Towels", ("Free / [[$Towel|50K]] deposit",), "Free for guests in the couple bedrooms. Otherwise a deposit, partly given back after use"],
+        ["Snorkelling mask", ("[[$Snorkeling Mask|30K]] / day",), "We indicate the spots on a map: turtles point, best corals, Bounty wreck. We do not rent fins, but shops next to the beach do"],
+        ["Bike rental", ("[[$Rabbit bike|50K]] / day",), "To go faster around the island"],
         ["Transport booking", ("Our rates",), "Partnerships for boats from Bali or Lombok, shuttles and taxis"],
     ]) + """
 </section>
@@ -781,15 +806,15 @@ def build_tours():
       <h3>Komodo Tour</h3><p>Have you ever thought about seeing the dragons and the famous pink beach for real?
       You will go around Lombok, north Sumbawa and the Komodo Islands, not only to meet the dragons, but also to
       visit intact areas where the coral reef offers its best colors and wildlife... and the amazing whale sharks!
-      For 3500K per person, it includes 3 days, 4 nights sleeping on the deck, the entrance fees to the Komodo
-      National Park, transportations, food and snorkelling material. If you need more comfort, for 4000K per
-      person you can choose to sleep in a cabin. It doesn't include the way back from Labuan Bajo (Flores).
+      For [[$-Komodo share Deck|3,700K]] per person, it includes 3 days, 4 nights sleeping on the deck, the entrance fees to the Komodo
+      National Park, transportations, food and snorkelling material. If you need more comfort, you can choose a private
+      cabin: [[$-Komodo private cabin(fan)|4,200K]] with a fan, [[$-Komodo private Cabin(AC)|4,800K]] with air conditioning. It doesn't include the way back from Labuan Bajo (Flores).
       Departures usually on Monday, Wednesday and Saturday.</p></a>
     <div class="btn-row"><a class="btn" href="[[tours]]komodo/">Check all infos and options</a></div>
   </div>
   <div>
     <a class="card" href="[[tours]]rinjani/"><div class="thumb"><img src="images/rinj-jpg.webp" alt="Mount Rinjani trek" loading="lazy"></div>
-      <h3>Rinjani Trek</h3><p>You are rather sporty and you like hiking? This one is for you! For 2150K per person,
+      <h3>Rinjani Trek</h3><p>You are rather sporty and you like hiking? This one is for you! For [[$-Rinjani 2D/1N  (1N in tent +1 in hotel)|2,450K]] per person,
       go on a 2 days, 1 night trek to reach the Rinjani, the famous volcano in Lombok. It will be sporty but you
       will admire exceptional landscapes! It includes the transportation from Gili Meno, food, tent, porters, and
       a first night prior to departure.</p></a>
@@ -828,8 +853,9 @@ def build_komodo():
 """ + gal_of("komodo", "The trip in pictures") + """
 <section><h2>Price and options</h2>
 """ + table(["Class", "Price", "Sleeping"], [
-        ["Deck class", ("3,500,000 IDR",), "A mattress, pillow and blanket per person on a shared deck"],
-        ["Cabin class", ("4,000,000 IDR",), "A private cabin for two with a fan, a double mattress, a pillow and a blanket per person"],
+        ["Deck class", ("[[$-Komodo share Deck|3,700,000 IDR]]",), "A mattress, pillow and blanket per person on a shared deck"],
+        ["Cabin class, fan", ("[[$-Komodo private cabin(fan)|4,200,000 IDR]]",), "A private cabin for two with a fan, a double mattress, a pillow and a blanket per person"],
+        ["Cabin class, air conditioning", ("[[$-Komodo private Cabin(AC)|4,800,000 IDR]]",), "A private air conditioned cabin for two"],
     ]) + """
 <p>The way back from Labuan Bajo (Flores) is not included.</p>
 <h2>Two companies, the same trip</h2>
@@ -837,7 +863,7 @@ def build_komodo():
 communication skills and clarity of organisation. And also the price.</p>
 <div class="grid c2">
 <div class="card"><h3>Kareem The Explorer &middot; the most reliable</h3>
-<p class="price-line">3,500,000 IDR</p>
+<p class="price-line">from [[$-Komodo share Deck|3,700,000 IDR]]</p>
 """ + para("Kareem travels with boats that have the capacity for 30 to 40 people, depending on the size of the boat. "
            "All the boats have a simple fresh water shower, although a dip in the ocean is preferred by most guests.\n\n"
            "They cannot always know beforehand which boat will sail: it depends on which boat is where and on the "
@@ -854,7 +880,7 @@ communication skills and clarity of organisation. And also the price.</p>
           "Cabin class: a private cabin for two with a double mattress"]) + """
 </div>
 <div class="card"><h3>Explore Komodo &middot; the easiest to book</h3>
-<p class="price-line">3,500,000 IDR</p>
+<p class="price-line">from [[$-Komodo share Deck|3,700,000 IDR]]</p>
 <h4>Their boat</h4>
 """ + ul(["Wifi connection",
           "AIS (automatic identification system), radio, GPS, compass",
@@ -884,7 +910,7 @@ tree nuts, peanuts, fish and shellfish, and that cross-contamination may occur.<
 """
     body = body.format(mail=HOSTEL["email"], wa=HOSTEL["whatsapp"]).replace("[[tours]]", "../")
     return write("tours/komodo/index.html", "Komodo Trip 4D3N | The Rabbit Tree Hostel", body,
-                 "Four day live-on-board sailing trip to the Komodo islands from Gili Meno: whale sharks, Pink Beach, Padar and the dragons. From 3,500,000 IDR.")
+                 "Four day live-on-board sailing trip to the Komodo islands from Gili Meno: whale sharks, Pink Beach, Padar and the dragons. Deck or private cabin.")
 
 
 def build_rinjani():
@@ -932,9 +958,8 @@ def build_rinjani():
 """ + gal_of("rinjani", "The trek in pictures") + """
 <section><h2>Prices</h2>
 """ + table(["Trek", "Price per person", "Notes"], [
-        ["Rinjani 2D/1N summit", ("2,100,000 IDR",), "Plus one night in a homestay before departure"],
-        ["Rinjani 2D/1N from Gili Meno", ("2,150,000 IDR",), "Booked at the hostel: transport from Gili Meno, food, tent, porters and the night before"],
-        ["Rinjani 3D/2N summit, lake and hot springs", ("2,350,000 IDR",), "Plus one night in a homestay before departure"],
+        ["Rinjani 2D/1N summit", ("[[$-Rinjani 2D/1N  (1N in tent +1 in hotel)|2,450,000 IDR]]",), "One night in a tent, plus one night in a hotel before the trek"],
+        ["Rinjani 3D/2N summit, lake and hot springs", ("[[$-Rinjani 3D/2N (2N in tent +1 in hotel)|2,700,000 IDR]]",), "Two nights in a tent, plus one night in a hotel before the trek"],
     ]) + """
 <h2>Included</h2>
 """ + ul(["Pick up from your designated location within Lombok and transfer to Senaru",
@@ -964,7 +989,7 @@ def build_welcome():
 """ + deco_of("welcome") + gal_of("welcome", "") + """
 <section><h2>Now, let us help you travel</h2>
 <div class="grid c3">
-  <a class="card" href="[[transports]]"><h3>From and to Bali</h3><p>Two departures a day, return ticket 630K.</p></a>
+  <a class="card" href="[[transports]]"><h3>From and to Bali</h3><p>Fast boats from [[$-Semaya Bali (no pick up)|430K]] one way.</p></a>
   <a class="card" href="[[transports]]"><h3>From and to Lombok</h3><p>Bangsal boats and shuttle rates.</p></a>
   <a class="card" href="[[transports]]"><h3>Between the Gilis</h3><p>Public boats 40K, fast boats 85K.</p></a>
 </div></section>
