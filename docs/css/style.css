@@ -231,7 +231,7 @@ body.home main { max-width: none; padding: 0 0 40px; }
 .scene .spot:focus-visible { outline: none; }
 /* au survol (souris) : « piou » : le nom saute aussitot vers le haut et retombe jusqu'a sortir de l'ecran */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .scene .spot:hover .cap { animation: cap-fly 1.8s forwards; transition: none; }
+  .scene .spot:hover .cap { animation: cap-fly 2s forwards; transition: none; }
 }
 @keyframes cap-fly {
   0%   { opacity: 1; transform: translate(-50%, 2px) rotate(0deg); animation-timing-function: cubic-bezier(.1,.9,.35,1); }
