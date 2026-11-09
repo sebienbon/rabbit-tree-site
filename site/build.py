@@ -13,7 +13,7 @@ DIST = os.path.join(HERE, "dist")
 FAVICON = "tree-home.webp"
 # Adresse publique du site : sert aux balises de partage (og:image doit etre une URL absolue).
 # A remplacer par le vrai nom de domaine le jour de la mise en ligne.
-SITE_URL = "https://sebienbon.github.io/rabbit-tree-site/"
+SITE_URL = "https://therabbittree.page/"
 OG_IMAGE = "og-share.jpg"
 # Visuels charges par le JavaScript (vortex) : a garder meme si aucun HTML ne les cite.
 KEEP_IMAGES = set()
@@ -1065,6 +1065,8 @@ def main():
     print("images conservees:", len(os.listdir(imgdir)), "| retirees:", dropped, "| site: {:.1f} Mo".format(kb / 1024))
     print("pages generees:", len(made))
     # GitHub Pages publie le dossier docs/ : on le remplace par la version fraiche
+    # nom de domaine (GitHub Pages lit ce fichier) ; DNS chez Cloudflare, en "DNS only"
+    open(os.path.join(DIST, "CNAME"), "w").write("therabbittree.page\n")
     docs = os.path.join(ROOT, "docs")
     if os.path.isdir(docs):
         shutil.rmtree(docs)
