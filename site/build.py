@@ -211,7 +211,7 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{og}">
 <meta name="theme-color" content="#f2d98c">
-<script>try{{var v=JSON.parse(sessionStorage.getItem("rt-vortex")||"null");if(v&&Date.now()-v.t<4000&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){{document.documentElement.className+=" rt-arrive";setTimeout(function(){{document.documentElement.classList.remove("rt-arrive")}},2500)}}}}catch(e){{}}</script>
+<script>try{{var v=JSON.parse(sessionStorage.getItem("rt-vortex")||"null");var nv=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];if(nv&&nv.type==="back_forward")v=null;if(v&&Date.now()-v.t<4000&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){{document.documentElement.className+=" rt-arrive";setTimeout(function(){{document.documentElement.classList.remove("rt-arrive")}},2500)}}}}catch(e){{}}</script>
 </head>
 <body class="{bodyclass}">
 <a class="skip" href="#main">Skip to content</a>
@@ -269,7 +269,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=27", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=28", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 

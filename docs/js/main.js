@@ -180,6 +180,13 @@
       });
     });
   });
+  /* en quittant la page, on la remet dans son etat normal AVANT que le navigateur la garde en memoire :
+     ainsi le bouton retour la retrouve telle quelle, sans flash d'animation */
+  window.addEventListener("pagehide", function () {
+    vortex.classList.remove("in", "out"); seed.classList.remove("spinning");
+    body.classList.remove("spin-out", "spin-in"); root.classList.remove("rt-spin", "rt-arrive"); body.style.transformOrigin = "";
+    [].slice.call(document.querySelectorAll(".opening")).forEach(function (x) { x.classList.remove("opening"); });
+  });
   /* retour arriere depuis la page suivante : ne pas rester sur un ecran couvert */
   window.addEventListener("pageshow", function (e) {
     if (e.persisted) {
