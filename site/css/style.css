@@ -481,7 +481,16 @@ mark {
   font: 700 1.12rem/1 var(--f-hand); letter-spacing: .04em; color: #164f55;
 }
 .chips li .px { font-size: 1.05em; box-shadow: 1px 1px 0 var(--ink); }
-.fiche p:last-child { margin: 0; font-size: 15px; line-height: 1.65; }
+.fiche-body > p:not(.kicker) { margin: 0; font-size: 15px; line-height: 1.65; }
+.fiche-links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px !important; }
+.fiche-links a { font: 700 1.2rem/1.1 var(--f-hand); letter-spacing: .04em; color: var(--accent); text-decoration: none; border-bottom: 2px dotted var(--accent); }
+.fiche-links a::after { content: " \2197"; font-size: .8em; }
+.fiche-links a[href^="../"]::after { content: " \2192"; }
+/* le fil d'une soiree */
+.evening { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; padding: 0; margin: 18px 0 0; counter-reset: none; }
+.evening li { margin: 0; padding: 10px 12px; border: 2px dashed var(--ink); border-radius: 12px; background: rgba(255,248,224,.6); }
+.evening b { display: block; font: 400 1.6rem/1 var(--f-title); color: var(--accent); }
+.evening span { font-size: 14px; line-height: 1.4; }
 @media (max-width: 560px) {
   .fiche { grid-template-columns: minmax(0, 1fr); padding-top: 22px; }
   .fiche-img { width: 100%; height: 170px; border-radius: 12px; }

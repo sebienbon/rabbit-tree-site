@@ -196,6 +196,19 @@ PAGE_MEDIA = {
             ("img-1d67aafc7c59ac.webp", "The bay, seen from the hills"),
         ],
     },
+    "hostel-life": {
+        "banner": None,
+        "gallery": [
+            ("life-g1.webp", "Jumping off the sunset boat"),
+            ("life-g6.webp", "Snorkelling from the sunset boat"),
+            ("life-g7.webp", "Watching the sunset from the boat"),
+            ("life-g2.webp", "The sunset boat crew"),
+            ("life-g4.webp", "Beach volleyball at sunset"),
+            ("life-g5.webp", "Family dinner at the big table"),
+            ("life-g3.webp", "A night in the ball pit"),
+            ("life-g8.webp", "Poker night"),
+        ],
+    },
     "tours": {
         "banner": None,
         "gallery": [
@@ -282,6 +295,7 @@ NAV = [
 ]
 
 INFO_LINKS = [
+    ("hostel-life", "Life at the hostel", "/hostel-life/"),
     ("services", "Services", "/services/"),
     ("culture", "Culture", "/culture/"),
     ("useful-information", "Before you arrive", "/useful-information/"),

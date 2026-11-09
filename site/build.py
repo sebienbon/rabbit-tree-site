@@ -123,14 +123,16 @@ def para(text, cls=""):
     return "".join('<p class="{}">{}</p>'.format(cls, esc(p)) if cls else "<p>{}</p>".format(esc(p)) for p in parts)
 
 
-def fiche(kicker, title, img, price, chips, text):
+def fiche(kicker, title, img, price, chips, text, links=()):
     """Une fiche d'activite : photo ronde, titre, etiquette de prix, reperes rapides, texte (avec **surlignage**)."""
     hl = lambda s: re.sub(r"\*\*(.+?)\*\*", r'<mark>\1</mark>', esc(s))
     tag = '<span class="tag">{}{}</span>'.format(price[0], '<small>{}</small>'.format(esc(price[1])) if price[1] else "")
     return ('<article class="fiche"><img class="fiche-img" src="images/{}" alt="{}" loading="lazy">'
             '<div class="fiche-body"><p class="kicker">{}</p><h3>{}</h3>{}'
-            '<ul class="chips">{}</ul><p>{}</p></div></article>').format(
-        img, esc(title), esc(kicker), esc(title), tag, "".join("<li>{}</li>".format(c) for c in chips), hl(text))
+            '<ul class="chips">{}</ul><p>{}</p>{}</div></article>').format(
+        img, esc(title), esc(kicker), esc(title), tag, "".join("<li>{}</li>".format(c) for c in chips), hl(text),
+        ('<p class="fiche-links">' + "".join('<a href="{}"{}>{}</a>'.format(
+            u, ' target="_blank" rel="noopener"' if u.startswith("http") else "", esc(t)) for t, u in links) + "</p>") if links else "")
 
 
 def ul(items):
@@ -272,7 +274,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=32",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=33",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -682,6 +684,7 @@ def build_activities():
           "Admire the sunrise or the sunset"]) + """
 </section>
 <section><h2>At the hostel, every day</h2>
+<p>Something happens every evening at the Rabbit Tree, and most of it is free. <a href="../hostel-life/">See life at the hostel</a>.</p>
 <div class="daily">
 """ + "".join('<figure><img src="images/{}" alt="{}" style="object-position:{}" loading="lazy"><figcaption>{}</figcaption></figure>'.format(
         f, esc(t), pos, esc(t)) for f, t, pos in [
@@ -697,9 +700,11 @@ def build_activities():
 <div class="fiches">
 """ + "".join(fiche(*f) for f in [
         ("Good things to do", "Visit the turtle sanctuary", "img-91d2743badcb18.webp", ("Small donation", ""), ["Near the beach", "4 pools", "Baby turtles"],
-         "It's a place near the beach with 4 small pools. The aim is to collect the eggs from the shore before predators eat them, **grow the little turtles until they are about 1 year old, and release them** in their natural environment. Thanks to this work, we still have a lot of turtles around Gili Meno. You can support this with a small donation."),
+         "It's a place near the beach with 4 small pools. The aim is to collect the eggs from the shore before predators eat them, **grow the little turtles until they are about 1 year old, and release them** in their natural environment. Thanks to this work, we still have a lot of turtles around Gili Meno. You can support this with a small donation.",
+         [("Turtle ID workshop with Divine Divers", "https://divinedivers.com/product/turtle-identification-workshop/")]),
         ("Good things to do", "Join the Trash Heroes", "img-a0bea03d339020.webp", ("Free", ""), ["Every Sunday", "3.30pm", "At the Brotherhood"],
-         "Meet locals and tourists **every Sunday around 3.30pm** at the Brotherhood and walk together to collect the trash. It will be an unforgettable moment to share with locals! They also take care of the trash bins around the island, so be sure to throw your waste in one of those."),
+         "Meet locals and tourists **every Sunday around 3.30pm** at the Brotherhood and walk together to collect the trash. It will be an unforgettable moment to share with locals! They also take care of the trash bins around the island, so be sure to throw your waste in one of those.",
+         [("Clean the reef too: underwater cleanup", "https://divinedivers.com/product/underwater-cleanup/")]),
     ]) + """
 </div></section>
 <section><h2>On the water, under the water</h2>
@@ -716,7 +721,9 @@ def build_activities():
          "water, and slow current. Don't miss that! You can book through us for a dive with Divine Divers. They "
          "offer the best services quality, and work in a good atmosphere. They organize discovery dives, fun "
          "dives and diving certificate. Let us know if you want to book in advance. (we offer the same prices "
-         "as the club)"),
+         "as the club)", [("Divine Divers", "https://divinedivers.com/"), ("First dive", "https://divinedivers.com/product/introduction-dive-1/"),
+                         ("Open Water course", "https://divinedivers.com/product/open-water-diver-course/"), ("Fun dives", "https://divinedivers.com/fun-diving/"),
+                         ("Dive sites", "https://divinedivers.com/dive-sites/"), ("All courses", "https://divinedivers.com/courses/")]),
         ("An unforgettable ride", "Horse riding", "img-b56438840f5c97.webp", ("[[$-Horse Riding|400K]]", "per person"), ["1h – 1h30", "Morning or sunset", "From the hostel"],
          "For [[$-Horse Riding|400K]] per person, enjoy a 1h~1h30 ride around the island, going through the paths and the beach. "
          "You can go in the morning or in the afternoon to **admire the sunset**. In both cases, you will stop at "
@@ -1076,6 +1083,74 @@ def build_404():
 
 
 # ============================================================ assemblage
+def build_hostel_life():
+    body = head("Life at the Rabbit Tree", "Every evening something happens. Most of it is free.") + """
+<section class="narrow">
+""" + para("The Rabbit Tree is more than a bed in a tree. Every evening, our staff and volunteers get everyone together: "
+           "we meet at the reception, go and watch the sunset, then come back for dinner and games. You don't need to "
+           "book anything, just follow the group, or the hostel's WhatsApp group where every plan is posted.") + """
+<ol class="evening">
+  <li><b>4pm</b><span>Sunset boat days: meet at the hostel</span></li>
+  <li><b>5pm</b><span>Meet at the reception, off to the beach</span></li>
+  <li><b>7pm</b><span>Back at the hostel: dinner and games</span></li>
+  <li><b>Late</b><span>Movie, poker, or the ball pit…</span></li>
+</ol>
+</section>
+<section><h2>Out at sunset</h2>
+<div class="fiches">
+""" + "".join(fiche(*f) for f in [
+        ("Our favourite evening", "Sunset boat", "life-sunset-boat.webp", ("[[$-Sunset Boat|250K]]", "per person"),
+         ["Meet 4pm at the hostel", "Snorkelling", "Plankton swim", "Dinner included"],
+         "We meet at the hostel at 4pm, take a crew picture with bunny ears and walk together to the harbour. The boat "
+         "takes us out for a snorkel before sunset (masks provided), the sun goes down behind Bali, and after dark we jump "
+         "in again to **swim with the glowing plankton**. Back at the hostel, a plate of nasi goreng is waiting for "
+         "everyone. Drinks are available on board."),
+        ("Every evening", "Sunset on the beach", "life-sunset-beach.webp", ("Free", ""),
+         ["Meet 5pm at reception", "Blankets & music", "Cold drinks"],
+         "Every evening we meet at the reception around 5pm and walk to the beach with blankets, music and a cooler of "
+         "cold drinks. Find a spot in the sand, swim, and **watch the sun go down** with the whole hostel. We always "
+         "leave the beach as clean as we found it."),
+        ("Before the sunset", "Beach volleyball", "life-volley.webp", ("Free", ""),
+         ["5pm", "All levels", "On the beach"],
+         "A friendly game on the beach court, until nobody can see the ball any more or everyone stops to watch the "
+         "sunset. Nobody takes it seriously: **the losing team crawls between the legs of the winners**."),
+    ]) + """
+</div></section>
+<section><h2>Back at the hostel</h2>
+<div class="fiches">
+""" + "".join(fiche(*f) for f in [
+        ("Around the big table", "Family dinner", "life-dinner.webp", ('<span class="px" data-pos="Family Dinner">70K</span>', "per person"),
+         ["Buffet", "Vegetarian", "Indonesian home cooking"],
+         "A buffet of Indonesian home cooking laid out on the bar: corn fritters, yellow tofu curry, gado-gado, "
+         "shredded carrots with fried tempeh. Everyone sits together at the big table: **the best way to meet the "
+         "whole hostel**."),
+        ("After the sunset", "Games night", "life-games.webp", ("Free", ""),
+         ["7pm", "Everybody plays", "Silly rules"],
+         "Back from the beach, the games start while people order their food: Happy Salmon, charades, a quiz that gets "
+         "everyone moving, sardines (hide-and-seek the other way round), the Black Ball treasure hunt hidden all over "
+         "the hostel… **Nobody stays on the bean bags for long.**"),
+        ("Dress up", "Gala night: gender bender", "life-gala.webp", ("Free", ""),
+         ["Fancy dress", "Limbo", "Giant Twister"],
+         "Everybody digs the fanciest outfit out of the bottom of their backpack, with a twist: **the boys dress as "
+         "girls and the girls as boys**. Then limbo, Bang! and giant Twister, with the music turned up."),
+        ("Slow night", "Movie & poker night", "life-movie.webp", ("Free", ""),
+         ["Cinema corner", "Movie voted by guests", "Poker table"],
+         "The cinema corner fills up with cushions and bean bags, and the film is **chosen by a poll** in the hostel's "
+         "WhatsApp group. Order from the bar and your food is served while the movie plays. Card players set up a "
+         "poker table next door."),
+    ]) + """
+</div>
+<div class="note">Drinking water, Lombok coffee and black tea are free for everyone, all day, in the common area.</div>
+</section>
+""" + gal_of("hostel-life", "In pictures") + """
+<section>
+<div class="btn-row"><a class="btn primary" href="../reservations/">Book your bed</a><a class="btn" href="../activities/">More things to do on Gili Meno</a></div>
+</section>
+"""
+    return write("hostel-life/index.html", "Life at the Rabbit Tree: sunset boat, family dinner, games | Gili Meno", body,
+                 "Every evening at the Rabbit Tree Hostel on Gili Meno: sunset on the beach, sunset boat with plankton swim, family dinner, games night, gala night and movie nights. Most of it is free.")
+
+
 def main():
     if os.path.isdir(DIST):
         shutil.rmtree(DIST)
@@ -1085,7 +1160,7 @@ def main():
         made.append(build_room(r))
     made += [build_reservations(), build_gallery(), build_story(), build_howto(), build_transports(),
              build_activities(), build_services(), build_culture(), build_useful(), build_tours(),
-             build_komodo(), build_rinjani(), build_welcome(), build_404()]
+             build_komodo(), build_rinjani(), build_welcome(), build_hostel_life(), build_404()]
     shutil.copytree(os.path.join(HERE, "images"), os.path.join(DIST, "images"))
     shutil.copytree(os.path.join(HERE, "css"), os.path.join(DIST, "css"))
     shutil.copytree(os.path.join(HERE, "js"), os.path.join(DIST, "js"))
