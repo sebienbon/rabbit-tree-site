@@ -35,25 +35,25 @@ MAP_W, MAP_H = 980, 1090
 MAP_MW, MAP_MH = 400, 830
 MAP_SPOTS = [
     {"slug": "gallery", "label": "Gallery", "art": "spiral.webp",
-     "d": (645, 162, 222, 150), "m": (262, 112, 118, 100), "fx": "turn"},
+     "d": (645, 162, 222, 150), "m": (258, 122, 112, 104), "fx": "turn"},
     {"slug": "rooms", "label": "Rooms", "art": "tree-home.webp",
-     "d": (386, 220, 222, 343), "m": (138, 126, 124, 192), "cap": (50, 47)},
+     "d": (386, 220, 222, 343), "m": (128, 112, 132, 200), "mcap": (50, 100), "cap": (50, 47)},
     {"slug": None, "label": "", "art": "river-line.webp",
-     "d": (62, 420, 367, 150), "m": (2, 292, 168, 72)},
+     "d": (62, 420, 367, 150), "m": (14, 304, 170, 66)},
     {"slug": "transports", "label": "Cheap Boats", "art": "fast-boat-and-transport-to-the-gilis.webp",
-     "d": (218, 375, 123, 123), "m": (40, 244, 82, 82), "fx": "bob"},
+     "d": (218, 375, 123, 123), "m": (42, 236, 80, 80), "mcap": (50, 170), "fx": "bob"},
     {"slug": "reservations", "label": "Reservations", "art": "burrow-arch.webp",
-     "d": (428, 472, 127, 172), "m": (160, 338, 76, 103), "cap": (50, 66)},
+     "d": (428, 472, 127, 172), "m": (176, 340, 66, 90), "cap": (50, 66)},
     {"slug": "how-to-get-here", "label": "How to get there", "art": "rabbit-tracks.webp",
-     "d": (362, 570, 231, 264), "m": (178, 520, 124, 142)},
+     "d": (362, 570, 231, 264), "m": (214, 488, 112, 128)},
     {"slug": "activities", "label": "Activities in Gili Meno", "art": "rabbit-tribe.webp",
-     "d": (77, 556, 271, 327), "m": (4, 430, 158, 190)},
+     "d": (77, 556, 271, 327), "m": (22, 452, 150, 176)},
     {"slug": "our-story", "label": "Our Story", "art": "traveller-wix.webp",
-     "d": (642, 431, 318, 307), "m": (236, 330, 160, 154)},
+     "d": (642, 431, 318, 307), "m": (246, 296, 148, 150)},
     {"slug": "tours", "label": "Adventures", "art": "dragon-edited-png.webp",
-     "d": (234, 839, 195, 243), "m": (214, 676, 150, 120)},
+     "d": (234, 839, 195, 243), "m": (130, 668, 150, 118)},
 ]
-MAP_TITLE = {"d": (263, 22, 453, 154), "m": (0, 4, 400, 104)}
+MAP_TITLE = {"d": (263, 22, 453, 154), "m": (0, 4, 400, 100)}
 
 # Beds24 : la propriete et la categorie reservable de chaque chambre,
 # relevees sur les pages de reservation Wix (2026-11-08).

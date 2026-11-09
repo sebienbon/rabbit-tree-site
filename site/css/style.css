@@ -41,6 +41,9 @@
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* rien ne doit pousser la page vers la droite sur telephone (iOS ignore overflow-x sur body seul) */
+html, body { overflow-x: hidden; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
 
 body {
   margin: 0;
@@ -253,7 +256,7 @@ body.home main { max-width: none; padding: 0 0 40px; }
     width: calc(var(--mw) * 1%); height: calc(var(--mh) * 1%);
   }
   .scene .map-title { font-size: clamp(2rem, 10.5vw, 3.2rem); }
-  .scene .spot .cap { font-size: clamp(1rem, 4.6vw, 1.4rem); }
+  .scene .spot .cap { font-size: clamp(1rem, 4.6vw, 1.4rem); left: var(--mcx, 50%); top: var(--mcy, 100%); }
 }
 
 /* ---------- arbre des chambres ----------
@@ -278,6 +281,17 @@ body.home main { max-width: none; padding: 0 0 40px; }
 .node a.hit:hover .swirl, .node a.hit:focus-visible .swirl, .node a.hit.opening .swirl { opacity: 1; }
 .node a.hit.opening .swirl { animation: swirl-open .5s cubic-bezier(.5,0,.8,.4) forwards; }
 @keyframes swirl-open { to { transform: rotate(-300deg) scale(.9); } }
+
+/* les racines (dessinees par main.js) : derriere les cartes, encre du tronc */
+.rooted { position: relative; }
+.rooted > .tree-wrap, .rooted > section { position: relative; z-index: 1; }
+.rooted > .tree-wrap { margin-bottom: clamp(70px, 12vw, 130px); }
+.rooted > section h2 { text-align: center; }
+.roots { position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none; overflow: visible; }
+.roots path { fill: #1c1a17; opacity: .93; }
+.rooted .card { background: rgba(255, 248, 224, .9); }
+.rooted.roots-wait .roots { clip-path: inset(0 0 100% 0); }
+.rooted.roots-grow .roots { clip-path: inset(0 0 0 0); transition: clip-path 2.4s cubic-bezier(.3,.1,.3,1); }
 
 /* ---------- le vortex qui emmene d'une page a l'autre ---------- */
 /* le disque est transparent : seules les bandes d'encre de la spirale se voient,
@@ -352,8 +366,15 @@ html.rt-arrive body.spin-in { animation: page-in .95s cubic-bezier(.12,.6,.3,1) 
 
 /* ---------- page chambre ---------- */
 .room-hero { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: clamp(20px, 4vw, 44px); align-items: center; }
-@media (max-width: 760px) { .room-hero { grid-template-columns: 1fr; text-align: center; } .room-hero .room-badge { margin: 0 auto; } }
+@media (max-width: 760px) { .room-hero { grid-template-columns: minmax(0, 1fr); text-align: center; } .room-hero .room-badge { margin: 0 auto; max-width: min(260px, 70vw); } .room-hero .btn-row { justify-content: center !important; } }
+.room-hero > * { min-width: 0; }
+.room-hero h1 { overflow-wrap: anywhere; }
 .room-badge { width: 100%; max-width: 320px; }
+.room-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0 0 24px; border-top: 2px solid var(--ink); }
+.room-specs > div { padding: 8px 10px; border-bottom: 1.5px dashed var(--line); }
+.room-specs dt { font-family: var(--f-hand); font-weight: 700; font-size: 1.3rem; letter-spacing: .06em; line-height: 1.1; }
+.room-specs dd { margin: 2px 0 0; font-size: 15px; line-height: 1.35; }
+@media (max-width: 900px) { .room-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .specs { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 6px; }
 .specs li { font-family: var(--f-hand); font-weight: 700; font-size: 1.4rem; letter-spacing: .04em; }
 .specs b { display: inline-block; min-width: 92px; color: var(--accent); }
@@ -404,6 +425,14 @@ table { width: 100%; border-collapse: collapse; margin: 0 0 26px; font-size: 16p
 .table-wrap { overflow-x: auto; }
 th, td { padding: 9px 12px; text-align: left; border-bottom: 1.5px dashed var(--line); vertical-align: top; }
 th { font-family: var(--f-hand); font-weight: 700; font-size: 1.35rem; letter-spacing: .06em; border-bottom: 2px solid var(--ink); }
+@media (max-width: 560px) {
+  table { font-size: 14.5px; }
+  th, td { padding: 7px 6px; }
+  th { font-size: 1.15rem; letter-spacing: .03em; }
+  td.price { font-size: 1.15rem; }
+  td, th { overflow-wrap: anywhere; }
+}
+@media (max-width: 380px) { td.price { white-space: normal; } }
 td.price { white-space: nowrap; font-family: var(--f-hand); font-weight: 700; font-size: 1.3rem; color: var(--accent); }
 
 /* ---------- footer ---------- */

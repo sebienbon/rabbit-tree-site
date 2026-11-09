@@ -261,7 +261,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=21",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=22",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -269,7 +269,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=20", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=21", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -301,8 +301,9 @@ def _vars(spot):
     l, t, w, h = _box(spot["d"], MAP_W, MAP_H)
     ml, mt, mw, mh = _box(spot["m"], MAP_MW, MAP_MH)
     cx, cy = spot.get("cap", (50, 100))
-    return "--l:{};--t:{};--w:{};--h:{};--ml:{};--mt:{};--mw:{};--mh:{};--cx:{}%;--cy:{}%".format(
-        l, t, w, h, ml, mt, mw, mh, cx, cy)
+    mcx, mcy = spot.get("mcap", (50, 100))
+    return ("--l:{};--t:{};--w:{};--h:{};--ml:{};--mt:{};--mw:{};--mh:{};--cx:{}%;--cy:{}%;"
+            "--mcx:{}%;--mcy:{}%").format(l, t, w, h, ml, mt, mw, mh, cx, cy, mcx, mcy)
 
 
 def build_home():
@@ -359,6 +360,8 @@ def build_rooms():
     body = """<p class="crumb"><a href="[[home]]">Home</a> &rsaquo; Rooms</p>
 <div class="page-head"><h1>The Rooms</h1><div class="lead">Every room has its own story. Pick a branch.</div>
 <div class="rule"></div></div>
+<div class="rooted">
+<svg class="roots" aria-hidden="true" focusable="false"></svg>
 <div class="tree-wrap">
   <img class="trunk" src="images/tree-rooms.webp" alt="Hand drawn tree holding the hostel rooms" width="1000" height="800">
   """ + "".join(nodes) + """
@@ -367,6 +370,7 @@ def build_rooms():
   <h2>All the rooms</h2>
   <div class="grid c3">""" + cards + """</div>
 </section>
+</div>
 <div class="note">""" + esc(BOOKING_NOTE) + """</div>
 <div class="btn-row"><a class="btn primary" href="[[reservations]]">Reservations</a>
 <a class="btn" href="[[gallery]]">See the photos</a></div>
@@ -387,8 +391,9 @@ def build_room(r):
                         + slides + '</div>' + strip_html(ph, swap=True) + "</section>")
     else:
         photos_block = ""
-    specs = table(["Sleeps", "Beds", "Cooling", "Bathroom"],
-                  [[r["sleeps"], r["beds"], r["air"], r["bath"]]])
+    specs = '<dl class="room-specs">' + "".join(
+        '<div><dt>{}</dt><dd>{}</dd></div>'.format(k, esc(v)) for k, v in
+        (("Sleeps", r["sleeps"]), ("Beds", r["beds"]), ("Cooling", r["air"]), ("Bathroom", r["bath"]))) + '</dl>'
     body = """<p class="crumb"><a href="[[home]]">Home</a> &rsaquo; <a href="[[rooms]]">Rooms</a> &rsaquo; {name}</p>
 <div class="room-hero">
   <img class="room-badge" src="images/{badge}" alt="{name} room badge" data-portal>
