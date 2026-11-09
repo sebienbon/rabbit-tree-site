@@ -262,7 +262,7 @@ body.home main { max-width: none; padding: 0 0 40px; }
 /* ---------- arbre des chambres ----------
    Le medaillon montre son dessin ; au survol, sa version "vortex" apparait (comme sur Wix).
    Un seul clic : le vortex tourne puis aspire la page (voir main.js). */
-.tree-wrap { position: relative; width: 100%; max-width: 1200px; margin: 0 auto clamp(40px, 12vw, 150px); aspect-ratio: 1200 / 972; }
+.tree-wrap { position: relative; width: 100%; max-width: 1200px; margin: 0 auto clamp(40px, 12vw, 150px); aspect-ratio: 1200 / 1428; }
 .tree-wrap > .trunk { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: .95; }
 .node { position: absolute; transform: translate(-50%, -50%); text-align: center; }
 .node .hit {
@@ -285,7 +285,7 @@ body.home main { max-width: none; padding: 0 0 40px; }
 /* les racines (dessinees par main.js) : derriere les cartes, encre du tronc */
 .rooted { position: relative; }
 .rooted > .tree-wrap, .rooted > section { position: relative; z-index: 1; }
-.rooted > .tree-wrap { margin-bottom: clamp(70px, 12vw, 130px); }
+.rooted > .tree-wrap { margin-bottom: clamp(24px, 4vw, 50px); }
 .rooted > section h2 { text-align: center; }
 .roots { position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none; overflow: visible; }
 .roots path { fill: #1c1a17; opacity: .93; }

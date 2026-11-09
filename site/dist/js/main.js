@@ -281,13 +281,13 @@
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W); svg.setAttribute("height", H);
     var s = T.width / 1200, wide = W > 700;
-    function tp(x, y) { return [T.left - Z.left + x * s, T.top - Z.top + y * s]; }   // point du dessin d'arbre (1200 x 972)
+    function tp(x, y) { return [T.left - Z.left + x * s, T.top - Z.top + y * s]; }   // point du dessin d'arbre (1200 x 1428)
     var vw = document.documentElement.clientWidth;
     var gl = G.left - Z.left, gr = G.right - Z.left, gt = G.top - Z.top, gb = G.bottom - Z.top;
     var padL = Math.max(3, Math.min(24, G.left - 7)), padR = Math.max(3, Math.min(24, vw - G.right - 7));
     var L = gl - padL, R = gr + padR, B = gb + Math.min(26, padL + 8), top = gt - (wide ? 30 : 18);
     var m = Math.max(1.6, 2.6 * s * 1.6), big = Math.max(6, 19 * s), mid = Math.max(4, 12 * s);
-    var base = tp(0, 893)[1], cxm = (gl + gr) / 2;
+    var base = tp(0, 1275)[1], cxm = (gl + gr) / 2;
 
     var r0 = rnd(5);
     function jit(pts, amp) { return pts.map(function (p, i) { return (i < 2 || i === pts.length - 1) ? p : [p[0] + (r0() - .5) * amp, p[1] + (r0() - .5) * amp]; }); }
@@ -300,21 +300,21 @@
     var midY = gt + (gb - gt) * .5, bulge = wide ? Math.min(14, padL * .6) : 0;
 
     // 1. grandes racines laterales : du tronc jusqu'aux bords, puis tout autour des cartes
-    root([tp(363, 880), tp(345, 935)].concat(jit([[L + (tp(345, 0)[0] - L) * .5, base + (top - base) * .55],
+    root([tp(219, 1263), tp(196, 1288)].concat(jit([[L + (tp(196, 0)[0] - L) * .5, base + (top - base) * .55],
           [L + 6, top + 60], [L - bulge, gt + (gb - gt) * .28], [L + 3, midY], [L - bulge * .7, gt + (gb - gt) * .75],
           [L + 10, B - 20], [L + 70, B + 6], [cxm - 120, B - 2], [cxm - 50, B + 5]], wide ? 18 : 6)).concat(
           curl(cxm - 40, B - 9, 14, Math.PI / 2, -1).slice(1, 7)), big, m * .7, 7, 4);
-    root([tp(528, 880), tp(548, 935)].concat(jit([[R - (R - tp(548, 0)[0]) * .45, base + (top - base) * .58],
+    root([tp(862, 1241), tp(890, 1262)].concat(jit([[R - (R - tp(890, 0)[0]) * .45, base + (top - base) * .58],
           [R - 6, top + 64], [R + bulge, gt + (gb - gt) * .3], [R - 3, midY + 10], [R + bulge * .7, gt + (gb - gt) * .72],
           [R - 10, B - 22], [R - 70, B + 5], [cxm + 120, B + 2], [cxm + 50, B + 5]], wide ? 18 : 6)).concat(
           curl(cxm + 40, B - 9, 14, Math.PI / 2, 1).slice(1, 7)), big, m * .7, 11, 4);
     // 2. racines secondaires : elles descendent en biais et s'enroulent au-dessus des cartes
     var lx = gl + (cxm - gl) * .3, rx = gr - (gr - cxm) * .3, cy0 = top - 26;
-    root([tp(392, 885), tp(372, 945), [lx + 70, (base + cy0) / 2 + 10], [lx + 20, cy0 + 12]].concat(curl(lx, cy0, 20, 0.2, -1).slice(1)), mid, 1, 3, 3);
-    root([tp(503, 885), tp(522, 945), [rx - 70, (base + cy0) / 2 + 14], [rx - 20, cy0 + 12]].concat(curl(rx, cy0, 20, Math.PI - 0.2, 1).slice(1)), mid, 1, 5, 3);
+    root([tp(388, 1276), tp(380, 1300), [lx + 70, (base + cy0) / 2 + 10], [lx + 20, cy0 + 12]].concat(curl(lx, cy0, 20, 0.2, -1).slice(1)), mid, 1, 3, 3);
+    root([tp(796, 1240), tp(806, 1270), [rx - 70, (base + cy0) / 2 + 14], [rx - 20, cy0 + 12]].concat(curl(rx, cy0, 20, Math.PI - 0.2, 1).slice(1)), mid, 1, 5, 3);
     // 3. la racine pivot descend en serpentant
-    var px = tp(474, 0)[0];
-    root([tp(474, 885), tp(476, 950), [px + 14, base + (top - base) * .4], [px - 12, base + (top - base) * .7], [px + 6, top - 34]], mid * .8, 1, 13, 4);
+    var px = tp(560, 0)[0];
+    root([tp(559, 1268), tp(562, 1300), [px + 14, base + (top - base) * .4], [px - 12, base + (top - base) * .7], [px + 6, top - 34]], mid * .8, 1, 13, 4);
     // 3b. petites fourches qui partent des grandes racines vers l'exterieur
     [[L, gt + (gb - gt) * .2, -1], [L, gt + (gb - gt) * .62, -1], [R, gt + (gb - gt) * .4, 1], [R, gt + (gb - gt) * .85, 1]].forEach(function (f, q) {
       var o = Math.min(wide ? 30 : 10, (f[2] < 0 ? padL : padR) + 6);
