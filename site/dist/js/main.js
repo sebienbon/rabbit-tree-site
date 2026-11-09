@@ -276,3 +276,11 @@
     if (e.key === "ArrowLeft") show(idx - 1);
   });
 })();
+
+/* 7. Accueil : jusqu'ou tombe le nom d'un dessin quand on le survole (juste sous le bas de l'ecran) */
+[].slice.call(document.querySelectorAll(".scene .spot .cap")).forEach(function (cap) {
+  cap.parentNode.addEventListener("mouseenter", function () {
+    var top = cap.parentNode.getBoundingClientRect().top + cap.offsetTop;
+    cap.style.setProperty("--fall", Math.max(120, window.innerHeight - top + 60) + "px");
+  });
+});
