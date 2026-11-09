@@ -183,7 +183,7 @@ BOOKING_NOTE = ('Our booking system lets you reserve the corresponding category 
 # Chaque entree : (fichier dans images/, legende). "banner" = visuel pleine largeur.
 PAGE_MEDIA = {
     "activities": {
-        "banner": ("img-433a75fd6d2978.webp", "Freediving in the clear water off the reef", 0.8),
+        "banner": ("activities-freediver.webp", "Freediving in the clear water off the reef"),
         "gallery": [
             ("img-a0bea03d339020.webp", "The Trash Heroes, cleaning the island every Sunday"),
             ("img-baeed1388d8c8b.webp", "Traditional dinner shared on the island"),
