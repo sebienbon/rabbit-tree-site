@@ -414,6 +414,7 @@ def build_room(r):
                 body += "<h3>{}</h3>".format(esc(label))
             body += ('<div class="beds24"><iframe src="{}" title="Book {} with Beds24" loading="lazy" '
                      'height="720"></iframe></div>').format(BEDS24_ROOM.format(rid), esc(label or r["name"]))
+        body += '<p class="center">Check-in is guaranteed from 2pm; arrive earlier if you like, your room may just not be ready yet.</p>'
         body += ('<p class="center">Booking directly with us is about 10% cheaper than the booking websites. '
                  'A question first? <a href="{}">WhatsApp us</a>.</p></section>').format(HOSTEL["whatsapp"])
     else:
@@ -432,6 +433,7 @@ def build_reservations():
 """ + para("Booking directly with us is cheaper than the big booking websites, and it is the only way to "
            "ask for one of the specific rooms you have fallen for. Choose your dates below.") + """
 <div class="note">""" + esc(BOOKING_NOTE) + """</div>
+<div class="note">Check-in is guaranteed from 2pm. You are welcome to arrive earlier and relax with us, but your room may not be ready yet.</div>
 </section>
 <section id="book" class="book">
 <div class="beds24 tall"><iframe src="{b24}" title="Book The Rabbit Tree with Beds24" height="2000"></iframe></div>

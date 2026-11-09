@@ -143,7 +143,7 @@ ROOMS = [
         "slug": "pillow-room", "beds24": [("", "460593")], "name": "Pillow Room", "cat": "Triple / escape game",
         "badge": "pillow-room-on-pillow-png.webp", "spiral": "img-4d19fc461bbb77.webp", "spiral_on": True,
         "x": 79.5, "y": 57.1, "w": 17.4,
-        "beds": "3 beds", "air": "Ask us", "bath": "Shared bathroom", "sleeps": "3 people",
+        "beds": "3 beds", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "3 people",
         "desc": ["You would expect this bedroom to be full of pillows. But hang on! There is not even one on the bed!",
                  "Or maybe if you look a bit better you could spot them. Locked in a net... Will you be smart enough to find the way to free them?",
                  "This bedroom is perfect for a group of 3 people who like challenges."],
@@ -158,14 +158,13 @@ ROOMS = [
                  "The outer texture of this room is sand and stone, cooling down the inside — perfect after a long day at the beach!"],
     },
     {
-        "slug": "monk", "name": "Monk", "cat": "Single room",
+        "slug": "monk", "beds24": [("", "353950")], "name": "Monk", "cat": "Single room",
         "badge": "img-56372fe7702694.webp", "spiral": "img-a88e84fde22637.webp", "spiral_on": True,
         "x": 12.6, "y": 79.8, "w": 17.7,
         "beds": "1 single bed", "air": "Air conditioning", "bath": "Shared bathroom", "sleeps": "1 person",
-        # Source : fiches publiques (Monk Room 1 & 2, chambre simple, clim, salle de bain partagee).
-        # Le Wix n'avait pas de page Monk : texte factuel, a completer par l'equipe.
-        "desc": ["Two small single rooms for solo travellers, Monk 1 and Monk 2: one bed, air conditioning, and the shared bathrooms close by.",
-                 "Ask us about the Monk rooms when you book, and we will tell you which one is free."],
+        # Source : Seb, 2026-11-09. Categorie Beds24 "Single Room" = 353950 (feuille Data activities).
+        "desc": ["A tiny cell for one, like a monk's: white cement walls, no window, and air conditioning shared with the room next door through a vent.",
+                 "It is pitch dark inside and no sound from outside comes in. Our guests keep telling us it gave them the best sleep of their whole holiday."],
     },
 ]
 
