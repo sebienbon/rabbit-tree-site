@@ -1,7 +1,6 @@
 """Recupere les horaires des bateaux rapides Wijaya Perkasa pour Gili Meno, sans IA.
 
-Lit https://www.wijayaperkasa.com/schedule/ (tableaux HTML FROM | TO | PRICE | DEPARTURE | ARRIVAL ;
-les cellules FROM / TO vides reprennent la valeur de la ligne au-dessus), garde les trajets qui
+Lit https://www.wijayaperkasa.com/schedule/ (tableaux HTML FROM | TO | PRICE | DEPARTURE | ARRIVAL), garde les trajets qui
 partent de Gili Meno ou y arrivent, et ecrit data/wijaya.json.
 Si la page est injoignable ou si sa forme a change (trop peu de lignes trouvees), le script
 s'arrete en erreur SANS toucher au fichier : le site garde les derniers horaires connus.
@@ -19,23 +18,37 @@ SKIP = ("lembongan",)   # destinations retirees du site
 
 
 class Rows(HTMLParser):
+    """Leur HTML est irregulier (des <tr> ouvrants manquent, depart et arrivee en <th rowspan>) :
+    on lit donc en continu. <th> avec la classe font--green = port de depart, font--blue = destination,
+    les <td> d'une ligne = prix, heure de depart, heure d'arrivee ; </tr> termine la ligne."""
     def __init__(self):
         super().__init__()
-        self.rows, self.row, self.cell = [], None, None
+        self.rows, self.cells, self.frm, self.to = [], [], "", ""
+        self.cell, self.th = None, None
 
     def handle_starttag(self, tag, attrs):
-        if tag == "tr":
-            self.row = []
-        elif tag in ("td", "th") and self.row is not None:
-            self.cell = []
+        if tag in ("td", "th"):
+            self.cell, self.th = [], tag == "th"
+            self.kind = ""
+        elif tag == "span" and self.cell is not None:
+            cls = dict(attrs).get("class") or ""
+            if "font--green" in cls: self.kind = "from"
+            elif "font--blue" in cls: self.kind = "to"
 
     def handle_endtag(self, tag):
         if tag in ("td", "th") and self.cell is not None:
-            self.row.append(" ".join("".join(self.cell).split()))
+            text = " ".join("".join(self.cell).split())
+            if self.th and self.kind == "from": self.frm, self.to = text, ""
+            elif self.th and self.kind == "to": self.to = text
+            elif not self.th: self.cells.append(text)
             self.cell = None
-        elif tag == "tr" and self.row is not None:
-            self.rows.append(self.row)
-            self.row = None
+        elif tag == "tr":
+            times = [c for c in self.cells if TIME.match(c)]
+            if len(times) >= 2 and self.frm and self.to:
+                self.rows.append([self.frm, self.to, times[0], times[1]])
+            self.cells = []
+        elif tag == "table":
+            self.frm, self.to, self.cells = "", "", []
 
     def handle_data(self, data):
         if self.cell is not None:
@@ -45,15 +58,9 @@ class Rows(HTMLParser):
 def parse(html):
     p = Rows()
     p.feed(html)
-    out, frm, to = [], "", ""
-    for r in p.rows:
-        if len(r) < 5 or r[0].upper() == "FROM":
-            continue
-        frm = r[0] or frm
-        to = r[1] or to
-        dep, arr = TIME.match(r[3]), TIME.match(r[4])
-        if not (frm and to and dep and arr):
-            continue
+    out = []
+    for frm, to, d, a in p.rows:
+        dep, arr = TIME.match(d), TIME.match(a)
         out.append({"from": frm, "to": to,
                     "dep": "{:02d}:{}".format(int(dep.group(1)), dep.group(2)),
                     "arr": "{:02d}:{}".format(int(arr.group(1)), arr.group(2))})
@@ -70,7 +77,6 @@ def main():
             print(k, html.count(k))
         i = html.find("<table"); print(html[i:i + 3000])
         j = html.find("<table", i + 10); print("SECOND", html[j - 800:j + 1500] if j > 0 else None)
-        for r in Rows.__new__(Rows) and []: pass
     mine = [r for r in rows if HOME in (r["from"].lower(), r["to"].lower())
             and not any(s in (r["from"] + r["to"]).lower() for s in SKIP)]
     # dedoublonnage + tri par heure de depart

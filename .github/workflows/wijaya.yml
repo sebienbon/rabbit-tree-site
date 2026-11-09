@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
       - run: pip install pillow
       - name: Read the timetable
-        run: python site/tools/wijaya.py ${{ github.event_name == 'workflow_dispatch' && '--debug' || '' }}
+        run: python site/tools/wijaya.py
       - name: Rebuild and publish if it changed
         run: |
           if git diff --quiet site/data/wijaya.json; then echo "No change"; exit 0; fi
