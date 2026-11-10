@@ -68,12 +68,20 @@
     '<path d="' + spiralPath(Math.PI) + '" fill="none" stroke="#1c1a17" stroke-width="1.6" stroke-linecap="round"/></svg>';
   document.documentElement.appendChild(vortex);
   var root = document.documentElement, body = document.body;
+  /* mode leger (telephone, ecran tactile) : la page ne tourne pas, elle s'efface et reapparait ;
+     seul le vortex tourne. Beaucoup moins de travail pour le telephone, donc fluide. */
+  var lite = window.matchMedia && matchMedia("(max-width: 760px), (pointer: coarse)").matches;
+  if (lite) root.classList.add("rt-lite");
 
   function place(x, y) {
     /* un disque assez grand pour couvrir l'ecran depuis le point de depart */
     var w = window.innerWidth, h = window.innerHeight;
     var R = Math.sqrt(Math.pow(Math.max(x, w - x), 2) + Math.pow(Math.max(y, h - y), 2)) * 2.1;
-    vortex.style.width = vortex.style.height = R + "px";
+    /* sur telephone, la spirale est dessinee a moitie taille puis agrandie x2 : 4 fois moins de pixels
+       a calculer (les bandes sont epaisses, ca ne se voit pas) */
+    var k = lite ? 2 : 1;
+    vortex.style.setProperty("--k", k);
+    vortex.style.width = vortex.style.height = R / k + "px";
     vortex.style.left = x + "px";
     vortex.style.top = y + "px";
   }

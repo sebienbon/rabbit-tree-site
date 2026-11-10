@@ -311,14 +311,15 @@ body.home main { max-width: none; padding: 0 0 40px; }
 #vortex.in { opacity: 1; animation: vortex-in .72s cubic-bezier(.6,0,.85,.35) forwards; }
 #vortex.out { opacity: 1; animation: vortex-out .7s cubic-bezier(.2,.65,.4,1) forwards; }
 @keyframes vortex-in {
-  0% { transform: translate(-50%, -50%) scale(.06) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) scale(1) rotate(-540deg); }
+  0% { transform: translate(-50%, -50%) scale(calc(.06 * var(--k, 1))) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) scale(var(--k, 1)) rotate(-540deg); }
 }
 @keyframes vortex-out {
-  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+  0% { transform: translate(-50%, -50%) scale(var(--k, 1)) rotate(0deg); opacity: 1; }
   80% { opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(.02) rotate(-420deg); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(calc(.02 * var(--k, 1))) rotate(-420deg); opacity: 0; }
 }
+#vortex { will-change: transform; }
 /* on entre dans le dessin : toute la fenetre tourne en plongeant vers le dessin clique
    (zoom avant), puis la page suivante sort du logo de la chambre (ou du centre de l'ecran)
    en tournant et en reculant jusqu'a sa taille reelle. Le centre est pose par main.js. */
@@ -342,6 +343,13 @@ html.rt-arrive body.spin-in { animation: page-in .95s cubic-bezier(.12,.6,.3,1) 
   30% { opacity: 1; }
   100% { transform: rotate(0deg) scale(1); opacity: 1; }
 }
+
+/* mode leger (telephone) : la page ne tourne pas, elle s'efface sous le vortex puis reapparait */
+html.rt-lite body.spin-out { animation: page-fade-out .55s ease-in forwards; }
+html.rt-lite.rt-arrive body { transform: none; opacity: 0; height: auto; overflow: visible; }
+html.rt-lite.rt-arrive body.spin-in { animation: page-fade-in .6s ease-out forwards; }
+@keyframes page-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes page-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
   .scene .fx-turn img, .scene .fx-bob img { animation: none; }
