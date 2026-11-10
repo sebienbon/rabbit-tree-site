@@ -453,7 +453,9 @@
     cap.style.setProperty("--fall", Math.max(120, window.innerHeight - top + 60) + "px");
     /* hauteur, cote et rotation tires au hasard, dans des limites raisonnables */
     var side = Math.random() < .5 ? -1 : 1, jx = side * (50 + Math.random() * 130);
-    cap.style.setProperty("--jy", -(340 + Math.random() * 220) + "px");
+    /* l'arbre (Rooms) et la spirale (Gallery) sont tout en haut : leur nom saute 40 % moins haut */
+    var low = /\/(rooms|gallery)\/?$/.test(cap.parentNode.getAttribute("href") || "") ? .6 : 1;
+    cap.style.setProperty("--jy", -(340 + Math.random() * 220) * low + "px");
     cap.style.setProperty("--jx", jx + "px");
     cap.style.setProperty("--fx", jx * (1.6 + Math.random() * .8) + "px");
     cap.style.setProperty("--r1", side * (6 + Math.random() * 14) + "deg");
