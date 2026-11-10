@@ -466,7 +466,7 @@
 
 /* 8. Accueil : au survol de n'importe quel dessin, deux petites oreilles de lapin sortent de derriere
    le trait de l'arbre (Rooms), vers l'exterieur, a un endroit tire au hasard parmi des points du contour
-   calcules a la construction du site (tools/ears.py). Elles restent ~3 s puis se retirent doucement. */
+   calcules a la construction du site (tools/ears.py). Un clin d'oeil : sorties ~0,5 s, puis elles filent. */
 (function () {
   if (!(window.matchMedia && matchMedia("(hover: hover)").matches)) return;
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -496,7 +496,7 @@
     box.style.transform = "translate(-50%, -100%) rotate(" + p[2] + "deg)";
     box.classList.remove("back"); void box.offsetWidth; box.classList.add("out");
     clearTimeout(hideT);
-    hideT = setTimeout(function () { box.classList.add("back"); box.classList.remove("out"); }, reduce ? 1500 : 3000);
+    hideT = setTimeout(function () { box.classList.add("back"); box.classList.remove("out"); }, reduce ? 700 : 760);
   }
   [].slice.call(document.querySelectorAll(".scene a.spot")).forEach(function (s) { s.addEventListener("mouseenter", pop); });
 })();
