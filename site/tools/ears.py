@@ -26,7 +26,7 @@ def make_ears(src, out):
     img.save(out, quality=90)
 
 
-def candidates(path, n=14):
+def candidates(path, n=14, min_thick=0.0, clear=0.0):
     im = Image.open(path).convert("RGBA")
     W, H = im.size
     a = np.array(im)[..., 3] > 90
@@ -38,6 +38,9 @@ def candidates(path, n=14):
     big = max(len(c) for c in cs)
     c = np.concatenate([c[:, 0, :] for c in cs if len(c) > big * .25])   # toutes les silhouettes notables
     blur = ndimage.gaussian_filter(sil.astype(float), 6)
+    dist = ndimage.distance_transform_edt(a)
+    labels, nl = ndimage.label(a)
+    sizes = np.bincount(labels.ravel()); sizes[0] = 0
     gy, gx = np.gradient(blur)
     pts, L = [], len(c)
     for k in range(n * 6):
@@ -49,14 +52,35 @@ def candidates(path, n=14):
         ang = math.degrees(math.atan2(nx, -ny))          # 0 = vers le haut, 90 = vers la droite
         if abs(ang) > 115:                               # pas d'oreilles qui pendent vers le bas
             continue
+        # le trait doit etre assez epais a cet endroit (sinon on ne croit pas que le lapin se cache derriere)
+        # et appartenir a une grande partie du dessin (pas un petit trait isole)
+        ux, uy = nx / norm, ny / norm
+        thick = max(dist[int(min(H - 1, max(0, y - uy * t))), int(min(W - 1, max(0, x - ux * t)))] for t in range(0, 30, 2)) * 2
+        if thick < min_thick * W:
+            continue
+        lab = labels[int(min(H - 1, max(0, y - uy * 4))), int(min(W - 1, max(0, x - ux * 4)))]
+        if lab == 0 or sizes[lab] < .2 * sizes.max():
+            continue
+        if clear:                                        # de la place devant : pas d'autre trait dans les oreilles
+            L0 = clear * W
+            hit = False
+            for t in np.linspace(6, L0, 12):
+                for s_ in np.linspace(-.4 * L0, .4 * L0, 7):
+                    px, py = int(x + ux * t - uy * s_), int(y + uy * t + ux * s_)
+                    if 0 <= px < W and 0 <= py < H and a[py, px]:
+                        hit = True; break
+                if hit: break
+            if hit:
+                continue
         pts.append((round(100 * x / W, 1), round(100 * y / H, 1), round(ang)))
     # garder des points bien repartis
     step = max(1, len(pts) // n)
     return pts[::step][:n]
 
 
-def all_candidates(arts):
-    return {art: [(float(x), float(y), int(g)) for x, y, g in candidates(os.path.join(HERE, "images", art))] for art in arts}
+def all_candidates(arts, min_thick=0.0, n=14, clear=0.0):
+    return {art: [(float(x), float(y), int(g)) for x, y, g in candidates(os.path.join(HERE, "images", art), n, min_thick, clear)]
+            for art in arts}
 
 
 if __name__ == "__main__":

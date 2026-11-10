@@ -362,7 +362,8 @@ def _ears():
         import sys
         sys.path.insert(0, os.path.join(HERE, "tools"))
         import ears
-        return ears.all_candidates([s["art"] for s in MAP_SPOTS if s["slug"] == "rooms"])
+        # trait assez epais (>= 4,5 % de la largeur), pas de petit trait isole, de la place devant les oreilles
+        return ears.all_candidates([s["art"] for s in MAP_SPOTS if s["slug"] == "rooms"], min_thick=.045, n=80, clear=.2)
     except Exception as e:                      # sans scipy/opencv : pas d'oreilles, le reste marche
         print("ears skipped:", e)
         return {}
