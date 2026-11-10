@@ -56,9 +56,7 @@ body {
 }
 /* le parchemin d'origine : une seule feuille, fixe, bords plus sombres.
    Porte par un calque fixe (background-attachment: fixed ne marche pas sur iPhone). */
-/* le papier est accroche a <html>, pas a <body> : il ne tourne ni ne grossit pendant le vortex
-   (avant, il etait agrandi 9 fois et se pixelisait), et le navigateur le garde tel quel d'une page a l'autre */
-html::before {
+body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background: var(--paper) url("../images/paper-bg.webp") center / cover no-repeat;
 }
@@ -324,19 +322,25 @@ body.home main { max-width: none; padding: 0 0 40px; }
 /* on entre dans le dessin : toute la fenetre tourne en plongeant vers le dessin clique
    (zoom avant), puis la page suivante sort du logo de la chambre (ou du centre de l'ecran)
    en tournant et en reculant jusqu'a sa taille reelle. Le centre est pose par main.js. */
-html.rt-spin, html.rt-arrive { overflow: hidden; }
+html.rt-spin, html.rt-arrive { overflow: hidden; background: var(--paper); }
+/* a l'arrivee, seule la hauteur de l'ecran tourne (et pas toute la longueur de la page) : moins lourd */
+html.rt-arrive body { height: 100vh; overflow: hidden; }
 html.rt-spin body, html.rt-arrive body { will-change: transform; }
+/* zoom limite a x3,5 (au-dela, le navigateur etire une image deja dessinee : flou, aplats) ;
+   la page s'efface dans le vortex au lieu de grossir a l'infini */
 body.spin-out { animation: page-out .75s cubic-bezier(.55,0,.9,.4) forwards; }
 @keyframes page-out {
-  0% { transform: rotate(0deg) scale(1); }
-  100% { transform: rotate(-220deg) scale(9); }
+  0% { transform: rotate(0deg) scale(1); opacity: 1; }
+  65% { opacity: 1; }
+  100% { transform: rotate(-200deg) scale(3.5); opacity: 0; }
 }
 /* arrivee : la page attend, plongee dans son logo, que main.js lance le recul */
-html.rt-arrive body { transform-origin: 50vw 50vh; transform: rotate(220deg) scale(9); }
+html.rt-arrive body { transform-origin: 50vw 50vh; transform: rotate(200deg) scale(3.5); opacity: 0; }
 html.rt-arrive body.spin-in { animation: page-in .95s cubic-bezier(.12,.6,.3,1) forwards; }
 @keyframes page-in {
-  0% { transform: rotate(220deg) scale(9); }
-  100% { transform: rotate(0deg) scale(1); }
+  0% { transform: rotate(200deg) scale(3.5); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
