@@ -56,7 +56,9 @@ body {
 }
 /* le parchemin d'origine : une seule feuille, fixe, bords plus sombres.
    Porte par un calque fixe (background-attachment: fixed ne marche pas sur iPhone). */
-body::before {
+/* le papier est accroche a <html>, pas a <body> : il ne tourne ni ne grossit pendant le vortex
+   (avant, il etait agrandi 9 fois et se pixelisait), et le navigateur le garde tel quel d'une page a l'autre */
+html::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background: var(--paper) url("../images/paper-bg.webp") center / cover no-repeat;
 }
@@ -322,7 +324,7 @@ body.home main { max-width: none; padding: 0 0 40px; }
 /* on entre dans le dessin : toute la fenetre tourne en plongeant vers le dessin clique
    (zoom avant), puis la page suivante sort du logo de la chambre (ou du centre de l'ecran)
    en tournant et en reculant jusqu'a sa taille reelle. Le centre est pose par main.js. */
-html.rt-spin, html.rt-arrive { background: #1f1c17; overflow: hidden; }
+html.rt-spin, html.rt-arrive { overflow: hidden; }
 html.rt-spin body, html.rt-arrive body { will-change: transform; }
 body.spin-out { animation: page-out .75s cubic-bezier(.55,0,.9,.4) forwards; }
 @keyframes page-out {

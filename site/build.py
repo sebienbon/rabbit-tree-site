@@ -224,6 +224,7 @@ HEAD = """<!DOCTYPE html>
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="preload" href="{font}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{paper}" as="image" type="image/webp">
 <link rel="stylesheet" href="{css}">
 <link rel="icon" href="{fav}" type="image/webp">
 <meta property="og:title" content="{title}">
@@ -288,9 +289,9 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=40",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=41",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
-                       cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
+                       cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2", paper=pre + "images/paper-bg.webp",
                        og=SITE_URL + "images/" + OG_IMAGE,
                        url=SITE_URL + rel_path.rsplit("index.html", 1)[0].replace("404.html", ""))
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
