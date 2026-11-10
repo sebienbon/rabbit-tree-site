@@ -296,7 +296,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=33", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=34", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
