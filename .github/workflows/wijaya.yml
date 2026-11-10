@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pillow
+      - run: pip install pillow numpy scipy opencv-python-headless
       - name: Read the timetable
         run: python site/tools/wijaya.py
       - name: Rebuild and publish if it changed

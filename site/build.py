@@ -16,7 +16,7 @@ FAVICON = "tree-home.webp"
 SITE_URL = "https://therabbittree.page/"
 OG_IMAGE = "og-share.jpg"
 # Visuels charges par le JavaScript (vortex) : a garder meme si aucun HTML ne les cite.
-KEEP_IMAGES = set()
+KEEP_IMAGES = {"rabbit-ears.webp"}  # utilisee seulement par main.js (oreilles de l accueil)
 
 # ------------------------------------------------------------------ helpers
 def stem(url):
@@ -288,7 +288,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     if pre:
         body = body.replace('src="images/', 'src="' + pre + 'images/')
         body = body.replace('href="images/', 'href="' + pre + 'images/')
-    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=38",
+    head = HEAD.format(title=esc(title), desc=esc(desc or DEFAULT_DESC), css=pre + "css/style.css?v=39",
                        fav=pre + "images/" + FAVICON, brand=pre, nav="".join(items),
                        cta=pre + "reservations/", bodyclass=bodyclass, font=pre + "fonts/alice-in-wonderland.woff2",
                        og=SITE_URL + "images/" + OG_IMAGE,
@@ -296,7 +296,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=34", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=35", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -357,7 +357,23 @@ def _vars(spot):
             "--mcx:{}%;--mcy:{}%").format(l, t, w, h, ml, mt, mw, mh, cx, cy, mcx, mcy)
 
 
+def _ears():
+    try:
+        import sys
+        sys.path.insert(0, os.path.join(HERE, "tools"))
+        import ears
+        return ears.all_candidates([s["art"] for s in MAP_SPOTS if s["slug"]])
+    except Exception as e:                      # sans scipy/opencv : pas d'oreilles, le reste marche
+        print("ears skipped:", e)
+        return {}
+
+
+EARS = {}
+
+
 def build_home():
+    global EARS
+    EARS = _ears()
     """L'accueil d'origine : une seule scene dessinee, le titre en haut, le texte en bas. Pas de menu."""
     spots = []
     for s in MAP_SPOTS:
@@ -365,9 +381,10 @@ def build_home():
         img = '<img src="images/{art}" alt="{alt}" loading="eager" draggable="false">'.format(
             art=s["art"], alt=esc(s["label"]) if s["slug"] else "")
         if s["slug"]:
-            spots.append('<a class="spot{fx}" href="[[{slug}]]" style="{v}" data-vortex>'
+            spots.append('<a class="spot{fx}" href="[[{slug}]]" style="{v}" data-vortex data-ears="{ears}">'
                          '{img}<span class="cap">{label}</span></a>'.format(
-                             fx=fx, slug=s["slug"], v=_vars(s), img=img, label=esc(s["label"])))
+                             fx=fx, slug=s["slug"], v=_vars(s), img=img, label=esc(s["label"]),
+                             ears=";".join("{},{},{}".format(*p) for p in EARS.get(s["art"], []))))
         else:
             spots.append('<span class="spot deco{fx}" style="{v}" aria-hidden="true">{img}</span>'.format(
                 fx=fx, v=_vars(s), img=img))

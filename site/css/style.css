@@ -567,3 +567,13 @@ footer {
 .wa-form input, .wa-form select { font: 15px var(--f-body); color: var(--ink); background: #fffdf3; border: 2px solid var(--ink); border-radius: 10px; padding: 9px 10px; min-width: 0; }
 .wa-form input:focus, .wa-form select:focus { outline: 3px solid rgba(12,68,38,.35); outline-offset: 1px; }
 .wa-form .btn-row { margin-top: 16px; }
+
+/* ---------- les oreilles de lapin qui sortent de derriere le trait (accueil, main.js section 8) ---------- */
+.scene .spot .ears-layer { position: absolute; inset: 0; pointer-events: none; transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
+.scene .spot:hover .ears-layer { transform: scale(1.07) rotate(-2deg); }
+.scene .fx-bob .ears-layer { animation: bob 3.4s ease-in-out infinite; }
+.scene .spot .ears { position: absolute; overflow: hidden; transform-origin: 50% 100%; }   /* le bas de cette fenetre = le trait */
+.scene .spot .ears img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 100%;
+  transform: translateY(105%); transition: transform 1.3s cubic-bezier(.5,0,.75,.35); filter: none; animation: none; }
+.scene .spot .ears.out img { transform: translateY(0); transition: transform .26s cubic-bezier(.2,1.5,.45,1); animation: ears-twitch 3s .3s ease-in-out; }
+@keyframes ears-twitch { 0%, 30%, 60%, 100% { rotate: 0deg; } 40% { rotate: -6deg; } 50% { rotate: 5deg; } }
