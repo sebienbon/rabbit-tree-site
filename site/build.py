@@ -16,7 +16,7 @@ FAVICON = "tree-home.webp"
 SITE_URL = "https://therabbittree.page/"
 OG_IMAGE = "og-share.jpg"
 # Visuels charges par le JavaScript (vortex) : a garder meme si aucun HTML ne les cite.
-KEEP_IMAGES = {"rabbit-ears.webp"}  # utilisee seulement par main.js (oreilles de l accueil)
+KEEP_IMAGES = {"rabbit-ears.webp", "rabbit-ears-a.webp", "rabbit-ears-b.webp", "rabbit-ears-c.webp"}  # utilisee seulement par main.js (oreilles de l accueil)
 
 # ------------------------------------------------------------------ helpers
 def stem(url):
@@ -296,7 +296,7 @@ def render(rel_path, title, body, desc="", bodyclass="page"):
     foot = FOOT.format(tel=HOSTEL["phone_tel"], phone=esc(HOSTEL["phone_display"]), wa=HOSTEL["whatsapp"],
                        maps=HOSTEL["maps"], addr=esc(HOSTEL["address"]), mail=HOSTEL["email"],
                        ig=HOSTEL["instagram"], fb=HOSTEL["facebook"], ta=HOSTEL["tripadvisor"],
-                       info=info, js=pre + "js/main.js?v=35", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
+                       info=info, js=pre + "js/main.js?v=36", bk=HOSTEL["booking"], hw=HOSTEL["hostelworld"])
     return head + body + foot
 
 
@@ -362,7 +362,7 @@ def _ears():
         import sys
         sys.path.insert(0, os.path.join(HERE, "tools"))
         import ears
-        return ears.all_candidates([s["art"] for s in MAP_SPOTS if s["slug"]])
+        return ears.all_candidates([s["art"] for s in MAP_SPOTS if s["slug"] == "rooms"])
     except Exception as e:                      # sans scipy/opencv : pas d'oreilles, le reste marche
         print("ears skipped:", e)
         return {}

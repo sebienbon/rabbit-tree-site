@@ -464,37 +464,39 @@
   });
 });
 
-/* 8. Accueil : au survol d'un dessin, deux petites oreilles de lapin sortent de derriere le trait noir,
-   vers l'exterieur, a un endroit tire au hasard parmi des points du contour calcules a la construction
-   du site (tools/ears.py). Elles restent ~3 s puis se retirent doucement. */
+/* 8. Accueil : au survol de n'importe quel dessin, deux petites oreilles de lapin sortent de derriere
+   le trait de l'arbre (Rooms), vers l'exterieur, a un endroit tire au hasard parmi des points du contour
+   calcules a la construction du site (tools/ears.py). Elles restent ~3 s puis se retirent doucement. */
 (function () {
   if (!(window.matchMedia && matchMedia("(hover: hover)").matches)) return;
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  [].slice.call(document.querySelectorAll(".scene .spot[data-ears]")).forEach(function (spot) {
-    var pts = (spot.getAttribute("data-ears") || "").split(";").filter(Boolean).map(function (p) { return p.split(",").map(Number); });
-    var img = spot.querySelector("img");
-    if (!pts.length || !img) return;
-    var layer = document.createElement("span"); layer.className = "ears-layer"; layer.setAttribute("aria-hidden", "true");
-    var box = document.createElement("span"); box.className = "ears";
-    var e = document.createElement("img"); e.src = "images/rabbit-ears.webp"; e.alt = ""; e.draggable = false;
-    box.appendChild(e); layer.appendChild(box); spot.insertBefore(layer, img.nextSibling);
-    var hideT, last = -1;
-    spot.addEventListener("mouseenter", function () {
-      if (box.classList.contains("out")) return;
-      var k; do { k = Math.floor(Math.random() * pts.length); } while (pts.length > 1 && k === last); last = k;
-      var p = pts[k];
-      /* l'image est en object-fit: contain : on retrouve le rectangle reellement dessine */
-      var W = spot.clientWidth, H = spot.clientHeight, r = (img.naturalWidth || 1) / (img.naturalHeight || 1);
-      var w = Math.min(W, H * r), h = w / r, ox = (W - w) / 2, oy = (H - h) / 2;
-      var size = Math.max(22, Math.min(40, w * .16));
-      var a = p[2] * Math.PI / 180, inset = Math.max(2, size * .1);   /* la base des oreilles reste cachee dans le trait */
-      box.style.width = size + "px"; box.style.height = size + "px";
-      box.style.left = (ox + w * p[0] / 100 - Math.sin(a) * inset) + "px";
-      box.style.top = (oy + h * p[1] / 100 + Math.cos(a) * inset) + "px";
-      box.style.transform = "translate(-50%, -100%) rotate(" + p[2] + "deg)";
-      box.classList.remove("back"); void box.offsetWidth; box.classList.add("out");
-      clearTimeout(hideT);
-      hideT = setTimeout(function () { box.classList.add("back"); box.classList.remove("out"); }, reduce ? 1500 : 3000);
-    });
-  });
+  var tree = document.querySelector('.scene .spot[href$="rooms/"][data-ears]');
+  if (!tree) return;
+  var img = tree.querySelector("img");
+  var pts = (tree.getAttribute("data-ears") || "").split(";").filter(Boolean)
+    .map(function (p) { return p.split(",").map(Number); })
+    .filter(function (p) { return Math.abs(p[2]) <= 60; });           /* seulement les oreilles bien dressees */
+  if (!pts.length || !img) return;
+  var layer = document.createElement("span"); layer.className = "ears-layer"; layer.setAttribute("aria-hidden", "true");
+  var box = document.createElement("span"); box.className = "ears";
+  var e = document.createElement("img"); e.src = "images/rabbit-ears.webp"; e.alt = ""; e.draggable = false;
+  box.appendChild(e); layer.appendChild(box); tree.insertBefore(layer, img.nextSibling);
+  var hideT, last = -1;
+  function pop() {
+    if (box.classList.contains("out")) return;
+    var k; do { k = Math.floor(Math.random() * pts.length); } while (pts.length > 1 && k === last); last = k;
+    var p = pts[k];
+    var W = tree.clientWidth, H = tree.clientHeight, r = (img.naturalWidth || 1) / (img.naturalHeight || 1);
+    var w = Math.min(W, H * r), h = w / r, ox = (W - w) / 2, oy = (H - h) / 2;
+    var size = Math.max(24, Math.min(42, w * .2));
+    var a = p[2] * Math.PI / 180, inset = Math.max(2, size * .1);     /* la base des oreilles reste cachee dans le trait */
+    box.style.width = size + "px"; box.style.height = size + "px";
+    box.style.left = (ox + w * p[0] / 100 - Math.sin(a) * inset) + "px";
+    box.style.top = (oy + h * p[1] / 100 + Math.cos(a) * inset) + "px";
+    box.style.transform = "translate(-50%, -100%) rotate(" + p[2] + "deg)";
+    box.classList.remove("back"); void box.offsetWidth; box.classList.add("out");
+    clearTimeout(hideT);
+    hideT = setTimeout(function () { box.classList.add("back"); box.classList.remove("out"); }, reduce ? 1500 : 3000);
+  }
+  [].slice.call(document.querySelectorAll(".scene a.spot")).forEach(function (s) { s.addEventListener("mouseenter", pop); });
 })();
